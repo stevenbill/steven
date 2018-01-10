@@ -1,16 +1,37 @@
 <?php
 session_start();
 date_default_timezone_set("Africa/Cairo");
+/*
+if(!isset($_SERVER['HTTP_REFERER'])){
+// redirect them to your desired location
+header('location: destroy.php');
+exit;
+
+}*/
+
+
 if(!isset($_SESSION['logindata']))
-    {
-        header('Location: destroy.php');
-    }
+{
+ header('location: destroy.php');
+exit;
+
+}
 
 
+// 10 mins in seconds
+$inactive = 2700;
+if( !isset($_SESSION['timeout']) )
+$_SESSION['timeout'] = time() + $inactive; 
 
-   
+$session_life = time() - $_SESSION['timeout'];
 
-    ?>
+if($session_life > $inactive)
+{  session_destroy(); header("Location:destroy.php");     }
+
+$_SESSION['timeout']=time();
+
+?>
+
 
 
 
@@ -354,8 +375,9 @@ if(!isset($_SESSION['logindata']))
                                                    <th>Paid Type </th> 
                                                   
 
-                                                     <th>Instalment Seq</th>
+                                                     
                                                       <th>Deposit</th>
+                                                      <th>Instalment Seq</th>
                                                      <th> Out-POS</th>  
                                                       
 
@@ -433,8 +455,10 @@ $q=mysql_query($sql) ;
              
       
 
+                          echo "<td>". $row['Deposit']."</td>" ; 
+                          
                  echo "<td>". $row['InstallmentSeq']."</td>" ;  
-                          echo "<td>". $row['Deposit']."</td>" ;  
+                 
                   echo "<td>". $row['OutPOS']."</td>" ;  
               
 

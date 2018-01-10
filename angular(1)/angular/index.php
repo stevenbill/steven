@@ -1,6 +1,14 @@
 <?php
 session_start();
 date_default_timezone_set("Africa/Cairo");
+/*
+if(!isset($_SERVER['HTTP_REFERER'])){
+// redirect them to your desired location
+header('location: destroy.php');
+exit;
+
+}*/
+
 
 if(!isset($_SESSION['logindata']))
 {
@@ -11,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 900;
+$inactive = 2700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -22,8 +30,9 @@ if($session_life > $inactive)
 
 $_SESSION['timeout']=time();
 
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>        

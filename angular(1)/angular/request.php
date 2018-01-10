@@ -19,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 900;
+$inactive = 2700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -31,6 +31,7 @@ if($session_life > $inactive)
 $_SESSION['timeout']=time();
 
 ?>
+
 
 
 
@@ -1023,54 +1024,165 @@ $data = $query->fetch_assoc();
                                         <div class="col-md-6 col-xs-12">                                                                                            
                                             <select class="form-control " name="LowPriceEGP" required >
                                                 <option> </option>
-                                                <option value="100000"> 100000</option>
+                                                <option value="100,000
+"> 100,000
+</option>
                                                 
                         
-                                                <option value="200000">200000</option>
-                                                <option value="300000">300000</option>
+                                                <option value="200,000
+">200,000
+</option>
+                                                <option value="300,000
+">300,000
+</option>
                                                 
-                                                  <option value="400000">400000</option>
-                                                    <option value="500000">500000</option>
-                                                      <option value="600000">600000</option>
-                                                        <option value="700000">700000</option>
-                                                          <option value="800000">800000</option>
-                                                            <option value="900000">900000</option>
-                                                              <option value="1000000">1000000</option>
+                                                  <option value="400,000
+">400,000
+</option>
+                                                    <option value="500,000
+">500,000
+</option>
+                                                      <option value="600,000
+">600,000
+</option>
+                                                        <option value="700,000
+">700,000
+</option>
+                                                          <option value="800,000
+">800,000
+</option>
+                                                            <option value="900,000
+">900,000
+</option>
+                                                              <option value="1,000,000
+">1,000,000
+</option>
                                                               
-                                                                <option value="1100000">1100000</option>
-                                                                  <option value="120000">120000</option>
-                                                                    <option value="130000">130000</option>
-                                                                      <option value="140000">140000</option>
-                                                                        <option value="150000">150000</option>
-                                                                          <option value="160000">160000</option>
-                                                                            <option value="170000">170000</option>
-                                                                              <option value="180000">180000</option>
-                                                                                <option value="190000">190000</option>
-                                                                                  <option value="2000000">2000000</option> 
-                                                                                  <option value="2100000">2100000</option>
+                                                                <option value="1,100,000
+">1,100,000
+</option>
+                                                                  <option value="1,200,000
+">1,200,000
+</option>
+                                                                    <option value="1,300,000
+">1,300,000
+</option>
+                                                                      <option value="1,400,000
+">1,400,000
+</option>
+                                                                        <option value="1,500,000
+">1,500,000
+</option>
+                                                                          <option value="1,600,000
+">1,600,000
+</option>
+                                                                            <option value="1,700,000
+">1,700,000
+</option>
+                                                                              <option value="1,800,000
+">1,800,000
+</option>
+                                                                                <option value="1,900,000
+">1,900,000
+</option>
+                                                                                  <option value="2,000,000
+">2,000,000
+</option> 
+                                                                                  <option value="2,100,000
+">2,100,000
+</option>
                                                                                   
-                                                                                   <option value="320000">320000</option>
-                                                                    <option value="330000">330000</option>
-                                                                      <option value="340000">340000</option>
-                                                                        <option value="350000">350000</option>
-                                                                          <option value="360000">360000</option>
-                                                                            <option value="370000">370000</option>
-                                                                              <option value="380000">380000</option>
-                                                                                <option value="390000">390000</option> 
-                                                                                <option value="4000000">4000000</option> 
+                                                                                   <option value="2,200,000
+">2,200,000
+</option>
+                                                                    <option value="2,300,000
+">2,300,000
+</option>
+                                                                      <option value="2,400,000
+">2,400,000
+</option>
+                                                                        <option value="2,500,000
+">2,500,000
+</option>
+                                                                          <option value="2,600,000
+">2,600,000
+</option>
+                                                                            <option value="2,700,000
+">2,700,000
+</option>
+                                                                              <option value="2,800,000
+">2,800,000
+</option>
+                                                                                <option value="2,900,000
+">2,900,000
+</option> 
+                                                                                <option value="3,000,000
+">3,000,000
+</option> 
                                                                                   
-                                                                                   <option value="410000">410000</option>
-                                                                                         <option value="420000">420000</option>
-                                                                    <option value="430000">430000</option>
-                                                                      <option value="440000">440000</option>
-                                                                        <option value="450000">450000</option>
-                                                                          <option value="460000">460000</option>
-                                                                            <option value="470000">470000</option>
-                                                                              <option value="480000">480000</option>
-                                                                                <option value="490000">490000</option>
-                                                                                <option value="5000000">5000000</option>
-                                                                                 <option value="more 50000000">more 50000000</option> 
+                                                                                   <option value="3,100,000
+">3,100,000
+</option>
+                                                                                         <option value="3,200,000
+">3,200,000
+</option>
+                                                                    <option value="3,300,000
+">3,300,000
+</option>
+                                                                      <option value="3,400,000
+">3,400,000
+</option>
+                                                                        <option value="3,500,000
+">3,500,000
+</option>
+                                                                          <option value="3,600,000
+">3,600,000
+</option>
+                                                                            <option value="3,700,000
+">3,700,000
+</option>
+                                                                              <option value="3,800,000
+">3,800,000
+</option>
+                                                                                <option value="3,900,000
+">3,900,000
+</option>
+                                                                                <option value="4,000,000
+">4,000,000
+</option>
+                                                                                 <option value="4,100,000
+">4,100,000
+</option> 
 
+ <option value="4,200,000
+">4,200,000
+</option> 
+  <option value="4,300,000
+">4,300,000
+</option> 
+   <option value="4,400,000
+">4,400,000
+</option> 
+    <option value="4,500,000
+">4,500,000
+</option> 
+     <option value="4,600,000
+">4,600,000
+</option> 
+      <option value="4,700,000
+">4,700,000
+</option> 
+       <option value="4,800,000
+">4,800,000
+</option> 
+        <option value="4,900,000
+">4,900,000
+</option> 
+        
+         <option value="5,000,000
+">5,000,000
+</option> 
+          <option value="more 50000000">more 50000000</option> 
                                                 
                                             </select>
                                             <span class="help-block">Select box example</span>
@@ -1107,54 +1219,167 @@ $data = $query->fetch_assoc();
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
                                             <select class="form-control " name="MaxPriceEGP" required >
-                                                <option> </option>
-                                 <option value="100000"> 100000</option>
+                                                                                <option> </option>
+                                                <option value="100,000
+"> 100,000
+</option>
                                                 
                         
-                                                <option value="200000">200000</option>
-                                                <option value="300000">300000</option>
+                                                <option value="200,000
+">200,000
+</option>
+                                                <option value="300,000
+">300,000
+</option>
                                                 
-                                                  <option value="400000">400000</option>
-                                                    <option value="500000">500000</option>
-                                                      <option value="600000">600000</option>
-                                                        <option value="700000">700000</option>
-                                                          <option value="800000">800000</option>
-                                                            <option value="900000">900000</option>
-                                                              <option value="1000000">1000000</option>
+                                                  <option value="400,000
+">400,000
+</option>
+                                                    <option value="500,000
+">500,000
+</option>
+                                                      <option value="600,000
+">600,000
+</option>
+                                                        <option value="700,000
+">700,000
+</option>
+                                                          <option value="800,000
+">800,000
+</option>
+                                                            <option value="900,000
+">900,000
+</option>
+                                                              <option value="1,000,000
+">1,000,000
+</option>
                                                               
-                                                                <option value="1100000">1100000</option>
-                                                                  <option value="120000">120000</option>
-                                                                    <option value="130000">130000</option>
-                                                                      <option value="140000">140000</option>
-                                                                        <option value="150000">150000</option>
-                                                                          <option value="160000">160000</option>
-                                                                            <option value="170000">170000</option>
-                                                                              <option value="180000">180000</option>
-                                                                                <option value="190000">190000</option>
-                                                                                  <option value="2000000">2000000</option> 
-                                                                                  <option value="2100000">2100000</option>
+                                                                <option value="1,100,000
+">1,100,000
+</option>
+                                                                  <option value="1,200,000
+">1,200,000
+</option>
+                                                                    <option value="1,300,000
+">1,300,000
+</option>
+                                                                      <option value="1,400,000
+">1,400,000
+</option>
+                                                                        <option value="1,500,000
+">1,500,000
+</option>
+                                                                          <option value="1,600,000
+">1,600,000
+</option>
+                                                                            <option value="1,700,000
+">1,700,000
+</option>
+                                                                              <option value="1,800,000
+">1,800,000
+</option>
+                                                                                <option value="1,900,000
+">1,900,000
+</option>
+                                                                                  <option value="2,000,000
+">2,000,000
+</option> 
+                                                                                  <option value="2,100,000
+">2,100,000
+</option>
                                                                                   
-                                                                                   <option value="320000">320000</option>
-                                                                    <option value="330000">330000</option>
-                                                                      <option value="340000">340000</option>
-                                                                        <option value="350000">350000</option>
-                                                                          <option value="360000">360000</option>
-                                                                            <option value="370000">370000</option>
-                                                                              <option value="380000">380000</option>
-                                                                                <option value="390000">390000</option> 
-                                                                                <option value="4000000">4000000</option> 
+                                                                                   <option value="2,200,000
+">2,200,000
+</option>
+                                                                    <option value="2,300,000
+">2,300,000
+</option>
+                                                                      <option value="2,400,000
+">2,400,000
+</option>
+                                                                        <option value="2,500,000
+">2,500,000
+</option>
+                                                                          <option value="2,600,000
+">2,600,000
+</option>
+                                                                            <option value="2,700,000
+">2,700,000
+</option>
+                                                                              <option value="2,800,000
+">2,800,000
+</option>
+                                                                                <option value="2,900,000
+">2,900,000
+</option> 
+                                                                                <option value="3,000,000
+">3,000,000
+</option> 
                                                                                   
-                                                                                   <option value="410000">410000</option>
-                                                                                         <option value="420000">420000</option>
-                                                                    <option value="430000">430000</option>
-                                                                      <option value="440000">440000</option>
-                                                                        <option value="450000">450000</option>
-                                                                          <option value="460000">460000</option>
-                                                                            <option value="470000">470000</option>
-                                                                              <option value="480000">480000</option>
-                                                                                <option value="490000">490000</option>
-                                                                                <option value="5000000">5000000</option>
-                                                                                 <option value="more 50000000">more 50000000</option> 
+                                                                                   <option value="3,100,000
+">3,100,000
+</option>
+                                                                                         <option value="3,200,000
+">3,200,000
+</option>
+                                                                    <option value="3,300,000
+">3,300,000
+</option>
+                                                                      <option value="3,400,000
+">3,400,000
+</option>
+                                                                        <option value="3,500,000
+">3,500,000
+</option>
+                                                                          <option value="3,600,000
+">3,600,000
+</option>
+                                                                            <option value="3,700,000
+">3,700,000
+</option>
+                                                                              <option value="3,800,000
+">3,800,000
+</option>
+                                                                                <option value="3,900,000
+">3,900,000
+</option>
+                                                                                <option value="4,000,000
+">4,000,000
+</option>
+                                                                                 <option value="4,100,000
+">4,100,000
+</option> 
+
+ <option value="4,200,000
+">4,200,000
+</option> 
+  <option value="4,300,000
+">4,300,000
+</option> 
+   <option value="4,400,000
+">4,400,000
+</option> 
+    <option value="4,500,000
+">4,500,000
+</option> 
+     <option value="4,600,000
+">4,600,000
+</option> 
+      <option value="4,700,000
+">4,700,000
+</option> 
+       <option value="4,800,000
+">4,800,000
+</option> 
+        <option value="4,900,000
+">4,900,000
+</option> 
+        
+         <option value="5,000,000
+">5,000,000
+</option> 
+          <option value="more 50000000">more 50000000</option> 
+                                                
                                             </select>
                                             <span class="help-block">Select box example</span>
                                         </div>
