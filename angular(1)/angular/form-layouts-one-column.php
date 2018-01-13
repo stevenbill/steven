@@ -102,6 +102,28 @@ mysql_select_db($db) or die("db selction error ");
 
 if($_POST['send']){
 
+
+
+
+$codigo = mysql_real_escape_string($_POST['Mobile01']);
+$result = mysql_query("SELECT Mobile01 FROM Customer WHERE Mobile01 = '$codigo'");
+
+if (!mysql_num_rows($result)) {
+
+// Go ahead and insert everything in table1
+$data = array(
+
+'Codigo' => $_POST['Mobile01']
+);
+
+// Make sure all the data is safe for entry into the database
+foreach ($data as $key => $val) {
+$data[$key] = "'" . mysql_real_escape_string($val) . "'";
+}
+
+$fields = implode(', ', array_keys($data));
+$values = implode(', ', array_values($data));
+
 $sql2="INSERT INTO `Customer`(`En_Fname`,En_Lname,Ar_Fname,Ar_Lname,Phone1,Mobile01,Whatsapp,Email,Class,verification,Date,Reg_By,Honorific,Gender,Known_From,Type,Mobile02,Note,time) VALUES ('$En_Fname','$En_Lname','$Ar_Fname','$Ar_Lname','$Phone1','$Mobile01','$Whatsapp','$Email','$Class','$verification','$date','$seg','$Honorific','$Gender','$KnownFrom','$Type','$Mobile02','$Note','$time')";
 
 
@@ -109,18 +131,22 @@ mysql_query($sql2);
 
 echo "<script type='text/javascript'>alert('Your data has been sent successfully! ');</script>";
 
+}else {
+echo "<script type='text/javascript'>alert('***Sorry This mobile already in database ***');</script>";
+
+
+
+ 
 }
 
 
-}else{
-  
-  mysql_error();
-}
 
+} 
+ mysql_error();
+}
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -139,8 +165,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
         <!-- EOF CSS INCLUDE -->                   
     </head>
     <body>
-              <!-- aly 3la shmal --------------------------------->
-           
+               <!-- START PAGE CONTAINER -->
+        
+        
+        
         <!-- aly 3la shmal -->
         <div class="page-container">
             
@@ -182,7 +210,92 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                         <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>    
                     
-                  
+                    <!--<li class="xn-openable">
+                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
+                        <ul>
+                            <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
+                            <li><a href="pages-profile.html"><span class="fa fa-user"></span> Profile</a></li>
+                            <li><a href="pages-address-book.html"><span class="fa fa-users"></span> Address Book</a></li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
+                                <ul>
+                                    <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
+                                    <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
+                                </ul>
+                            </li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-envelope"></span> Mailbox</a>
+                                <ul>
+                                    <li><a href="pages-mailbox-inbox.html"><span class="fa fa-inbox"></span> Inbox</a></li>
+                                    <li><a href="pages-mailbox-message.html"><span class="fa fa-file-text"></span> Message</a></li>
+                                    <li><a href="pages-mailbox-compose.html"><span class="fa fa-pencil"></span> Compose</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>
+                            <li><a href="pages-calendar.html"><span class="fa fa-calendar"></span> Calendar</a></li>
+                            <li><a href="pages-tasks.html"><span class="fa fa-edit"></span> Tasks</a></li>
+                            <li><a href="pages-content-table.html"><span class="fa fa-columns"></span> Content Table</a></li>
+                            <li><a href="pages-faq.html"><span class="fa fa-question-circle"></span> FAQ</a></li>
+                            <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-file"></span> Blog</a>
+                                
+                                <ul>                                    
+                                    <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
+                                    <li><a href="pages-blog-post.html"><span class="fa fa-file-o"></span>Single Post</a></li>
+                                </ul>
+                            </li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-sign-in"></span> Login</a>
+                                <ul>                                    
+                                    <li><a href="pages-login.php">App Login</a></li>
+                                    <li><a href="pages-login-website.html">Website Login</a></li>
+                                    <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
+                                </ul>
+                            </li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
+                                <ul>                                    
+                                    <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
+                                    <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
+                                    <li><a href="pages-error-500.html"> Error 500</a></li>
+                                </ul>
+                            </li>                            
+                        </ul>
+                    </li>-->
+                   <!-- <li class="xn-openable">
+                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
+                        <ul>
+                            <li><a href="layout-boxed.html">Boxed</a></li>
+                            <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
+                            <li><a href="layout-nav-top.html">Navigation Top</a></li>
+                            <li><a href="layout-nav-right.html">Navigation Right</a></li>
+                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>                            
+                            <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
+                            <li><a href="layout-frame-left.html">Frame Left Column</a></li>
+                            <li><a href="layout-frame-right.html">Frame Right Column</a></li>
+                            <li><a href="layout-search-left.html">Search Left Side</a></li>
+                            <li><a href="blank.html">Blank Page</a></li>
+                        </ul>
+                    </li>
+                    <li class="xn-title">Components</li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
+                        <ul>
+                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
+                            <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
+                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>                            
+                            <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
+                            <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
+                            <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
+                            <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
+                            <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
+                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>                            
+                            <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
+                            <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
+                        </ul>
+                    </li>    
+                    -->
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
@@ -195,6 +308,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                      <li><a href="Customer_Calls.php"><span class="fa fa-align-justify"></span> Customer_Calls</a></li>
                                      
                                         <li><a href="request.php"><span class="fa fa-align-justify"></span> Request</a></li>
+                                        
+                                         <li><a href="woner.php"><span class="fa fa-align-justify"></span> Owners</a></li>
+                                          
+                                   <li><a href="Building.php"><span class="fa fa-download"></span> Building</a></li>
                                         
                                     
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
@@ -215,7 +332,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                             <li><a href="Customer-Calls.php"><span class="fa fa-sort-alpha-desc"></span>Customer-Calls</a></li>
                             <li><a href="table-export.php"><span class="fa fa-download"></span> Customer</a></li>  
                             
-                                <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li>
+                             <li><a href="Building-show.php"><span class="fa fa-download"></span> Building</a></li>  
+                            
+                            
+                                <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li> 
+                                
+                                  <li><a href="owner-show.php"><span class="fa fa-download"></span> Owner</a></li>
+                                 
+                                  
                                                    
                         </ul>
                     </li>
@@ -255,9 +379,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                     </li>
                     
                 </ul>
-                <!-- END X-NAVIGATION-------------------------- -->
+                <!-- END X-NAVIGATION ------------------------------>
             </div>
-            <!-- END PAGE SIDEBAR -->
+            <!-- END PAGE SIDEBAR ----------------------------------->
+            
             
             <!-- PAGE CONTENT -->
             <div class="page-content">

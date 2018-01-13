@@ -329,46 +329,66 @@ if(!isset($_SESSION['logindata']))
                                                    
                                                    
                                                         <th>ID</th>
-                                                <th> Phone Number </th>
-                                                <th>Sector</th>
-                                                <th>ReqType </th>
-                                                <th>Area 01 </th>
-                                                <th>Area 02</th>
-                                                 <th>Area 03 </th>
-                                                   <th>View</th>
-                                                  <th>Min Building Year </th>
-                                                   <th>Street Type</th>
-                                                   <th> Low Price EGP </th>
-                                                   <th>Max Price EGP </th>
-                                                   <th> Apartments m2</th>
-                                                     <th>Rooms no </th>
+                                                <th> Type </th>
+                                                <th>Deal Type
+</th>
+                                                <th>Sector
+ </th>
+                                                <th>Area</th>
+                                                <th>Building Year
+</th>
+                                                 <th>Building Side
+ </th>
+                                                   <th>Street Type
+</th>
+                                                  <th>Building no.
+ </th>
+                                                   <th>Address
+</th>
+                                                   <th> Near to
+ </th>
+                                                   <th>City
+</th>
+                                                   <th>Floor  no.
+</th>
+                                                     <th>Units in Floor
+</th>
                                                    
-                                                   <th>Reception no </th>
-                                                   <th>Bathroom no</th>
+                                                   <th>Building Type
+</th>
+                                                   <th>Residential Deposit
+</th>
 
-                                                   <th>Max Floor </th>  
-                                                   <th>Accept Last Floor</th>  
+                                                   <th>License Floor
+ </th>  
+                                                   <th>Elevator no.
+</th>  
 
-                                                   <th>Finishing Type</th>  
+                                                   <th>Garage
+</th>  
 
-                                                   <th>Paied Type </th> 
-                                                    <th>Deposit</th>
+                                                   <th>Note
+</th> 
+                                                    <th>Source BY
+</th>
 
-                                                     <th>Installment Seq</th>
-                                                     <th> Out-POS</th>  
+                                                     <th>Bui._Serial
+</th>
+                                                     <th>Verification 
+</th>  
                                                     
 
-                                                       <th>Available Stock</th>
+                                                       <th>Status
+</th>
 
-                                                         <th>Note</th>
+                                                         <th>Date
+</th>
 
-                                                           <th>Req_Serial</th>
-                                                             <th>Status</th>
-                                                               <th>Date </th>
-
-                                                                <th> Time </th>
-                                                                 <th> 	Reg_By </th>
-                                                                                                                                   
+                                                           <th>Time
+</th>
+                                                             <th>Reg_By
+</th>
+                                                              
 
                                                    
                                                    
@@ -397,7 +417,7 @@ mysql_select_db($db) or die("db selction error ");
 	mysql_error();
 }
 
-                                            $sql="SELECT * FROM request1 ORDER BY ID DESC " ;
+                                            $sql="SELECT * FROM Building1 ORDER BY ID DESC " ;
 $q=mysql_query($sql) ;
 
 
@@ -405,45 +425,102 @@ $q=mysql_query($sql) ;
    
   
                                           echo "<tr>";
+                                          
+                                          
+                         
+                         
+     
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
                                     echo "<td>". $row['ID']."</td>" ;
       
      
                                                    
-                                                 echo "<td>". $row['PhoneNumber']."</td>" ; 
-   echo "<td>". $row['Sector']."</td>" ;
-      echo "<td>". $row['ReqType']."</td>" ;
-   echo "<td>". $row['Area01']."</td>" ;
- echo "<td>". $row['Area02']."</td>" ;
-  echo "<td>". $row['Area03']."</td>" ;
+                                                 echo "<td>". $row['Type']."</td>" ; 
+   echo "<td>". $row['DealType']."</td>" ;
+      echo "<td>". $row['Sector']."</td>" ;
+      
+   echo "<td>". $row['Area']."</td>" ;
+ echo "<td>". $row['BuildingYear']."</td>" ;
+  echo "<td>". $row['BuildingSide']."</td>" ;
 
-       echo "<td>". $row['View1']."</td>" ;
-   echo "<td>". $row['MinBuildingYear']."</td>" ;
-   echo "<td>". $row['StreetType']."</td>" ;
-       echo "<td>". $row['LowPriceEGP']."</td>" ;
-      echo "<td>". $row['MaxPriceEGP']."</td>" ;
-      echo "<td>". $row['Apartmentsm2']."</td>" ;
-    echo "<td>". $row['Roomsno']."</td>" ;
-     echo "<td>". $row['Recepionno']."</td>" ;
-     echo "<td>". $row['Bathroomno']."</td>" ; 
-      echo "<td>". $row['MaxFloor']."</td>" ;  
-  echo "<td>". $row['AcceptLastFloor']."</td>" ;
-    echo "<td>". $row['FinishingType']."</td>" ;
-             echo "<td>". $row['PaiedType']."</td>" ; 
+       echo "<td>". $row['StreetType']."</td>" ;
+       
+   echo "<td>". $row['Buildingno']."</td>" ;
+   
+   echo "<td>". $row['Address']."</td>" ;
+   
+       echo "<td>". $row['Nearto']."</td>" ;
+       
+      echo "<td>". $row['City']."</td>" ;
+      
+      echo "<td>". $row['Floorno']."</td>" ;
+      
+    echo "<td>". $row['UnitsinFloor']."</td>" ;
+    
+     echo "<td>". $row['BuildingType']."</td>" ;
+     
+     echo "<td>". $row['ResidentialDeposit']."</td>" ; 
+     
+      echo "<td>". $row['LicenseFloor']."</td>" ;  
+      
+  echo "<td>". $row['Elevatorno']."</td>" ;
+  
+    echo "<td>". $row['Garage']."</td>" ;
+             echo "<td>". $row['Note']."</td>" ; 
              
-               echo "<td>". $row['Deposit']."</td>" ;  
+             
+               echo "<td>". $row['SourceBY']."</td>" ;  
 
-                 echo "<td>". $row['InstallmentSeq']."</td>" ;  
-                  echo "<td>". $row['Out-POS']."</td>" ;  
+                 echo "<td>". $row['Bui_Serial']."</td>" ;  
+                 
+                  echo "<td>". $row['Verification']."</td>" ;  
               
 
-                     echo "<td>". $row['AvailableStock']."</td>" ;
-                         echo "<td>". $row['Note']."</td>" ;
-                             echo "<td>". $row['Req_Serial']."</td>" ;
-                                 echo "<td>". $row['Status1']."</td>" ;
-                                     echo "<td>". $row['Date1']."</td>" ;
-
-                                         echo "<td>". $row['time']."</td>" ;
-                                             echo "<td>". $row['Reg_By']."</td>" ;
+                     echo "<td>". $row['Status']."</td>" ;
+                     
+                         echo "<td>". $row['Date']."</td>" ;
+                         
+                             echo "<td>". $row['Time']."</td>" ;
+                             
+                                 echo "<td>". $row['Reg_By']."</td>" ;
+                                  
                                                 
 
 

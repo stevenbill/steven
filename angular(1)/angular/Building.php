@@ -40,56 +40,77 @@ $_SESSION['timeout']=time();
 <?php
 $seg= $_SESSION['logindata'];
 
-$PhoneNumber=$_POST['PhoneNumber'];
+$Type=$_POST['Type'];
 
 
-$Sector=$_POST['Sector'];
-
-
-$ReqType =$_POST['ReqType'];
-
-$Area01 =$_POST['Area01'];
-$Area02 =$_POST['Area02'];
-$Area03 =$_POST['Area03'];
-
-$View = $_POST['View'];
+$DealType=$_POST['DealType'];
 
 
 
 
+$Sector =$_POST['Sector'];
 
-$MinBuildingYear = $_POST['MinBuildingYear'];
+$Area =$_POST['Area'];  
 
+$MinBuildingYear =$_POST['MinBuildingYear'];
 
-
+$BuildingSide =$_POST['BuildingSide'];
 
 $StreetType = $_POST['StreetType'];
 
 
-$LowPriceEGP  = $_POST['LowPriceEGP'];
-
-$MaxPriceEGP  = $_POST['MaxPriceEGP'];
-$Apartmentsm2  = $_POST['Apartmentsm2'];
-$Roomsno  = $_POST['Roomsno']; 
-$Bathroomno1  = $_POST['Bathroomno']; 
-$MaxFloor  = $_POST['MaxFloor'];
-$FinishingType  = $_POST['FinishingType'];  
-
-$PaiedType  = $_POST['PaiedType']; 
-
-$Deposite  = $_POST['Deposite'];  
-
-$InstallmentSeq  = $_POST['InstallmentSeq']; 
-
-$OutPOS  = $_POST['OutPOS']; 
-
-$AvailableStock  = $_POST['AvailableStock']; 
 
 
 
-$AcceptLastFloor = $_POST['AcceptLastFloor'];
+$Address = $_POST['Address'];
 
-$Recepionno = $_POST['Recepionno'];
+
+
+
+$Nearto = $_POST['Nearto'];
+
+
+$City = $_POST['City'];
+
+$Buildingno  = $_POST['Buildingno'];
+
+
+
+$Floorno  = $_POST['Floorno'];
+
+$UnitsinFloor  = $_POST['UnitsinFloor']; 
+
+
+$Elevatorno  = $_POST['Elevatorno']; 
+
+
+$BuildingType  = $_POST['BuildingType'];
+
+
+$ResidentialDeposit  = $_POST['ResidentialDeposit'];   
+/*
+$UnitsinFloor  = $_POST['UnitsinFloor']; */
+
+$LicenseFloor  = $_POST['LicenseFloor'];  
+
+$Garage  = $_POST['Garage']; 
+
+$AcceptLastFloor  = $_POST['AcceptLastFloor']; 
+
+
+
+$Note = $_POST['Note'];
+
+$Verification  = "Yes";
+$Status = "Open";
+$date=date("Y/m/d") ;
+$time=date("h:i:sa") ;
+
+/*$Bui_Serial   = substr(uniqid(rand(), true), 7, 7);*/
+
+$SourceBY= $_POST['SourceBY'];
+
+
 /*
 $verification = "no";
 
@@ -97,7 +118,7 @@ $Honorific = $_POST['Honorific'];
 $Gender = $_POST['Gender'];
 
 $KnownFrom= $_POST['KnownFrom'];
-*/
+
 $Status1 = "Open";
 
 $date=date("Y/m/d") ;
@@ -105,6 +126,7 @@ $time=date("h:i:sa") ;
 $Note =$_POST['Note'];
 $Req_Serial  = substr(uniqid(rand(), true), 7, 7);
 
+ Bui._Serial 
 
 /*************************************************************************/
 $localhost="localhost";
@@ -122,9 +144,17 @@ mysql_select_db($db) or die("db selction error ");
 
 if($_POST['send']){
 
-$sql2="INSERT INTO `request1`(PhoneNumber,Sector,ReqType,Area01,Area02,Area03,View1,MinBuildingYear,StreetType,LowPriceEGP,MaxPriceEGP,Apartmentsm2,Roomsno,Bathroomno,MaxFloor,FinishingType,PaiedType,InstallmentSeq,AvailableStock,Date1,Reg_By,Note,time,AcceptLastFloor,Recepionno,Req_Serial,Status1 ) VALUES ('$PhoneNumber','$Sector','$ReqType','$Area01','$Area02','$Area03','$View','$MinBuildingYear','$StreetType','$LowPriceEGP','$MaxPriceEGP','$Apartmentsm2','$Roomsno','$Bathroomno1','$MaxFloor','$FinishingType','$PaiedType','$InstallmentSeq','$AvailableStock','$date','$seg','$Note','$time','$AcceptLastFloor','$Recepionno','$Req_Serial','$Status1')";
+$sql2="INSERT INTO `Building1`(Type,DealType,Sector,Area,BuildingYear,BuildingSide,StreetType,Buildingno,Address,Nearto,City,Floorno,UnitsinFloor,Elevatorno,BuildingType,ResidentialDeposit,LicenseFloor,Garage,AcceptLastFloor,Note,Verification,Status,Date,Time,Reg_By,SourceBY) VALUES ('$Type','$DealType','$Sector','$Area','$MinBuildingYear','$BuildingSide','$StreetType','$Buildingno','$Address','$Nearto','$City','$Floorno','$UnitsinFloor','$Elevatorno','$BuildingType','$ResidentialDeposit','$LicenseFloor','$Garage','$AcceptLastFloor','$Note','$Verification','$Status','$date','$time','$seg','$SourceBY')";
+
 
 mysql_query($sql2);
+    $last_insert_id = mysql_insert_id();
+       $time=date("Y/m") ;
+   
+    
+    $up="UPDATE `Building1` SET `Bui_Serial`='$last_insert_id.$time' WHERE id='$last_insert_id' ";
+mysql_query($up);
+echo "<h1> its last </h1>".$last_insert_id;
 
 echo "<script type='text/javascript'>alert('Your data has been sent successfully! ');</script>";
 
@@ -202,93 +232,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                     <li class="active">
                         <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>    
-                    
-                    <!--<li class="xn-openable">
-                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
-                        <ul>
-                            <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
-                            <li><a href="pages-profile.html"><span class="fa fa-user"></span> Profile</a></li>
-                            <li><a href="pages-address-book.html"><span class="fa fa-users"></span> Address Book</a></li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
-                                <ul>
-                                    <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
-                                    <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-envelope"></span> Mailbox</a>
-                                <ul>
-                                    <li><a href="pages-mailbox-inbox.html"><span class="fa fa-inbox"></span> Inbox</a></li>
-                                    <li><a href="pages-mailbox-message.html"><span class="fa fa-file-text"></span> Message</a></li>
-                                    <li><a href="pages-mailbox-compose.html"><span class="fa fa-pencil"></span> Compose</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>
-                            <li><a href="pages-calendar.html"><span class="fa fa-calendar"></span> Calendar</a></li>
-                            <li><a href="pages-tasks.html"><span class="fa fa-edit"></span> Tasks</a></li>
-                            <li><a href="pages-content-table.html"><span class="fa fa-columns"></span> Content Table</a></li>
-                            <li><a href="pages-faq.html"><span class="fa fa-question-circle"></span> FAQ</a></li>
-                            <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-file"></span> Blog</a>
-                                
-                                <ul>                                    
-                                    <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
-                                    <li><a href="pages-blog-post.html"><span class="fa fa-file-o"></span>Single Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-sign-in"></span> Login</a>
-                                <ul>                                    
-                                    <li><a href="pages-login.php">App Login</a></li>
-                                    <li><a href="pages-login-website.html">Website Login</a></li>
-                                    <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
-                                <ul>                                    
-                                    <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
-                                    <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
-                                    <li><a href="pages-error-500.html"> Error 500</a></li>
-                                </ul>
-                            </li>                            
-                        </ul>
-                    </li>-->
-                   <!-- <li class="xn-openable">
-                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
-                        <ul>
-                            <li><a href="layout-boxed.html">Boxed</a></li>
-                            <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
-                            <li><a href="layout-nav-top.html">Navigation Top</a></li>
-                            <li><a href="layout-nav-right.html">Navigation Right</a></li>
-                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>                            
-                            <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
-                            <li><a href="layout-frame-left.html">Frame Left Column</a></li>
-                            <li><a href="layout-frame-right.html">Frame Right Column</a></li>
-                            <li><a href="layout-search-left.html">Search Left Side</a></li>
-                            <li><a href="blank.html">Blank Page</a></li>
-                        </ul>
-                    </li>
-                    <li class="xn-title">Components</li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
-                        <ul>
-                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
-                            <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
-                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>                            
-                            <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
-                            <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
-                            <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
-                            <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
-                            <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
-                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>                            
-                            <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
-                            <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
-                        </ul>
-                    </li>    
-                    -->
+
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
@@ -489,7 +433,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" method="post" action='request.php' >
+                            <form class="form-horizontal" method="post" action='Building.php' >
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Request/</strong> Form</h3>
@@ -522,13 +466,17 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                 
                                 
                                 
+                                
+                                
                                      <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Type</label> 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="Type" required>
+                                            <select class="form-control" name="Type" >
                                              
                                                         <option> </option>
-                                                <option value="A"> A</option>
+                                                <option value="Internal
+">Internal
+</option>
                                                 <option value="B">B</option>
                                                 <option value="C">C</option>
                                                 
@@ -550,12 +498,11 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                      <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Deal Type</label> 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="DealType" required>
+                                            <select class="form-control" name="DealType" >
                                              
                                                         <option> </option>
-                                                <option value="A"> A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
+                                                <option value="A">Internal</option>
+                                                <option value="B">External</option>
                                                 
                                                 
                                                 
@@ -587,10 +534,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                    <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Sector</label> 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="Sector" required >
+                                            <select class="form-control" name="Sector"  >
                                                 <option> </option>
-                                                <option value="Buy"> Buy</option>
-                                                <option value="Rent">Rent</option>
+                                                <option value="Buy">A</option>
+                                                <option value="Rent">B</option>
                                                 
                                                 
                                             </select>
@@ -606,7 +553,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                        <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Area</label> 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="Area" required>
+                                            <select class="form-control" name="Area" >
                                                 <option> </option>
                                                 <option value="45"> 45</option>
                                                 <option value=" ابويوسف  ">ابويوسف</option>
@@ -665,10 +612,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                     <option value="محرم بك "> محرم بك </option>
 
 
-  <option value="ميامي"> ميامي</option>
+                                                    <option value="ميامي"> ميامي</option>
   
   
-    <option value="أخرى"> أخرى</option>
+                                                    <option value="أخرى"> أخرى</option>
     
     
 
@@ -688,7 +635,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="MinBuildingYear" required>
+                                            <select class="form-control" name="MinBuildingYear" >
                                                 <option> </option>
                                                 <option value="Before 2000"> Before 2000</option>
                                                 <option value="2001">2001</option>
@@ -733,31 +680,16 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                     
                                     
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
                                       <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Building Side</label> 
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="BuildingSide" required >
+                                            <select class="form-control" name="BuildingSide"  >
                                                 <option> </option>
                                                 <option value="قبلي ">قبلي </option>
                                                 <option value="بحري ">بحري </option>
-
-                                                <option value="كلاهما"> كلاهما</option>
+                                                
                                                 
                                             </select>
                                             <span class="help-block">Select box example</span>
@@ -779,7 +711,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="StreetType" required>
+                                            <select class="form-control " name="StreetType" >
                                                 <option> </option>
                                                 <option value="جانبي"> جانبي</option>
 
@@ -791,6 +723,70 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                             <span class="help-block">Select box example</span>
                                         </div>
                                     </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                     <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Buliding no.</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">
+                                           
+                                           
+                                           <input type="text" class="form-control" name="Buildingno" ="required" pattern="[0-1-2]{3}[0-9]{8}">
+                                           
+                                           
+                                           
+                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Address</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">
+                                           
+                                           
+                                           
+                                           <input type="text" class="form-control" name="Address" ="required" pattern="[a-zA-ZS]+">
+                                           
+                                           
+                                           
+                                            <span class="help-block">Start with Capital Letter , don't accept spaces , symbols , numbers and arabic letters</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Near to</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">
+                                           
+                                           
+                                           <input type="text" class="form-control" name="Nearto" pattern="[a-zA-ZS]+">
+                                           
+                                           
+                                           
+                                            <span class="help-block">Start with Capital Letter , don't accept spaces , symbols , numbers and arabic letters</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                    
                                 
                                     <!-------forget text box --------------->
                                     
@@ -804,7 +800,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="City" required >
+                                            <select class="form-control" name="City"  >
                                                 <option> </option>
                                                 <option value="Alexandria"> Alexandria</option>
                                      
@@ -812,9 +808,6 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                             <span class="help-block">Select box example</span>
                                         </div>
                                     </div>
-                                
-                                
-                                  
                                     
                                     
                                     
@@ -822,26 +815,12 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                     
                                     
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                            
-                                    
-                                    
-               
-                                
-                                
-                                           <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Floor no.</label>   Units in Floor
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Floor no.</label>  
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="Floorno" required >
+                                            <select class="form-control" name="Floorno"  >
                                                 <option> </option>
                                                 <option value="1"> 1</option>
                                                 <option value="2"> 2</option>
@@ -869,6 +848,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                             <span class="help-block">Select box example</span>
                                         </div>
                                     </div>
+                                
                                 
                                 
                                   
@@ -881,7 +861,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name=" UnitsinFloor" required >
+                                            <select class="form-control " name=" UnitsinFloor"  >
                                                 <option> </option>
                                                 <option value="1"> 1</option>
                                                 <option value="2"> 2</option>
@@ -909,89 +889,69 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                             <span class="help-block">Select box example</span>
                                         </div>
                                     </div>
-                                
-                                
                                     
                                     
                                     
                                     
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                                   <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Reception no</label>  
-
-
-                                        <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="Recepionno"  required>
-                                                <option> </option>
-                                                <option value="1"> 1</option>
-                                                <option value="2"> 2</option>
-                                                <option value="3"> 3</option>
-                                                <option value="4"> 4</option>
-                                                <option value="5"> 5</option>
-                                                <option value="6"> 6</option>
-                                                <option value="7"> 7</option>
-                                                <option value="8"> 8</option>
-                                                <option value="9"> 9</option>
-                                              
-                                                <option value="10"> 10</option>
-                                                <option value="11"> 11</option>
-                                                <option value="12"> 12</option>
-                                                <option value="13"> 13</option>
-                                                <option value="14"> 14</option>
-                                                <option value="15"> 15</option>
-                                                <option value="16"> 16</option>
-                                                 <option value="17"> 17</option>
-                                                  <option value="18"> 18</option>
-                                                   <option value="19"> 19</option>
-                                                    <option value="20"> 20</option>
-                                                
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
-                                    </div>
-                                
-                                
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                   
                                      <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Bathroom no.</label>  
+                                        <label class="col-md-3 col-xs-12 control-label"> Building Type</label>  
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="Bathroomno" required>
+                                            <select class="form-control " name="BuildingType" >
+                                                <option> </option>
+                                                <option value="Residential"> Residential</option>
+
+                                                <option value="ResidentialComplex">Residential Complex</option>
+
+                                                <option value="Residentialcompound">Residential compound</option>
+                                                
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Residential Deposit</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">                                                                                            
+                                            <select class="form-control" name="ResidentialDeposit" >
+                                                <option> </option>
+                                                <option value="Yes"> Yes</option>
+
+                                                <option value="No">No</option>
+                                                
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> License Floor</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">                                                                                            
+                                            <select class="form-control " name=" LicenseFloor"  >
                                                 <option> </option>
                                                 <option value="1"> 1</option>
                                                 <option value="2"> 2</option>
@@ -1018,7 +978,49 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                             </select>
                                             <span class="help-block">Select box example</span>
                                         </div>
-                                    </div> 
+                                    </div>
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Elevator no.</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">                                                                                            
+                                            <select class="form-control" name="Elevatorno" >
+                                                <option> </option>
+                                                <option value="Yes"> Yes</option>
+
+                                                <option value="No"> No</option>
+                                                
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Garage</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">                                                                                            
+                                            <select class="form-control" name="Garage" >
+                                                <option> </option>
+                                                <option value="Verification">Verification</option>
+
+                                                <option value="Auto">Auto</option>
+                                                
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
                                 
                                 
                                     
@@ -1028,7 +1030,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
                                         <div class="col-md-6 col-xs-12">                                                                                            
-                                            <select class="form-control " name="AcceptLastFloor" required >
+                                            <select class="form-control " name="AcceptLastFloor"  >
                                                 <option> </option>
                                                 <option value="Yes"> Yes</option>
                                                 <option value="No">No</option>
@@ -1076,6 +1078,34 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
  
      
                              
+                                        
+                               
+                                      <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Source BY</label>  
+
+
+                                        <div class="col-md-6 col-xs-12">                                                                                            
+                                            <select class="form-control " name="SourceBY"  >
+                                                <option> </option>
+                                                <option value="Ahmed Hani
+"> Ahmed Hani
+</option>
+                                                <option value="Raghda Ahmed
+">Raghda Ahmed
+</option>
+                                                 <option value="Other
+">Other
+</option>
+                                             
+                                                
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                
+                                
                                 
                                 
                                 

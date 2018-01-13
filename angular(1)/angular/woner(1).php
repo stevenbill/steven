@@ -35,24 +35,161 @@ $_SESSION['timeout']=time();
 
 
 
+
+
+
+
+<?php
+$seg= $_SESSION['logindata'];
+
+$En_Fname=$_POST['En_Fname'];
+
+$En_Fname =ucfirst("$En_Fname");
+
+$En_Lname=$_POST['En_Lname'];
+
+$En_Lname=ucfirst("$En_Lname");
+
+$Ar_Fname =$_POST['Ar_Fname'];
+
+$Ar_Lname =$_POST['Ar_Lname'];
+
+$Phone1 = $_POST['Phone1'];
+
+
+
+
+
+$Mobile01 = $_POST['Mobile01'];
+
+
+
+
+$Mobile02 = $_POST['Mobile02'];
+
+
+$Whatsapp = $_POST['Whatsapp'];
+
+$Email = $_POST['Email'];
+
+$Class = $_POST['Class'];
+
+$verification = "no";
+
+$Honorific = $_POST['Honorific'];
+$Gender = $_POST['Gender'];
+
+$KnownFrom= $_POST['KnownFrom'];
+
+$Type = "Internal";
+
+$date=date("Y/m/d") ;
+$time=date("h:i:sa") ;
+$Note =$_POST['Note'];
+$Adjective =$_POST['Adjective'];
+
+
+/*************************************************************************/
+$localhost="localhost";
+$user_db="estasm5_yousry";
+$pass_db="4562008";
+$db="estasm5_sales";
+
+
+$connect=mysql_connect("$localhost","$user_db","$pass_db");
+mysql_set_charset('utf8');
+if ($connect) {
+
+mysql_select_db($db) or die("db selction error ");
+
+
+if($_POST['send']){
+
+
+
+
+$codigo = mysql_real_escape_string($_POST['Mobile01']);
+$result = mysql_query("SELECT Mobile01 FROM owner WHERE Mobile01 = '$codigo'");
+
+if (!mysql_num_rows($result)) {
+
+// Go ahead and insert everything in table1
+$data = array(
+
+'Codigo' => $_POST['Mobile01']
+);
+
+// Make sure all the data is safe for entry into the database
+foreach ($data as $key => $val) {
+$data[$key] = "'" . mysql_real_escape_string($val) . "'";
+}
+
+$fields = implode(', ', array_keys($data));
+$values = implode(', ', array_values($data));
+
+$sql2="INSERT INTO `owner`(`En_Fname`,En_Lname,Ar_Fname,Ar_Lname,Phone1,Mobile01,Whatsapp,Email,Class,verification,Date,Reg_By,Honorific,Gender,Known_From,Type,Mobile02,Note,time,Adjective) VALUES ('$En_Fname','$En_Lname','$Ar_Fname','$Ar_Lname','$Phone1','$Mobile01','$Whatsapp','$Email','$Class','$verification','$date','$seg','$Honorific','$Gender','$KnownFrom','$Type','$Mobile02','$Note','$time','$Adjective')";
+
+
+mysql_query($sql2);
+echo "<script type='text/javascript'>alert('Your data has been sent successfully! ');</script>";
+
+}else {
+echo "<script type='text/javascript'>alert('***Sorry This mobile already in database ***');</script>";
+
+
+
+ 
+}
+
+
+
+} 
+ mysql_error();
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>        
+    <head>
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <!-- END META SECTION -->
-        
-        <!-- CSS INCLUDE -->        
+
+        <!-- CSS INCLUDE -->
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
-        <!-- EOF CSS INCLUDE -->                                      
+        <!-- EOF CSS INCLUDE -->
     </head>
-    <body>    
-          <!-- START PAGE CONTAINER -->
+    <body>
+              <!-- aly 3la shmal --------------------------------->
+
+       <!-- START PAGE CONTAINER -->
         
         
         
@@ -272,7 +409,7 @@ $_SESSION['timeout']=time();
             
             <!-- PAGE CONTENT -->
             <div class="page-content">
-                
+
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
                     <!-- TOGGLE NAVIGATION -->
@@ -285,12 +422,12 @@ $_SESSION['timeout']=time();
                         <form role="form">
                             <input type="text" name="search" placeholder="Search..."/>
                         </form>
-                    </li>   
+                    </li>
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
-                    </li> 
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+                    </li>
                     <!-- END SIGN OUT -->
                     <!-- MESSAGES -->
                     <li class="xn-icon-button pull-right">
@@ -298,7 +435,7 @@ $_SESSION['timeout']=time();
                         <div class="informer informer-danger">4</div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>                                
+                                <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
                                 <div class="pull-right">
                                     <span class="label label-danger">4 new</span>
                                 </div>
@@ -328,11 +465,11 @@ $_SESSION['timeout']=time();
                                     <span class="contacts-title">Darth Vader</span>
                                     <p>I want my money back!</p>
                                 </a>
-                            </div>     
+                            </div>
                             <div class="panel-footer text-center">
                                 <a href="pages-messages.html">Show all messages</a>
-                            </div>                            
-                        </div>                        
+                            </div>
+                        </div>
                     </li>
                     <!-- END MESSAGES -->
                     <!-- TASKS -->
@@ -341,12 +478,12 @@ $_SESSION['timeout']=time();
                         <div class="informer informer-warning">3</div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>                                
+                                <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
                                 <div class="pull-right">
                                     <span class="label label-warning">3 active</span>
                                 </div>
                             </div>
-                            <div class="panel-body list-group scroll" style="height: 200px;">                                
+                            <div class="panel-body list-group scroll" style="height: 200px;">
                                 <a class="list-group-item" href="#">
                                     <strong>Phasellus augue arcu, elementum</strong>
                                     <div class="progress progress-small progress-striped active">
@@ -374,310 +511,446 @@ $_SESSION['timeout']=time();
                                         <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
                                     </div>
                                     <small class="text-muted">John Doe, 21 Sep 2014 /</small><small class="text-success"> Done</small>
-                                </a>                                
-                            </div>     
+                                </a>
+                            </div>
                             <div class="panel-footer text-center">
                                 <a href="pages-tasks.html">Show all tasks</a>
-                            </div>                            
-                        </div>                        
+                            </div>
+                        </div>
                     </li>
                     <!-- END TASKS -->
                 </ul>
-                <!-- END X-NAVIGATION VERTICAL -->                     
-                
+                <!-- END X-NAVIGATION VERTICAL -->
+
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Tables</a></li>
-                    <li class="active">Basic</li>
+                    <li><a href="#">Forms Stuff</a></li>
+                    <li><a href="#">Form Layout</a></li>
+                    <li class="active">customer</li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                
-                <!-- PAGE TITLE -->
-                <div class="page-title">                    
-                     <h2><span class="fa fa-arrow-circle-o-left"></span>  Customer-Calls</h2>
-                </div>
-                <!-- END PAGE TITLE -->                
-                
+
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
-                
-                    
-                    
+
                     <div class="row">
                         <div class="col-md-12">
-                            
-                            <!-- START DATATABLE EXPORT -->
+
+                            <form class="form-horizontal" method="post" action='woner.php' >
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Customer-Calls </h3>
-                                    <div class="btn-group pull-right">
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'false'});"><img src='img/icons/json.png' width="24"/> JSON</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src='img/icons/json.png' width="24"/> JSON (ignoreColumn)</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'true'});"><img src='img/icons/json.png' width="24"/> JSON (with Escape)</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'xml',escape:'false'});"><img src='img/icons/xml.png' width="24"/> XML</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'sql'});"><img src='img/icons/sql.png' width="24"/> SQL</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'csv',escape:'false'});"><img src='img/icons/csv.png' width="24"/> CSV</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'txt',escape:'false'});"><img src='img/icons/txt.png' width="24"/> TXT</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='img/icons/xls.png' width="24"/> XLS</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'doc',escape:'false'});"><img src='img/icons/word.png' width="24"/> Word</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'powerpoint',escape:'false'});"><img src='img/icons/ppt.png' width="24"/> PowerPoint</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'png',escape:'false'});"><img src='img/icons/png.png' width="24"/> PNG</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'pdf',escape:'false'});"><img src='img/icons/pdf.png' width="24"/> PDF</a></li>
-                                        </ul>
-                                    </div>                                    
-                                    
+                                    <h3 class="panel-title"><strong>Owner</strong> Form</h3>
+                                    <ul class="panel-controls">
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                                    </ul>
                                 </div>
-                                
                                 <div class="panel-body">
-                                    <div  style="overflow-y:scroll; height:400px; ">
-                                        
-                                    <table id="customers2" class="table datatable">
-                                        
-                                       <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th> Phone Number</th>
-                                                <th>Received by</th>
-                                                <th>Honorific </th>
-                                                <th>En_Fname</th>
-                                                <th> En_Lname</th>
-                                                 <th>Ar_Fname  </th>
-                                                   <th>Ar_Lname</th>
-                                                  <th>Known From </th>
-                                                   <th>Call Type</th>
-                                                   <th>Apartment_Code</th>
-                                                 
-                                                   <th>Note</th>
-                                                   <th>Date</th>
-                                                      <th>Time</th>
-                                                   <th>Reg_By</th>
-                                                   
-                                                    
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                    
-
-
- <?php 
-                                            
-$localhost="localhost";
-$user_db="estasm5_yousry";
-$pass_db="4562008";
-$db="estasm5_sales";
-
-$connect=mysql_connect("$localhost","$user_db","$pass_db");
-mysql_set_charset('utf8');
-if ($connect) {
-
-mysql_select_db($db) or die("db selction error ");
-
-}else{
-	
-	mysql_error();
-}
+                                    <p>This is non libero bibendum, scelerisque arcu id, placerat nunc. Integer ullamcorper rutrum dui eget porta. Fusce enim dui, pulvinar a augue nec, dapibus hendrerit mauris. Praesent efficitur, elit non convallis faucibus, enim sapien suscipit mi, sit amet fringilla felis arcu id sem. Phasellus semper felis in odio convallis, et venenatis nisl posuere. Morbi non aliquet magna, a consectetur risus. Vivamus quis tellus eros. Nulla sagittis nisi sit amet orci consectetur laoreet. Vivamus volutpat erat ac vulputate laoreet. Phasellus eu ipsum massa.</p>
+                                </div>
+                                <div class="panel-body">
 
 
 
-                                            $sql="SELECT * FROM CustomerCalls ORDER BY ID DESC " ;
-$q=mysql_query($sql) ;
 
 
-  while($row=mysql_fetch_array($q)){
-   
-  
-   
-   
-   
-   
-   
-      
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Class</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control" name="Class" required="required">
+                                                <option> </option>
+                                                <option value="A"> A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
 
 
-                                            
-                                         
-                                            echo "<tr>";
-                                            
-                                            
-                                           
-                                            
-                                            
-                                            
-                                            
-                                            
-                                    echo "<td>". $row['ID']."</td>" ;
-      
 
-      
-     echo "<td>". $row['PhoneNumber']."</td>" ;
- echo "<td>". $row['Receivedby']."</td>" ;
-       echo "<td>". $row['Honorific']."</td>" ;
-       echo "<td>". $row['En_Fname']."</td>" ;
-       echo "<td>". $row['En_Lname']."</td>" ;
-       echo "<td>". $row['Ar_Fname']."</td>" ;
-       echo "<td>". $row['Ar_Lname']."</td>" ;
-         echo "<td>". $row['KnownFrom']."</td>" ;
-           echo "<td>". $row['CallType']."</td>" ;
-             echo "<td>". $row['Apartment_Code']."</td>" ;
-         
-              
-              echo "<td>". $row['Note']."</td>" ;
-               echo "<td>". $row['Date']."</td>" ;
-                       echo "<td>". $row['time']."</td>" ;
-                echo "<td>". $row['Reg_By']."</td>" ;
 
-             
-      
-      
-                                            echo "</tr>";
-  }
-                                   ?>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Adjective</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control" name="Adjective" required="required">
+                                                <option> </option>
+                                                <option value="Owner"> Owner</option>
+                                                <option value="Broker">Broker</option>
+                                                <option value="Other">Other</option>
 
-                                        </tbody>
-                                    </table>                                    
-                                    
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                               <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Honorific</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select name="Honorific" class="form-control " required="required">
+                                                     <option  > </option>
+                                                <option value="Mr." > Mr.</option>
+                                                <option value="Ms.">Ms.</option>
+                                                <option value="Mss..">Mss..</option>
+
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">En_Fname</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name='En_Fname'  required="required"pattern="[a-zA-ZS]+"/>
+
+                                            </div>
+                                            <span class="help-block">Start with Capital Letter , don't accept spaces , symbols , numbers and arabic letters</span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="form-group">
+
+
+
+
+                                        <label class="col-md-3 col-xs-12 control-label">En_Lname</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input type="text" class="form-control" name='En_Lname'  required="required" pattern="[a-zA-ZS]+"/>
+                                            </div>
+                                            <span class="help-block">Start with Capital Letter , don't accept spaces , symbols , numbers and arabic letters</span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                     <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Ar_Fname</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+                                                <input type="text" class="form-control" name='Ar_Fname'  required="required"    pattern="^[\u0621-\u064A\u0660-\u0669S]+$"/>
+                                            </div>
+                                            <span class="help-block">Password field sample</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                         <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Ar_Lname</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name='Ar_Lname'  required="required"   pattern="^[\u0621-\u064A\u0660-\u0669S]+$" >
+
+                                            </div>
+                                            <span class="help-block">Don't accept spaces , symbols ,numbers and english letters</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                      <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Gender</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select name="Gender" class="form-control " required="required">
+                                                     <option  > </option>
+                                                <option value="male." >Male </option>
+                                                <option value="Female">Female</option>
+
+
+
+
+
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+                                        <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Mobile 01</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name='Mobile01'   required="required"   pattern="[0-1-2]{3}[0-9]{8}" />
+                                                <!--pattern="\d*" maxlength="11" minlength="11"  ^[0-9]{0,5}[ ]{0,1}[0-9]{0,6}$-->
+
+
+
+                                            </div>
+                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
+                                        </div>
+                                    </div>
+
+                                                                            <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Mobile 02</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name='Mobile02'  pattern="[0-1-2]{3}[0-9]{8}"/>
+
+                                            </div>
+                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Phone</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name='Phone1'  pattern="^0[23]{1}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$" />
+                                               <!-- pattern="\d*" maxlength="10" minlength="7" -->
+                                            </div>
+                                            <span class="help-block">Code Area (0--)+7 num</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                      <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">WhatsApp</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" class="form-control" name='Whatsapp' pattern="[0-1-2]{3}[0-9]{8}"/>
+
+                                            </div>
+                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
+                                        </div>
+                                    </div>
+
+
+
+                                       <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="email" class="form-control" name='Email'  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"    />
+
+                                            </div>
+                                            <span class="help-block">End with @xxx.com</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  <!--  <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Datepicker</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                <input type="text" class="form-control datepicker" value="2014-11-01">
+                                            </div>
+                                            <span class="help-block">Click on input field to get datepicker</span>
+                                        </div>
+                                    </div>
+
+                                    -->
+                                   <!-- <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Textarea</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <textarea class="form-control" rows="5"></textarea>
+                                            <span class="help-block">Default textarea field</span>
+                                        </div>
+                                    </div>-->
+
+                                   <!-- <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Tags</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <input type="text" class="tagsinput" value="First,Second,Third"/>
+                                            <span class="help-block">Default textarea field</span>
+                                        </div>
+                                    </div>-->
+
+
+                                        <!-- <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">verification</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select name="verification" class="form-control select" required="required">
+                                                     <option  > </option>
+                                                <option value="yes" > yes</option>
+                                                <option value="no">no</option>
+
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>-->
+
+
+
+
+
+
+
+
+
+                                       <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Known From</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select name="KnownFrom" class="form-control " required="required">
+                                                     <option  > </option>
+                                                <option value="Ext. Websites." >Ext. Websites </option>
+                                                <option value="Friend">Friend</option>
+
+                                                 <option value="Internal source">Internal source</option>
+                                                  <option value="Newspaper">Newspaper</option>
+                                                   <option value="Other">Other</option>
+                                                      <option value="SMS">SMS</option>
+                                                          <option value="Social Media">Social Media</option>
+
+                                                          <option value="Website">Website</option>
+
+
+
+
+
+
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+
+                                        <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Note</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <textarea class="form-control" rows="5" name="Note"></textarea>
+                                            <span class="help-block">Default textarea field</span>
+                                        </div>
+                                    </div>
+
+
+                                    <!--
+                                            <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Type</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select name="Type" class="form-control select" required="required">
+                                                     <option  > </option>
+                                                <option value="Internal" >Internal </option>
+                                                <option value="External">External</option>
+
+
+
+
+
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                  <!--  <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">File</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <input type="file" class="fileinput btn-primary" name="filename" id="filename" title="Browse file"/>
+                                            <span class="help-block">Input type file</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Checkbox</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <label class="check"><input type="checkbox" class="icheckbox" checked="checked"/> Checkbox title</label>
+                                            <span class="help-block">Checkbox sample, easy to use</span>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="panel-footer">
+                                    <button class="btn btn-default">Clear Form</button>
+                                    <input type="submit" name="send" class="btn btn-primary pull-right" value='Submit'>
                                 </div>
                             </div>
-                           
-                            <!-- END DATATABLE EXPORT -->                            
-                            <!-- END DATATABLE EXPORT -->                            
-                            
-                            <!-- START DEFAULT TABLE EXPORT
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Export Default Table</h3>
-                                    <div class="pull-right">
-                                        <button class="btn btn-danger toggle" data-toggle="exportTable"><i class="fa fa-bars"></i> Export Data</button>
-                                    </div>
-                                </div>
-                                <div class="panel-body" id="exportTable" style="display: none;">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="list-group border-bottom">
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'json',escape:'false'});"><img src='img/icons/json.png' width="24"/> JSON</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src='img/icons/json.png' width="24"/> JSON (ignoreColumn)</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'json',escape:'true'});"><img src='img/icons/json.png' width="24"/> JSON (with Escape)</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="list-group border-bottom">
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'xml',escape:'false'});"><img src='img/icons/xml.png' width="24"/> XML</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'sql'});"><img src='img/icons/sql.png' width="24"/> SQL</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="list-group border-bottom">
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'csv',escape:'false'});"><img src='img/icons/csv.png' width="24"/> CSV</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'txt',escape:'false'});"><img src='img/icons/txt.png' width="24"/> TXT</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="list-group border-bottom">
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'excel',escape:'false'});"><img src='img/icons/xls.png' width="24"/> XLS</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'doc',escape:'false'});"><img src='img/icons/word.png' width="24"/> Word</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'powerpoint',escape:'false'});"><img src='img/icons/ppt.png' width="24"/> PowerPoint</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="list-group border-bottom">
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'png',escape:'false'});"><img src='img/icons/png.png' width="24"/> PNG</a>
-                                                <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'pdf',escape:'false'});"><img src='img/icons/pdf.png' width="24"/> PDF</a>
-                                            </div>
-                                        </div>
-                                    </div>                               
-                                </div>
-                                <div class="panel-body panel-body-table">
-                                    <table id="customers" class="table table-striped">
-                                        <thead>			
-                                            <tr>
-                                                <th>Country</th>
-                                                <th>Population</th>
-                                                <th>Date</th>
-                                                <th>%ge</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Chinna</td>
-                                                <td>1,363,480,000</td>
-                                                <td>March 24, 2014</td>
-                                                <td>19.1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>India</td>
-                                                <td>1,241,900,000</td>
-                                                <td>March 24, 2014</td>
-                                                <td>17.4</td>
-                                            </tr>
-                                            <tr>
-                                                <td>United States</td>
-                                                <td>317,746,000</td>
-                                                <td>March 24, 2014</td>
-                                                <td>4.44</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Indonesia</td>
-                                                <td>249,866,000</td>
-                                                <td>July 1, 2013</td>
-                                                <td>3.49</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brazil</td>
-                                                <td>201,032,714</td>
-                                                <td>July 1, 2013</td>
-                                                <td>2.81</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>                                    
-                                    
-                                </div>
-                            </div>-->
-                            <!-- END DEFAULT TABLE EXPORT -->
+                            </form>
 
                         </div>
                     </div>
 
-                </div>         
+                </div>
                 <!-- END PAGE CONTENT WRAPPER -->
-            </div>            
+            </div>
             <!-- END PAGE CONTENT -->
         </div>
-        <!-- END PAGE CONTAINER -->    
+        <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-remove-row">
-            <div class="mb-container">
-                <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-times"></span> Remove <strong>Data</strong> ?</div>
-                    <div class="mb-content">
-                        <p>Are you sure you want to remove this row?</p>                    
-                        <p>Press Yes if you sure.</p>
-                    </div>
-                    <div class="mb-footer">
-                        <div class="pull-right">
-                            <button class="btn btn-success btn-lg mb-control-yes">Yes</button>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END MESSAGE BOX-->        
-        
         <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
                     <div class="mb-content">
-                        <p>Are you sure you want to log out?</p>                    
+                        <p>Are you sure you want to log out?</p>
                         <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
                     </div>
                     <div class="mb-footer">
@@ -694,40 +967,31 @@ $q=mysql_query($sql) ;
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->                      
+        <!-- END PRELOADS -->
 
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
         <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
         <!-- END PLUGINS -->
-        
-        <!-- START THIS PAGE PLUGINS-->        
+
+        <!-- THIS PAGE PLUGINS -->
         <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        
-        <script type="text/javascript" src="js/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="js/plugins/tableexport/tableExport.js"></script>
-	<script type="text/javascript" src="js/plugins/tableexport/jquery.base64.js"></script>
-	<script type="text/javascript" src="js/plugins/tableexport/html2canvas.js"></script>
-	<script type="text/javascript" src="js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
-	<script type="text/javascript" src="js/plugins/tableexport/jspdf/jspdf.js"></script>
-	<script type="text/javascript" src="js/plugins/tableexport/jspdf/libs/base64.js"></script>        
-        <!-- END THIS PAGE PLUGINS-->  
-        
+
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
+        <script type="text/javascript" src="js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+        <!-- END THIS PAGE PLUGINS -->
+
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="js/settings.js"></script>
-        
-        <script type="text/javascript" src="js/plugins.js"></script>        
-        <script type="text/javascript" src="js/actions.js"></script>        
+
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/actions.js"></script>
         <!-- END TEMPLATE -->
-    <!-- END SCRIPTS -->                 
+    <!-- END SCRIPTS -->
     </body>
 </html>
-
-
-
-
-
-
