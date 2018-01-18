@@ -51,8 +51,11 @@ $_SESSION['timeout']=time();
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
         <!-- EOF CSS INCLUDE -->                                      
     </head>
-    <body>
-
+    <body>    
+          <!-- START PAGE CONTAINER -->
+        
+        
+      
         
         <!-- aly 3la shmal -->
         <div class="page-container">
@@ -278,7 +281,6 @@ $_SESSION['timeout']=time();
             </div>
             <!-- END PAGE SIDEBAR -->
             
-            
             <!-- PAGE CONTENT -->
             <div class="page-content">
                 
@@ -404,7 +406,7 @@ $_SESSION['timeout']=time();
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                     <h2><span class="fa fa-arrow-circle-o-left"></span> New clients Table</h2>
+                     <h2><span class="fa fa-arrow-circle-o-left"></span>  customer-follow-show</h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 
@@ -419,7 +421,7 @@ $_SESSION['timeout']=time();
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">New clients </h3>
+                                    <h3 class="panel-title">Customer-Calls </h3>
                                     <div class="btn-group pull-right">
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">
@@ -451,34 +453,19 @@ $_SESSION['timeout']=time();
                                         
                                        <thead>
                                             <tr>
-                                          
-                                                   
-                                                   
-                                                   
-                                                   
-                                                   
-                                                        <th>ID</th>
-                                                <th> Type</th>
-                                                <th>Class</th>
-                                                <th>Honorific</th>
-                                                <th>En_Fname</th>
-                                                <th>En_Lname</th>
-                                                 <th>Ar_Fname </th>
-                                                   <th>Ar_Lname</th>
-                                                  <th>Gender</th>
-                                                   <th>Mobile 01</th>
-                                                   <th>Mobile 02</th>
-                                                   <th>Phone</th>
-                                                   <th>WhatsApp</th>
-                                                     <th>Email</th>
-                                                   
-                                                   <th>Known From</th>
-                                                   <th>Note</th>
-                                                   <th>Verification</th>  
-                                                   <th>Date</th>  
-                                                   <th>Time</th>  
-                                                   <th>Reg_By</th>
-                                                   
+                                                      <th>ID</th>
+                                                <th> Phone Number </th>
+                                                <th> 	Out1 </th>
+                                                <th>Followed By  </th>
+                                                <th> 	Call Type  </th>
+                                                <th> Call Status</th>
+                                                 <th>Call Rank  </th>
+                                                   <th>Follow Status </th>
+                                                  <th> 	Follow Schedule 	 </th>
+                                                   <th> Note </th>
+                                                   <th>  Date </th>
+                                                   <th>Time  </th>
+                                                   <th>  Reg_By </th>
                                                    
                                                     
                                             </tr>
@@ -505,48 +492,59 @@ mysql_select_db($db) or die("db selction error ");
 	mysql_error();
 }
 
-                                            $sql="SELECT * FROM Customer ORDER BY ID DESC " ;
+
+
+                                            $sql="SELECT * FROM customerfollow ORDER BY ID DESC " ;
 $q=mysql_query($sql) ;
 
 
   while($row=mysql_fetch_array($q)){
    
   
-                                          echo "<tr>";
-                                    echo "<td>". $row['ID']."</td>" ;
+   
+   
+   
+   
+   
       
 
-  echo "<td>". $row['Type']."</td>" ; 
-   echo "<td>". $row['Class']."</td>" ;
-      echo "<td>". $row['Honorific']."</td>" ;
-   echo "<td>". $row['En_Fname']."</td>" ;
- echo "<td>". $row['En_Lname']."</td>" ;
-  echo "<td>". $row['Ar_Fname']."</td>" ;
-       echo "<td>". $row['Ar_Lname']."</td>" ;
-   echo "<td>". $row['Gender']."</td>" ;
-   echo "<td>". $row['Mobile01']."</td>" ;
-       echo "<td>". $row['Mobile02']."</td>" ;
-      echo "<td>". $row['Phone1']."</td>" ;
-      echo "<td>". $row['Whatsapp']."</td>" ;
-    echo "<td>". $row['Email']."</td>" ;
-     echo "<td>". $row['Known_From']."</td>" ;
-     echo "<td>". $row['Note']."</td>" ; 
-      echo "<td>". $row['verification']."</td>" ;  
-  echo "<td>". $row['Date']."</td>" ;
-    echo "<td>". $row['time']."</td>" ;
-             echo "<td>". $row['Reg_By']."</td>" ;
+
+                                            
+                                         
+                                            echo "<tr>";
+                                            
+                                            
+                                           
+                                            
+                                            
+                                            
+                                            
+                                            
+                                      echo "<td>". $row['ID']."</td>" ;
+      
+     
+                                                   
+                                                 echo "<td>". $row['PhoneNumber']."</td>" ; 
+                                      
+
+   echo "<td>". $row['Out1']."</td>" ;
+      echo "<td>". $row['FollowedBy']."</td>" ;
+   echo "<td>". $row['CallType']."</td>" ;
+ echo "<td>". $row['CallStatus']."</td>" ;
+  echo "<td>". $row['CallRank']."</td>" ; 
+   echo "<td>". $row['FollowStatus']."</td>" ;
+   echo "<td>". $row['FollowSchedule']."</td>" ; 
+
+      
+   echo "<td>". $row['Note']."</td>" ;
+   echo "<td>". $row['Date']."</td>" ;
+      echo "<td>". $row['Time']."</td>" ;
+         echo "<td>". $row['Reg_By']."</td>" ;
+    
+     
 
 
-
-
-
-
-
-
-
-
-
-
+             
       
       
                                             echo "</tr>";

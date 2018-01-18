@@ -1,37 +1,15 @@
 <?php
 session_start();
 date_default_timezone_set("Africa/Cairo");
-/*
-if(!isset($_SERVER['HTTP_REFERER'])){
-// redirect them to your desired location
-header('location: destroy.php');
-exit;
-
-}*/
-
-
 if(!isset($_SESSION['logindata']))
-{
- header('location: destroy.php');
-exit;
-
-}
+    {
+        header('Location: destroy.php');
+    }
 
 
-// 10 mins in seconds
-$inactive = 2700;
-if( !isset($_SESSION['timeout']) )
-$_SESSION['timeout'] = time() + $inactive; 
+   
 
-$session_life = time() - $_SESSION['timeout'];
-
-if($session_life > $inactive)
-{  session_destroy(); header("Location:destroy.php");     }
-
-$_SESSION['timeout']=time();
-
-?>
-
+    ?>
 
 
 
@@ -52,8 +30,8 @@ $_SESSION['timeout']=time();
         <!-- EOF CSS INCLUDE -->                                      
     </head>
     <body>
-
-        
+        <!-- START PAGE CONTAINER -->
+          
         <!-- aly 3la shmal -->
         <div class="page-container">
             
@@ -95,92 +73,7 @@ $_SESSION['timeout']=time();
                         <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>    
                     
-                    <!--<li class="xn-openable">
-                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
-                        <ul>
-                            <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
-                            <li><a href="pages-profile.html"><span class="fa fa-user"></span> Profile</a></li>
-                            <li><a href="pages-address-book.html"><span class="fa fa-users"></span> Address Book</a></li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
-                                <ul>
-                                    <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
-                                    <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-envelope"></span> Mailbox</a>
-                                <ul>
-                                    <li><a href="pages-mailbox-inbox.html"><span class="fa fa-inbox"></span> Inbox</a></li>
-                                    <li><a href="pages-mailbox-message.html"><span class="fa fa-file-text"></span> Message</a></li>
-                                    <li><a href="pages-mailbox-compose.html"><span class="fa fa-pencil"></span> Compose</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>
-                            <li><a href="pages-calendar.html"><span class="fa fa-calendar"></span> Calendar</a></li>
-                            <li><a href="pages-tasks.html"><span class="fa fa-edit"></span> Tasks</a></li>
-                            <li><a href="pages-content-table.html"><span class="fa fa-columns"></span> Content Table</a></li>
-                            <li><a href="pages-faq.html"><span class="fa fa-question-circle"></span> FAQ</a></li>
-                            <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-file"></span> Blog</a>
-                                
-                                <ul>                                    
-                                    <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
-                                    <li><a href="pages-blog-post.html"><span class="fa fa-file-o"></span>Single Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-sign-in"></span> Login</a>
-                                <ul>                                    
-                                    <li><a href="pages-login.php">App Login</a></li>
-                                    <li><a href="pages-login-website.html">Website Login</a></li>
-                                    <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
-                                </ul>
-                            </li>
-                            <li class="xn-openable">
-                                <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
-                                <ul>                                    
-                                    <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
-                                    <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
-                                    <li><a href="pages-error-500.html"> Error 500</a></li>
-                                </ul>
-                            </li>                            
-                        </ul>
-                    </li>-->
-                   <!-- <li class="xn-openable">
-                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
-                        <ul>
-                            <li><a href="layout-boxed.html">Boxed</a></li>
-                            <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
-                            <li><a href="layout-nav-top.html">Navigation Top</a></li>
-                            <li><a href="layout-nav-right.html">Navigation Right</a></li>
-                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>                            
-                            <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
-                            <li><a href="layout-frame-left.html">Frame Left Column</a></li>
-                            <li><a href="layout-frame-right.html">Frame Right Column</a></li>
-                            <li><a href="layout-search-left.html">Search Left Side</a></li>
-                            <li><a href="blank.html">Blank Page</a></li>
-                        </ul>
-                    </li>
-                    <li class="xn-title">Components</li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
-                        <ul>
-                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
-                            <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
-                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>                            
-                            <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
-                            <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
-                            <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
-                            <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
-                            <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
-                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>                            
-                            <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
-                            <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
-                        </ul>
-                    </li>    
-                    -->
+                  
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
@@ -193,13 +86,6 @@ $_SESSION['timeout']=time();
                                      <li><a href="Customer_Calls.php"><span class="fa fa-align-justify"></span> Customer_Calls</a></li>
                                      
                                         <li><a href="request.php"><span class="fa fa-align-justify"></span> Request</a></li>
-                                        
-                                         <li><a href="woner.php"><span class="fa fa-align-justify"></span> Owners</a></li>
-                                          
-                                   <li><a href="Building.php"><span class="fa fa-download"></span> Building</a></li>
-                                   
-                                              
-                                   <li><a href="customer-follow.php"><span class="fa fa-download"></span>Customer-Follow</a></li> 
                                         
                                     
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
@@ -220,21 +106,7 @@ $_SESSION['timeout']=time();
                             <li><a href="Customer-Calls.php"><span class="fa fa-sort-alpha-desc"></span>Customer-Calls</a></li>
                             <li><a href="table-export.php"><span class="fa fa-download"></span> Customer</a></li>  
                             
-                             <li><a href="Building-show.php"><span class="fa fa-download"></span> Building</a></li>  
-                            
-                            
-                                <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li> 
-                                
-                                  <li><a href="owner-show.php"><span class="fa fa-download"></span> Owner</a></li>
-                                  <li><a href=" customer-follow-show.php"><span class="fa fa-download"></span>  customer-follow Show</a></li>
-                                  
-                                   <li><a href=" requestfollowshow.php"><span class="fa fa-download"></span>  Request Follow Show</a></li>
-                                   
-                                  
-                                 
-                                  
-                                 
-                                  
+                                <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li>
                                                    
                         </ul>
                     </li>
@@ -274,10 +146,9 @@ $_SESSION['timeout']=time();
                     </li>
                     
                 </ul>
-                <!-- END X-NAVIGATION -->
+                <!-- END X-NAVIGATION-------------------------- -->
             </div>
             <!-- END PAGE SIDEBAR -->
-            
             
             <!-- PAGE CONTENT -->
             <div class="page-content">
@@ -404,7 +275,7 @@ $_SESSION['timeout']=time();
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                     <h2><span class="fa fa-arrow-circle-o-left"></span> New clients Table</h2>
+                     <h2><span class="fa fa-arrow-circle-o-left"></span> Request Follow Show</h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 
@@ -452,32 +323,29 @@ $_SESSION['timeout']=time();
                                        <thead>
                                             <tr>
                                           
-                                                   
-                                                   
-                                                   
+                                              
+    
                                                    
                                                    
                                                         <th>ID</th>
-                                                <th> Type</th>
-                                                <th>Class</th>
-                                                <th>Honorific</th>
-                                                <th>En_Fname</th>
-                                                <th>En_Lname</th>
-                                                 <th>Ar_Fname </th>
-                                                   <th>Ar_Lname</th>
-                                                  <th>Gender</th>
-                                                   <th>Mobile 01</th>
-                                                   <th>Mobile 02</th>
-                                                   <th>Phone</th>
-                                                   <th>WhatsApp</th>
-                                                     <th>Email</th>
-                                                   
-                                                   <th>Known From</th>
-                                                   <th>Note</th>
-                                                   <th>Verification</th>  
-                                                   <th>Date</th>  
-                                                   <th>Time</th>  
-                                                   <th>Reg_By</th>
+                                                <th> Phone Number  </th>
+                                                <th>Req_Serial 
+</th>
+                                                <th>Apartment 
+ </th>
+                                                <th> Response</th>
+                                                <th> 	Response_Comment
+</th>
+                                                 <th>Note 
+ </th>
+                                                   <th> 	Date 
+</th>
+                                                  <th>Time 
+ </th>
+                                                   <th>Reg_By 
+</th>
+                                                
+
                                                    
                                                    
                                                     
@@ -505,7 +373,7 @@ mysql_select_db($db) or die("db selction error ");
 	mysql_error();
 }
 
-                                            $sql="SELECT * FROM Customer ORDER BY ID DESC " ;
+                                            $sql="SELECT * FROM requestfollow ORDER BY ID DESC " ;
 $q=mysql_query($sql) ;
 
 
@@ -513,33 +381,68 @@ $q=mysql_query($sql) ;
    
   
                                           echo "<tr>";
+                                          
+                                          
+                         
+                         
+     
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
+                                          
                                     echo "<td>". $row['ID']."</td>" ;
       
-
-  echo "<td>". $row['Type']."</td>" ; 
-   echo "<td>". $row['Class']."</td>" ;
-      echo "<td>". $row['Honorific']."</td>" ;
-   echo "<td>". $row['En_Fname']."</td>" ;
- echo "<td>". $row['En_Lname']."</td>" ;
-  echo "<td>". $row['Ar_Fname']."</td>" ;
-       echo "<td>". $row['Ar_Lname']."</td>" ;
-   echo "<td>". $row['Gender']."</td>" ;
-   echo "<td>". $row['Mobile01']."</td>" ;
-       echo "<td>". $row['Mobile02']."</td>" ;
-      echo "<td>". $row['Phone1']."</td>" ;
-      echo "<td>". $row['Whatsapp']."</td>" ;
-    echo "<td>". $row['Email']."</td>" ;
-     echo "<td>". $row['Known_From']."</td>" ;
-     echo "<td>". $row['Note']."</td>" ; 
-      echo "<td>". $row['verification']."</td>" ;  
-  echo "<td>". $row['Date']."</td>" ;
-    echo "<td>". $row['time']."</td>" ;
-             echo "<td>". $row['Reg_By']."</td>" ;
+     
+                                                   
+                                                 echo "<td>". $row['PhoneNumber']."</td>" ; 
+   echo "<td>". $row['Req_Serial']."</td>" ;
+      echo "<td>". $row['Apartment']."</td>" ;
+      
+   echo "<td>". $row['Response']."</td>" ;
 
 
-
-
-
+       echo "<td>". $row['Response_Comment']."</td>" ;
+       
+   echo "<td>". $row['Note']."</td>" ;
+   
+   echo "<td>". $row['Date']."</td>" ;
+                                echo "<td>". $row['Time']."</td>" ;
+                                  echo "<td>". $row['Reg_By']."</td>" ;
+             
 
 
 

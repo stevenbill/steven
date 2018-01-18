@@ -56,6 +56,8 @@ $_SESSION['timeout']=time();
         
         
         
+     
+        
         <!-- aly 3la shmal -->
         <div class="page-container">
             
@@ -199,6 +201,9 @@ $_SESSION['timeout']=time();
                                          <li><a href="woner.php"><span class="fa fa-align-justify"></span> Owners</a></li>
                                           
                                    <li><a href="Building.php"><span class="fa fa-download"></span> Building</a></li>
+                                   
+                                              
+                                   <li><a href="customer-follow.php"><span class="fa fa-download"></span>Customer-Follow</a></li> 
                                         
                                     
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
@@ -225,6 +230,13 @@ $_SESSION['timeout']=time();
                                 <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li> 
                                 
                                   <li><a href="owner-show.php"><span class="fa fa-download"></span> Owner</a></li>
+                                  <li><a href=" customer-follow-show.php"><span class="fa fa-download"></span>  customer-follow Show</a></li>
+                                  
+                                   <li><a href=" requestfollowshow.php"><span class="fa fa-download"></span>  Request Follow Show</a></li>
+                                   
+                                  
+                                 
+                                  
                                  
                                   
                                                    
@@ -266,9 +278,9 @@ $_SESSION['timeout']=time();
                     </li>
                     
                 </ul>
-                <!-- END X-NAVIGATION ------------------------------>
+                <!-- END X-NAVIGATION -->
             </div>
-            <!-- END PAGE SIDEBAR ----------------------------------->
+            <!-- END PAGE SIDEBAR -->
             
             <!-- PAGE CONTENT -->
             <div class="page-content">

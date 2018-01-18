@@ -8,7 +8,7 @@ header('location: destroy.php');
 exit;
 
 }*/
-
+/*
 
 if(!isset($_SESSION['logindata']))
 {
@@ -16,7 +16,7 @@ if(!isset($_SESSION['logindata']))
 exit;
 
 }
-
+*/
 
 // 10 mins in seconds
 $inactive = 2700;
@@ -31,65 +31,36 @@ if($session_life > $inactive)
 $_SESSION['timeout']=time();
 
 ?>
-
-
-
-
-
-
-
-
 <?php
 $seg= $_SESSION['logindata'];
 
-$En_Fname=$_POST['En_Fname'];
-
-$En_Fname =ucfirst("$En_Fname");
-
-$En_Lname=$_POST['En_Lname'];
-
-$En_Lname=ucfirst("$En_Lname");
-
-$Ar_Fname =$_POST['Ar_Fname'];
-
-$Ar_Lname =$_POST['Ar_Lname'];
-
-$Phone1 = $_POST['Phone1'];
+$PhoneNumber =$_POST['PhoneNumber'];
 
 
-
-
-
-$Mobile01 = $_POST['Mobile01'];
-
-
-
-
-$Mobile02 = $_POST['Mobile02'];
-
-
-$Whatsapp = $_POST['Whatsapp'];
-
-$Email = $_POST['Email'];
-
-$Class = $_POST['Class'];
-
-$verification = "no";
-
-$Honorific = $_POST['Honorific'];
-$Gender = $_POST['Gender'];
-
-$KnownFrom= $_POST['KnownFrom'];
-
-$Type = "Internal";
 
 $date=date("Y/m/d") ;
 $time=date("h:i:sa") ;
-$Note =$_POST['Note'];
-$Adjective =$_POST['Adjective'];
+$Response = $_POST['Response']; 
+
+$Note = $_POST['Note'];
+$FollowedBy =  $_POST['FollowedBy']; 
+
+$Req_Serial= $_POST['Req_Serial']; 
+$Apartment= $_POST['Apartment'];  
+$Response_Comment = $_POST['Response_Comment']; 
+
+$CallType  = $_POST['CallType']; 
+
+$CallStatus  = $_POST['CallStatus']; 
+$CallRank  = $_POST['CallRank']; 
+$FollowStatus  = $_POST['FollowStatus'];     
+
+$FollowSchedule  = $_POST['FollowSchedule'];   
+
+$Out1  = $_POST['Out1'];  
 
 
-/*************************************************************************/
+
 $localhost="localhost";
 $user_db="estasm5_yousry";
 $pass_db="4562008";
@@ -99,76 +70,31 @@ $db="estasm5_sales";
 $connect=mysql_connect("$localhost","$user_db","$pass_db");
 mysql_set_charset('utf8');
 if ($connect) {
-
+mysql_set_charset('utf8');
 mysql_select_db($db) or die("db selction error ");
 
 
 if($_POST['send']){
 
-
-
-
-$codigo = mysql_real_escape_string($_POST['Mobile01']);
-$result = mysql_query("SELECT Mobile01 FROM owner WHERE Mobile01 = '$codigo'");
-
-if (!mysql_num_rows($result)) {
-
-// Go ahead and insert everything in table1
-$data = array(
-
-'Codigo' => $_POST['Mobile01']
-);
-
-// Make sure all the data is safe for entry into the database
-foreach ($data as $key => $val) {
-$data[$key] = "'" . mysql_real_escape_string($val) . "'";
-}
-
-$fields = implode(', ', array_keys($data));
-$values = implode(', ', array_values($data));
-
-$sql2="INSERT INTO `owner`(`En_Fname`,En_Lname,Ar_Fname,Ar_Lname,Phone1,Mobile01,Whatsapp,Email,Class,verification,Date,Reg_By,Honorific,Gender,Known_From,Type,Mobile02,Note,time,Adjective) VALUES ('$En_Fname','$En_Lname','$Ar_Fname','$Ar_Lname','$Phone1','$Mobile01','$Whatsapp','$Email','$Class','$verification','$date','$seg','$Honorific','$Gender','$KnownFrom','$Type','$Mobile02','$Note','$time','$Adjective')";
+$sql2="INSERT INTO `customerfollow`(PhoneNumber,Reg_By,Time,Date,FollowedBy,CallType,CallStatus,CallRank,FollowStatus,FollowSchedule,Out1,Note) VALUES ('$PhoneNumber','$seg','$time','$date','$FollowedBy','$CallType','$CallStatus','$CallRank','$FollowStatus','$FollowSchedule','$Out1','$Note')";
 
 
 mysql_query($sql2);
+ 
+
 echo "<script type='text/javascript'>alert('Your data has been sent successfully! ');</script>";
 
-}else {
-echo "<script type='text/javascript'>alert('***Sorry This mobile already in database ***');</script>";
-
-
-
- 
 }
 
 
-
-} 
- mysql_error();
+}else{
+  
+  mysql_error();
 }
+
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -187,24 +113,15 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
         <!-- EOF CSS INCLUDE -->
     </head>
     <body>
-             
-        
-        <!-- aly 3la shmal -->
+        <!-- START PAGE CONTAINER -->
         <div class="page-container">
-            
+
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
-                        
-                        	                        
-                        
-                        
-                        
-                        
+                        <a href="index.html">Joli Admin</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
@@ -223,14 +140,13 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
                                 <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
                             </div>
-                        </div>                                                                        
+                        </div>
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
-                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
-                    </li>    
-                    
-                    <!--<li class="xn-openable">
+                    <li>
+                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                    </li>
+                    <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>
                             <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
@@ -259,38 +175,38 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                             <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-file"></span> Blog</a>
-                                
-                                <ul>                                    
+
+                                <ul>
                                     <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
                                     <li><a href="pages-blog-post.html"><span class="fa fa-file-o"></span>Single Post</a></li>
                                 </ul>
                             </li>
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-sign-in"></span> Login</a>
-                                <ul>                                    
-                                    <li><a href="pages-login.php">App Login</a></li>
+                                <ul>
+                                    <li><a href="pages-login.html">App Login</a></li>
                                     <li><a href="pages-login-website.html">Website Login</a></li>
                                     <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
                                 </ul>
                             </li>
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
-                                <ul>                                    
+                                <ul>
                                     <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
                                     <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
                                     <li><a href="pages-error-500.html"> Error 500</a></li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
-                    </li>-->
-                   <!-- <li class="xn-openable">
+                    </li>
+                    <li class="xn-openable">
                         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
                         <ul>
                             <li><a href="layout-boxed.html">Boxed</a></li>
                             <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
                             <li><a href="layout-nav-top.html">Navigation Top</a></li>
                             <li><a href="layout-nav-right.html">Navigation Right</a></li>
-                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>                            
+                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>
                             <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
                             <li><a href="layout-frame-left.html">Frame Left Column</a></li>
                             <li><a href="layout-frame-right.html">Frame Right Column</a></li>
@@ -300,77 +216,47 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                     </li>
                     <li class="xn-title">Components</li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
+                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>
                         <ul>
-                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
+                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>
                             <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
-                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>                            
+                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>
                             <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
                             <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
                             <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
                             <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
                             <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
-                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>                            
+                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>
                             <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
                             <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
                         </ul>
-                    </li>    
-                    -->
-                    <li class="xn-openable">
+                    </li>
+                    <li class="xn-openable active">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
                             <li>
-                                <a href="form-layouts-two-column.html"><span class="fa fa-tasks"></span> Forms </a>
+                                <a href="form-layouts-two-column.html"><span class="fa fa-tasks"></span> Form Layouts</a>
                                 <div class="informer informer-danger">New</div>
                                 <ul>
-                                    <li><a href="form-layouts-one-column.php"><span class="fa fa-align-justify"></span> Customer</a></li>
-                                    
-                                     <li><a href="Customer_Calls.php"><span class="fa fa-align-justify"></span> Customer_Calls</a></li>
-                                     
-                                        <li><a href="request.php"><span class="fa fa-align-justify"></span> Request</a></li>
-                                        
-                                         <li><a href="woner.php"><span class="fa fa-align-justify"></span> Owners</a></li>
-                                          
-                                   <li><a href="Building.php"><span class="fa fa-download"></span> Building</a></li>
-                                   
-                                              
-                                   <li><a href="customer-follow.php"><span class="fa fa-download"></span>Customer-Follow</a></li> 
-                                        
-                                    
+                                    <li><a href="form-layouts-one-column.html"><span class="fa fa-align-justify"></span> One Column</a></li>
+                                    <li><a href="form-layouts-two-column.html"><span class="fa fa-th-large"></span> Two Column</a></li>
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
                                     <li><a href="form-layouts-separated.html"><span class="fa fa-th-list"></span> Separated Rows</a></li>
-                                </ul> 
+                                </ul>
                             </li>
                             <li><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
                             <li><a href="form-validation.html"><span class="fa fa-list-alt"></span> Validation</a></li>
-                            <li><a href="form-wizards.html"><span class="fa fa-arrow-right"></span> Wizards</a></li>
+                            <li class="active"><a href="form-wizards.html"><span class="fa fa-arrow-right"></span> Wizards</a></li>
                             <li><a href="form-editors.html"><span class="fa fa-text-width"></span> WYSIWYG Editors</a></li>
                             <li><a href="form-file-handling.html"><span class="fa fa-floppy-o"></span> File Handling</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
-                        <a href="tables.php"><span class="fa fa-table"></span> <span class="xn-text">Tables</span></a>
-                        <ul>                            
+                        <a href="tables.html"><span class="fa fa-table"></span> <span class="xn-text">Tables</span></a>
+                        <ul>
                             <li><a href="table-basic.html"><span class="fa fa-align-justify"></span> Basic</a></li>
-                            <li><a href="Customer-Calls.php"><span class="fa fa-sort-alpha-desc"></span>Customer-Calls</a></li>
-                            <li><a href="table-export.php"><span class="fa fa-download"></span> Customer</a></li>  
-                            
-                             <li><a href="Building-show.php"><span class="fa fa-download"></span> Building</a></li>  
-                            
-                            
-                                <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li> 
-                                
-                                  <li><a href="owner-show.php"><span class="fa fa-download"></span> Owner</a></li>
-                                  <li><a href=" customer-follow-show.php"><span class="fa fa-download"></span>  customer-follow Show</a></li>
-                                  
-                                   <li><a href=" requestfollowshow.php"><span class="fa fa-download"></span>  Request Follow Show</a></li>
-                                   
-                                  
-                                 
-                                  
-                                 
-                                  
-                                                   
+                            <li><a href="table-datatables.html"><span class="fa fa-sort-alpha-desc"></span> Data Tables</a></li>
+                            <li><a href="table-export.html"><span class="fa fa-download"></span> Export Tables</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -381,14 +267,13 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                             <li><a href="charts-rickshaw.html"><span class="xn-text">Rickshaw</span></a></li>
                             <li><a href="charts-other.html"><span class="xn-text">Other</span></a></li>
                         </ul>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="maps.html"><span class="fa fa-map-marker"></span> <span class="xn-text">Maps</span></a>
-                    </li>   
-                    <!--
+                    </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">Navigation Levels</span></a>
-                        <ul>                            
+                        <ul>
                             <li class="xn-openable">
                                 <a href="#">Second Level</a>
                                 <ul>
@@ -398,21 +283,20 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                                             <li class="xn-openable">
                                                 <a href="#">Fourth Level</a>
                                                 <ul>
-                                                    <li><a href="#">Fifth Level</a></li>-->
+                                                    <li><a href="#">Fifth Level</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
-                    
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
             <!-- END PAGE SIDEBAR -->
-            
+
             <!-- PAGE CONTENT -->
             <div class="page-content">
 
@@ -532,10 +416,15 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Forms Stuff</a></li>
-                    <li><a href="#">Form Layout</a></li>
-                    <li class="active">customer</li>
+                    <li class="active">Form Wizards</li>
                 </ul>
                 <!-- END BREADCRUMB -->
+
+                <!-- PAGE TITLE -->
+                <div class="page-title">
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Form Wizards</h2>
+                </div>
+                <!-- END PAGE TITLE -->
 
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
@@ -543,224 +432,351 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                     <div class="row">
                         <div class="col-md-12">
 
-                            <form class="form-horizontal" method="post" action='woner.php' >
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Owner</strong> Form</h3>
-                                    <ul class="panel-controls">
-                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+
+
+                            <!-- START WIZARD WITH SUBMIT BUTTON -->
+                            <div class="block">
+                                <h4>Wizard With Submit</h4>
+                                <form action="customer-follow.php" role="form" class="form-horizontal"  method="post" >
+                                <div class="wizard show-submit">
+                                    <ul>
+                                        <li>
+                                            <a href="#step-5">
+                                                <span class="stepNumber">1</span>
+                                                <span class="stepDesc">User<br /><small>Personal data</small></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#step-6">
+                                                <span class="stepNumber">2</span>
+                                                <span class="stepDesc">Contact<br /><small>Information</small></span>
+                                            </a>
+                                        </li>
                                     </ul>
-                                </div>
-                                <div class="panel-body">
-                                    <p>This is non libero bibendum, scelerisque arcu id, placerat nunc. Integer ullamcorper rutrum dui eget porta. Fusce enim dui, pulvinar a augue nec, dapibus hendrerit mauris. Praesent efficitur, elit non convallis faucibus, enim sapien suscipit mi, sit amet fringilla felis arcu id sem. Phasellus semper felis in odio convallis, et venenatis nisl posuere. Morbi non aliquet magna, a consectetur risus. Vivamus quis tellus eros. Nulla sagittis nisi sit amet orci consectetur laoreet. Vivamus volutpat erat ac vulputate laoreet. Phasellus eu ipsum massa.</p>
-                                </div>
-                                <div class="panel-body">
+                                    <div id="step-5">
+
+                                       <?php
+include('db_config.php');
+$sql= "SELECT * FROM `Customer`";
+$query = $db->query($sql);
+$data = $query->fetch_assoc();
+
+?>
 
 
+        <p>   <div class="form-group">
+                                      <label class="col-md-3 col-xs-12 control-label">Phone Number</label>
+                                      <div class="col-md-6 col-xs-12">
 
+<select class="form-control " name="PhoneNumber" >
+<option> </option>
+<?php while($row = $query->fetch_assoc()) { ?>
+<option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
+<?php } ?>
+</select>
+</div>
+</div></p>
 
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Class</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select class="form-control" name="Class" required="required">
-                                                <option> </option>
-                                                <option value="A"> A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
-
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Adjective</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select class="form-control" name="Adjective" required="required">
-                                                <option> </option>
-                                                <option value="Owner"> Owner</option>
-                                                <option value="Broker">Broker</option>
-                                                <option value="Other">Other</option>
-
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-                                               <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Honorific</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select name="Honorific" class="form-control " required="required">
-                                                     <option  > </option>
-                                                <option value="Mr." > Mr.</option>
-                                                <option value="Ms.">Ms.</option>
-                                                <option value="Mss..">Mss..</option>
-
-
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">En_Fname</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name='En_Fname'  required="required"pattern="[a-zA-ZS]+"/>
-
-                                            </div>
-                                            <span class="help-block">Start with Capital Letter , don't accept spaces , symbols , numbers and arabic letters</span>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div class="form-group">
-
-
-
-
-                                        <label class="col-md-3 col-xs-12 control-label">En_Lname</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="text" class="form-control" name='En_Lname'  required="required" pattern="[a-zA-ZS]+"/>
-                                            </div>
-                                            <span class="help-block">Start with Capital Letter , don't accept spaces , symbols , numbers and arabic letters</span>
-                                        </div>
-                                    </div>
-
-
-
-
-                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Ar_Fname</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-                                                <input type="text" class="form-control" name='Ar_Fname'  required="required"    pattern="^[\u0621-\u064A\u0660-\u0669S]+$"/>
-                                            </div>
-                                            <span class="help-block">Password field sample</span>
-                                        </div>
-                                    </div>
-
-
-
+<br>
 
 
 
                                          <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Ar_Lname</label>
+                                        <label class="col-md-3 col-xs-12 control-label">In/Out</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name='Ar_Lname'  required="required"   pattern="^[\u0621-\u064A\u0660-\u0669S]+$" >
-
-                                            </div>
-                                            <span class="help-block">Don't accept spaces , symbols ,numbers and english letters</span>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-
-                                      <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Gender</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select name="Gender" class="form-control " required="required">
-                                                     <option  > </option>
-                                                <option value="male." >Male </option>
-                                                <option value="Female">Female</option>
-
-
-
-
+                                            <select class="form-control " name="Out1" >
+                                                <option> </option>
+                                                <option value="Out"> Out</option>
 
 
                                             </select>
-                                            <span class="help-block">Select box example</span>
+                                            <span  class ="error">Select box example</span>
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-
-                                        <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Mobile 01</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name='Mobile01'   required="required"   pattern="[0-1-2]{3}[0-9]{8}" />
-                                                <!--pattern="\d*" maxlength="11" minlength="11"  ^[0-9]{0,5}[ ]{0,1}[0-9]{0,6}$-->
-
-
-
-                                            </div>
-                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
-                                        </div>
-                                    </div>
-
-                                                                            <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Mobile 02</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name='Mobile02'  pattern="[0-1-2]{3}[0-9]{8}"/>
-
-                                            </div>
-                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
                                      <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Phone</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Followed By</label>
                                         <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name='Phone1'  pattern="^0[23]{1}[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$" />
-                                               <!-- pattern="\d*" maxlength="10" minlength="7" -->
-                                            </div>
-                                            <span class="help-block">Code Area (0--)+7 num</span>
+                                            <select class="form-control " name="FollowedBy" >
+                                                <option> </option>
+                                                <option value="EMAIL"> EMAIL</option>
+                                                    <option value="Phone"> Phone</option>
+                                                        <option value="SMS"> SMS</option>
+
+
+
+                                            </select>
+                                            <span  class ="error">Select box example</span>
                                         </div>
                                     </div>
+
+
+                                       <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Call Type</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control " name="CallType" >
+                                                <option> </option>
+                                                <option value="EMAIL"> Follow</option>
+                                                    <option value="Request"> Request</option>
+                                                        <option value="Update Info"> Update Info</option>
+                                                         <option value="Request"> Request</option>
+                                                          <option value="Validation"> Validation</option>
+                                                           <option value="Verification"> Verification</option>
+
+
+
+                                            </select>
+                                            <span  class ="error">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+                                         <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"> Call Status</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control " name=" CallStatus" >
+                                                <option> </option>
+                                                <option value="Done"> Done</option>
+                                                    <option value="Line Busy"> Line Busy</option>
+                                                        <option value="No Answer"> No Answer</option>
+                                                         <option value="Not Reachable"> Not Reachable</option>
+                                                          <option value="Wrong Number"> Wrong Number</option>
+
+
+
+
+                                            </select>
+                                            <span  class ="error">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">  Call Rank</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control " name=" CallRank" >
+                                                <option> </option>
+
+                                                         <option value="1"> 1</option>
+                                                <option value="2"> 2</option>
+                                                <option value="3"> 3</option>
+                                                <option value="4"> 4</option>
+                                                <option value="5"> 5</option>
+                                                <option value="6"> 6</option>
+                                                <option value="7"> 7</option>
+                                                <option value="8"> 8</option>
+                                                <option value="9"> 9</option>
+
+                                                <option value="10"> 10</option>
+
+
+                                            </select>
+                                            <span  class ="error">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Follow Status</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control " name=" FollowStatus" >
+                                                <option> </option>
+
+                                                         <option value="Accept"> Accept</option>
+                                                <option value="Refused"> Refused</option>
+
+
+                                                <option value="Call Later"> Call Later</option>
+                                                 <option value="Hold Request"> Hold Request</option>
+
+
+
+                                            </select>
+                                            <span  class ="error">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Follow Schedule</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control " name=" FollowSchedule" >
+                                                <option> </option>
+
+                                                         <option value="Day"> Day</option>
+                                                <option value="Two Days"> Two Days</option>
+
+
+                                                <option value="Three Days"> Three Days</option>
+                                                 <option value="Week">Week</option>
+                                                  <option value="Two Week">Two Week</option>
+                                                   <option value="Three Week">Three Week</option>
+                                                    <option value="Month">Month</option>
+                                                     <option value="Two Month">Two Month</option>
+                                                      <option value="Three Month">Three Month</option>
+                                                       <option value="Six Month">Six Month</option>
+                                                        <option value="Year">Year</option>
+
+
+
+
+
+                                            </select>
+                                            <span  class ="error">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">About</label>
+                                            <div class="col-md-10">
+                                                <textarea class="form-control" rows="5" placeholder="Something about you"></textarea>
+                                            </div>
+                                        </div>
+                                        <center>  
+<input type='submit' value='send' name='send'>
+</center>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <div id="step-6">
+
+                                     <!---------------another form------------------->
+
+
+
+
+
+
+                                      <?php
+include('db_config.php');
+$sql= "SELECT * FROM `Customer`";
+$query = $db->query($sql);
+$data = $query->fetch_assoc();
+
+?>
+
+          <div class="form-group">
+                                         <label class="col-md-4 control-label">Phone Number</label>
+                                        <div class="col-md-6 col-xs-12">
+
+
+
+<select class="form-control selectpicker"  name="PhoneNumber2" id="country"  class="dropdown" onchange="change_country();" >
+<option value="">Select Company</option>
+<?php while($row = $query->fetch_assoc()) { ?>
+  <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
+<?php } ?>
+</select>
+ </div>
+</div>
+
+
+
+
+
+
+           <div class="form-group">
+                                          <label class="col-md-4 control-label">Req_Serial </label>
+                                        <div class="col-md-6 col-xs-12">
+
+
+
+<select class="form-control selectpicker" name="Req_Serial" id="state" class="dropdown" >
+<option value="">Select State</option>
+
+</select>
+ </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+function change_country()
+{
+  var country = $("#country").val();
+
+     $.ajax({
+    type: "POST",
+    url: "state.php",
+    data: "country="+country,
+    cache: false,
+    success: function(response)
+      {
+          //alert(response);return false;
+        $("#state").html(response);
+      }
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -770,112 +786,16 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
 
 
                                       <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">WhatsApp</label>
+                                        <label class="col-md-3 col-xs-12 control-label"> Apartment  </label>
                                         <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control" name='Whatsapp' pattern="[0-1-2]{3}[0-9]{8}"/>
+                                            <select class="form-control" name="Apartment" >
 
-                                            </div>
-                                            <span class="help-block">Start with 01(0,1,2)+ 8 Num</span>
-                                        </div>
-                                    </div>
-
-
-
-                                       <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Email</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="email" class="form-control" name='Email'  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"    />
-
-                                            </div>
-                                            <span class="help-block">End with @xxx.com</span>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                  <!--  <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Datepicker</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                                <input type="text" class="form-control datepicker" value="2014-11-01">
-                                            </div>
-                                            <span class="help-block">Click on input field to get datepicker</span>
-                                        </div>
-                                    </div>
-
-                                    -->
-                                   <!-- <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Textarea</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <textarea class="form-control" rows="5"></textarea>
-                                            <span class="help-block">Default textarea field</span>
-                                        </div>
-                                    </div>-->
-
-                                   <!-- <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Tags</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <input type="text" class="tagsinput" value="First,Second,Third"/>
-                                            <span class="help-block">Default textarea field</span>
-                                        </div>
-                                    </div>-->
-
-
-                                        <!-- <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">verification</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select name="verification" class="form-control select" required="required">
-                                                     <option  > </option>
-                                                <option value="yes" > yes</option>
-                                                <option value="no">no</option>
-
-
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
-                                    </div>-->
-
-
-
-
-
-
-
-
-
-                                       <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Known From</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select name="KnownFrom" class="form-control " required="required">
-                                                     <option  > </option>
-                                                <option value="Ext. Websites." >Ext. Websites </option>
-                                                <option value="Friend">Friend</option>
-
-                                                 <option value="Internal source">Internal source</option>
-                                                  <option value="Newspaper">Newspaper</option>
-                                                   <option value="Other">Other</option>
-                                                      <option value="SMS">SMS</option>
-                                                          <option value="Social Media">Social Media</option>
-
-                                                          <option value="Website">Website</option>
-
-
+                                                        <option> </option>
+                                                <option value="Internal
+">Internal
+</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
 
 
 
@@ -885,8 +805,63 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                                             <span class="help-block">Select box example</span>
                                         </div>
                                     </div>
+
+
+
+
+
+
 
                                         <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">  	Response   </label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <select class="form-control" name="Response" >
+
+
+
+
+
+
+                                                        <option> </option>
+<option value="Accept">Accept</option>
+                                                <option value="Refuse">Refuse</option>
+
+
+
+                                                                <option value="Accept with Comment">Accept with Comment</option>
+
+                                                                        <option value="Refuse with Comment">Refuse with Comment</option>
+
+
+
+
+
+                                            </select>
+                                            <span class="help-block">Select box example</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                   <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Response_Comment</label>
+                                        <div class="col-md-6 col-xs-12">
+                                            <textarea class="form-control" rows="5" name="Response_Comment"></textarea>
+                                            <span class="help-block">Default textarea field</span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                   <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Note</label>
                                         <div class="col-md-6 col-xs-12">
                                             <textarea class="form-control" rows="5" name="Note"></textarea>
@@ -895,56 +870,40 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                                     </div>
 
 
-                                    <!--
-                                            <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Type</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <select name="Type" class="form-control select" required="required">
-                                                     <option  > </option>
-                                                <option value="Internal" >Internal </option>
-                                                <option value="External">External</option>
 
 
 
 
 
 
-                                            </select>
-                                            <span class="help-block">Select box example</span>
-                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     </div>
-
-
-
-
-                                  <!--  <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">File</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <input type="file" class="fileinput btn-primary" name="filename" id="filename" title="Browse file"/>
-                                            <span class="help-block">Input type file</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Checkbox</label>
-                                        <div class="col-md-6 col-xs-12">
-                                            <label class="check"><input type="checkbox" class="icheckbox" checked="checked"/> Checkbox title</label>
-                                            <span class="help-block">Checkbox sample, easy to use</span>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="panel-footer">
-                                    <button class="btn btn-default">Clear Form</button>
-                                    <input type="submit" name="send" class="btn btn-primary pull-right" value='Submit'>
                                 </div>
+                                </form>
                             </div>
-                            </form>
+                            <!-- END WIZARD WITH SUBMIT BUTTON -->
+
+
 
                         </div>
+
                     </div>
 
                 </div>
-                <!-- END PAGE CONTENT WRAPPER -->
+                <!-- PAGE CONTENT WRAPPER -->
             </div>
             <!-- END PAGE CONTENT -->
         </div>
@@ -961,7 +920,7 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="destroy.php" class="btn btn-success btn-lg">Yes</a>
+                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -986,11 +945,9 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
         <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
 
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-file-input.js"></script>
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
-        <script type="text/javascript" src="js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
-        <!-- END THIS PAGE PLUGINS -->
+        <script type="text/javascript" src="js/plugins/smartwizard/jquery.smartWizard-2.0.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.js"></script>
+        <!-- END PAGE PLUGINS -->
 
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="js/settings.js"></script>
@@ -999,5 +956,6 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
         <script type="text/javascript" src="js/actions.js"></script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
+
     </body>
 </html>
