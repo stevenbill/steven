@@ -19,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 2700;
+$inactive = 7700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -128,7 +128,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>Customer_Calls</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -591,25 +591,30 @@ $result = mysqli_query($connection, $sql) or die("Error " . mysqli_error($connec
 
 
 <div class="form-group">
-                                          <div class="panel-body">                                                                        
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Phone Number</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" list="categoryname"  class="form-control" autocomplete="off" id="pcategory"  required="required" name="PhoneNumber" pattern="[0-1-2]{3}[0-9]{8}"/>
-                                            
-                                            <datalist id="categoryname">
-        <?php while($row = mysqli_fetch_array($result)) { ?>
+    
+    
+    
+    <div class="form-group">
+                                        <label class="col-md-3 control-label">Phone Number</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control select" data-live-search="true" name="PhoneNumber"   id="n1" onchange="sync()"  required>
+                                             <?php while($row = mysqli_fetch_array($result)) { ?>
             <option value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?></option>
         <?php } ?>
-    </datalist>    
-                                            </div>                                            
-                            
+                                            </select>
                                         </div>
                                     </div>
-                                    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                                        
 
 
 

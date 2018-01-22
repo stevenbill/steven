@@ -19,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 900;
+$inactive = 7700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -31,7 +31,6 @@ if($session_life > $inactive)
 $_SESSION['timeout']=time();
 
 ?>
-
 
 
 
@@ -152,7 +151,7 @@ echo "<script type='text/javascript'>alert('***Sorry This mobile already in data
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>New customer</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

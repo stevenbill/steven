@@ -1,23 +1,42 @@
 <?php
 session_start();
 date_default_timezone_set("Africa/Cairo");
+/*
+if(!isset($_SERVER['HTTP_REFERER'])){
+// redirect them to your desired location
+header('location: destroy.php');
+exit;
+
+}*/
+
+
 if(!isset($_SESSION['logindata']))
-    {
-        header('Location: destroy.php');
-    }
+{
+ header('location: destroy.php');
+exit;
+
+}
 
 
-   
+// 10 mins in seconds
+$inactive = 7700;
+if( !isset($_SESSION['timeout']) )
+$_SESSION['timeout'] = time() + $inactive; 
 
-    ?>
+$session_life = time() - $_SESSION['timeout'];
 
+if($session_life > $inactive)
+{  session_destroy(); header("Location:destroy.php");     }
 
+$_SESSION['timeout']=time();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>request follow show</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,9 +91,7 @@ if(!isset($_SESSION['logindata']))
                     <li class="active">
                         <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>    
-                    
-                  
-                    <li class="xn-openable">
+                          <li class="xn-openable">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
                             <li>
@@ -82,15 +99,22 @@ if(!isset($_SESSION['logindata']))
                                 <div class="informer informer-danger">New</div>
                                 <ul>
                                     <li><a href="form-layouts-one-column.php"><span class="fa fa-align-justify"></span> Customer</a></li>
-                                    
+
                                      <li><a href="Customer_Calls.php"><span class="fa fa-align-justify"></span> Customer_Calls</a></li>
-                                     
+
                                         <li><a href="request.php"><span class="fa fa-align-justify"></span> Request</a></li>
-                                        
-                                    
+
+                                         <li><a href="woner.php"><span class="fa fa-align-justify"></span> Owners</a></li>
+
+                                   <li><a href="Building.php"><span class="fa fa-download"></span> Building</a></li>
+
+
+                                   <li><a href="customer-follow.php"><span class="fa fa-download"></span>Customer-Follow</a></li>
+
+
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
                                     <li><a href="form-layouts-separated.html"><span class="fa fa-th-list"></span> Separated Rows</a></li>
-                                </ul> 
+                                </ul>
                             </li>
                             <li><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
                             <li><a href="form-validation.html"><span class="fa fa-list-alt"></span> Validation</a></li>
@@ -101,13 +125,27 @@ if(!isset($_SESSION['logindata']))
                     </li>
                     <li class="xn-openable">
                         <a href="tables.php"><span class="fa fa-table"></span> <span class="xn-text">Tables</span></a>
-                        <ul>                            
+                        <ul>
                             <li><a href="table-basic.html"><span class="fa fa-align-justify"></span> Basic</a></li>
                             <li><a href="Customer-Calls.php"><span class="fa fa-sort-alpha-desc"></span>Customer-Calls</a></li>
-                            <li><a href="table-export.php"><span class="fa fa-download"></span> Customer</a></li>  
-                            
+                            <li><a href="table-export.php"><span class="fa fa-download"></span> Customer</a></li>
+
+                             <li><a href="Building-show.php"><span class="fa fa-download"></span> Building</a></li>
+
+
                                 <li><a href="request-show.php"><span class="fa fa-download"></span> Request</a></li>
-                                                   
+
+                                  <li><a href="owner-show.php"><span class="fa fa-download"></span> Owner</a></li>
+                                  <li><a href=" customer-follow-show.php"><span class="fa fa-download"></span>  customer-follow Show</a></li>
+
+                                   <li><a href=" requestfollowshow.php"><span class="fa fa-download"></span>  Request Follow Show</a></li>
+
+
+
+
+
+
+
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -118,14 +156,14 @@ if(!isset($_SESSION['logindata']))
                             <li><a href="charts-rickshaw.html"><span class="xn-text">Rickshaw</span></a></li>
                             <li><a href="charts-other.html"><span class="xn-text">Other</span></a></li>
                         </ul>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="maps.html"><span class="fa fa-map-marker"></span> <span class="xn-text">Maps</span></a>
-                    </li>   
+                    </li>
                     <!--
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">Navigation Levels</span></a>
-                        <ul>                            
+                        <ul>
                             <li class="xn-openable">
                                 <a href="#">Second Level</a>
                                 <ul>
@@ -141,12 +179,12 @@ if(!isset($_SESSION['logindata']))
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
-                    
+
                 </ul>
-                <!-- END X-NAVIGATION-------------------------- -->
+                <!-- END X-NAVIGATION -->
             </div>
             <!-- END PAGE SIDEBAR -->
             
@@ -290,7 +328,7 @@ if(!isset($_SESSION['logindata']))
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">New clients </h3>
+                                    <h3 class="panel-title">Request Follow </h3>
                                     <div class="btn-group pull-right">
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">

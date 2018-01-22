@@ -1,16 +1,36 @@
 <?php
 session_start();
 date_default_timezone_set("Africa/Cairo");
+/*
+if(!isset($_SERVER['HTTP_REFERER'])){
+// redirect them to your desired location
+header('location: destroy.php');
+exit;
+
+}*/
+
+
 if(!isset($_SESSION['logindata']))
-    {
-        header('Location: destroy.php');
-    }
+{
+ header('location: destroy.php');
+exit;
+
+}
 
 
+// 10 mins in seconds
+$inactive = 2700;
+if( !isset($_SESSION['timeout']) )
+$_SESSION['timeout'] = time() + $inactive; 
 
-   
+$session_life = time() - $_SESSION['timeout'];
 
-    ?>
+if($session_life > $inactive)
+{  session_destroy(); header("Location:destroy.php");     }
+
+$_SESSION['timeout']=time();
+
+?>
 
 
 
@@ -18,7 +38,7 @@ if(!isset($_SESSION['logindata']))
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>Building-show</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -384,7 +404,7 @@ if(!isset($_SESSION['logindata']))
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                     <h2><span class="fa fa-arrow-circle-o-left"></span> New requist Table</h2>
+                     <h2><span class="fa fa-arrow-circle-o-left"></span> New Building Table</h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 
@@ -399,7 +419,7 @@ if(!isset($_SESSION['logindata']))
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">New clients </h3>
+                                    <h3 class="panel-title">Building </h3>
                                     <div class="btn-group pull-right">
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">
@@ -576,7 +596,7 @@ $q=mysql_query($sql) ;
                                           
                                           
                                           
-                                    echo "<td>". $row['ID']."</td>" ;
+                                    echo "<td>". $row['id']."</td>" ;
       
      
                                                    

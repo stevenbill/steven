@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 date_default_timezone_set("Africa/Cairo");
 /*
@@ -8,7 +10,7 @@ header('location: destroy.php');
 exit;
 
 }*/
-/*
+
 
 if(!isset($_SESSION['logindata']))
 {
@@ -16,12 +18,12 @@ if(!isset($_SESSION['logindata']))
 exit;
 
 }
-*/
+
 
 // 10 mins in seconds
-$inactive = 2700;
+$inactive = 7700;
 if( !isset($_SESSION['timeout']) )
-$_SESSION['timeout'] = time() + $inactive;
+$_SESSION['timeout'] = time() + $inactive; 
 
 $session_life = time() - $_SESSION['timeout'];
 
@@ -31,6 +33,7 @@ if($session_life > $inactive)
 $_SESSION['timeout']=time();
 
 ?>
+
 <?php
 $seg= $_SESSION['logindata'];
 
@@ -152,8 +155,9 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>
+        <title>customer-follow</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -167,6 +171,21 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
           <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
 <script type="text/javascript">
 
 
@@ -179,14 +198,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
 
-            $("#FollowStatus,#CallStatus").change(function ()   {
+            $("#FollowStatus,#CallStatus,#CallType").change(function ()   {
                 if ($("#FollowStatus").val() == "Accept" &&
 
 
 
 
 
-                $("#CallStatus").val() == "Done" ) {
+                $("#CallStatus").val() == "Done" && $("#CallType").val() == "Follow" ) {
 
 
               $("#dvPassport2").slideDown(500);
@@ -216,13 +235,13 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                 /*$("#country").attr('disabled', true);*/
                 $("#state").attr('disabled', true);
                   $("#Apartment").attr('disabled', true);
-
+  $("#FollowSchedule").attr('disabled', true);
                   $("#Out1").attr('disabled', true);
                   $("#FollowedBy").attr('disabled', true);
-                   $("#CallType").attr('disabled', true);
+                
 
 
-                     $("#FollowSchedule").attr('disabled', true);
+                     
                       $("#Response_Comment").attr('disabled', true);
                     $("#send").show();
 
@@ -326,6 +345,41 @@ $(function () {
 
 
 
+$(function () {
+            $("#CallStatus,#CallType").change(function () {
+                if ($("#CallStatus").val() == "Done"  && $("#CallType").val() == "Follow" ) {
+              $("#dvPassport25").slideDown(500);
+
+              $("#FollowStatus").attr('disabled', false);
+
+
+
+
+
+                } else {
+               $("#dvPassport25").slideUp(1000);
+
+               $("#FollowStatus").attr('disabled', true);
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+            });
+        });
+
+
+
+
 
 
 
@@ -344,6 +398,39 @@ $(function () {
 
     </head>
     <body>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
            <!-- START PAGE CONTAINER -->
 
 
@@ -693,7 +780,7 @@ $(function () {
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Forms Stuff</a></li>
                     <li><a href="#">Form Layout</a></li>
-                    <li class="active">New Client</li>
+                    <li class="active">Customer follow</li>
                 </ul>
                 <!-- END BREADCRUMB -->
 
@@ -706,7 +793,9 @@ $(function () {
                             <form class="form-horizontal" method="post" action='customer-follow.php' >
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong> Customer Calls</strong> Form</h3>
+                                    <h3 class="panel-title"><strong> 	
+
+Customer follow</strong> Form</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
@@ -722,12 +811,7 @@ $(function () {
 
 
           <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-
-
-
-        </script>
-
+ 
 
 
 
@@ -854,11 +938,11 @@ $(function () {
                                        n2.value = n1.value;
                                      }
                                      </script>
+                                     
+    
 
 
-
-
-
+<!---------------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -883,29 +967,80 @@ $(function () {
                                                                           <!---------------another form------------------->
 
 
+                     
+                              <?php
+                                    $connection = mysqli_connect("localhost","estasm5_yousry","4562008","estasm5_sales") or die("Error " . mysqli_error($connection));
+
+//fetch data from database
+$sql = "select Mobile01 from Customer";
+$result = mysqli_query($connection, $sql) or die("Error " . mysqli_error($connection));
+?>
 
 
-  <?php
-                                     include('db_config.php');
-                                     $sql= "SELECT * FROM `Customer`";
-                                     $query = $db->query($sql);
-                                     $data = $query->fetch_assoc();
-
-                                     ?>
 
 
-                                             <p>   <div class="form-group">
-                                                                           <label class="col-md-3 col-xs-12 control-label">Phone Number</label>
-                                                                           <div class="col-md-6 col-xs-12">
 
-                                     <select class="form-control " name="PhoneNumber"  id="n1" onclick="sync()"  required>
-                                     <option> </option>
-                                     <?php while($row = $query->fetch_assoc()) { ?>
-                                     <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
-                                     <?php } ?>
-                                     </select>
-                                     </div>
-                                     </div></p>
+                                  <?php
+include('db_config.php');
+$sql= "SELECT * FROM `Customer`";
+$query = $db->query($sql);
+$data = $query->fetch_assoc();
+
+?>
+                                    
+                 
+                <div class="form-group">
+                                        <label class="col-md-3 control-label">Phone Number</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control select" data-live-search="true" name="PhoneNumber"   id="n1" onchange="sync()"  required>
+                                             <?php while($row = $query->fetch_assoc()) { ?>
+  <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
+<?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+ 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+       
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>
 
                                      <br>
 
@@ -922,6 +1057,7 @@ $(function () {
                                                                                  <select class="form-control " name="Out1" required  >
                                                                                      <option> </option>
                                                                                      <option value="Out"> Out</option>
+                                                                              
 
 
                                                                                  </select>
@@ -949,12 +1085,12 @@ $(function () {
                                                                             <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Call Type</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="CallType" required >
+                                                                                 <select class="form-control " name="CallType" required id='CallType' >
                                                                                      <option> </option>
-                                                                                     <option value="EMAIL"> Follow</option>
+                                                                                     <option value="Follow"> Follow</option>
                                                                                          <option value="Request"> Request</option>
                                                                                              <option value="Update Info"> Update Info</option>
-                                                                                              <option value="Request"> Request</option>
+                                                                                             
                                                                                                <option value="Validation"> Validation</option>
                                                                                                 <option value="Verification"> Verification</option>
 
@@ -1023,7 +1159,7 @@ $(function () {
                                                                              </div>
                                                                          </div>
 
-
+  <div id="dvPassport25" style="display: none">
                                                                          <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Follow Status</label>
                                                                              <div class="col-md-6 col-xs-12">
@@ -1043,6 +1179,7 @@ $(function () {
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
                                                                          </div>
+                                                                           </div>
 
 
 
@@ -1094,9 +1231,17 @@ $(function () {
                                                                                  </div>
                                                                              </div>
                                                                              <div id='send' >
-                                                                             <center>
-                                     <input type='submit' value='send' name='send' >
-                                     </center>
+                                                                            
+                                                                                 
+                                                                       <div class="panel-footer">
+                                    <button class="btn btn-default">Clear Form</button>
+                                    <input type="submit" name="send" class="btn btn-primary pull-right" value='Submit'>
+                                </div>          
+                                                                                 
+                                                                                 
+                                                                                 
+                                  
+                                    
                                                                          </div>
 </div>
 
@@ -1197,9 +1342,12 @@ $(function () {
                                         <div class="col-md-6 col-xs-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" class="form-control"name="PhoneNumber1" id="country" onmousedown="change_country();" readonly  required />
+                                                
+                                                <input type="text" class="form-control"name="PhoneNumber1" id="country" onmousemove="change_country();" readonly  required />
 
                                             </div>
+                                            
+                                            
 
                                         </div>
                                     </div>
@@ -1354,11 +1502,12 @@ $(function () {
 
 
 
+    <div class="panel-footer">
+                                    <button class="btn btn-default">Clear Form</button>
+                                    <input type="submit" name="send1" class="btn btn-primary pull-right" value='Submit'>
+                                </div>    
 
-
-                                                            <center>
-                                     <input type='submit' value='send1' name='send1'>
-                                     </center>
+                                                           
 
 
 
@@ -1555,6 +1704,7 @@ $(function () {
 
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/actions.js"></script>
+        
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
     </body>

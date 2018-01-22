@@ -37,7 +37,7 @@ $_SESSION['timeout']=time();
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>Estasmer system</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -199,7 +199,8 @@ $_SESSION['timeout']=time();
                                    <li><a href="Building.php"><span class="fa fa-download"></span> Building</a></li>
                                    
                                               
-                                   <li><a href="customer-follow.php"><span class="fa fa-download"></span>Customer-Follow</a></li> 
+                                   <li><a href="customer-follow.php"><span class="fa fa-download"></span>Customer-Follow</a></li>
+                                       <li><a href="Apartment.php"><span class="fa fa-download"></span>Apartment</a></li>  
                                         
                                     
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>

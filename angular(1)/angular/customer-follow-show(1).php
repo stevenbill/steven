@@ -19,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 7700;
+$inactive = 2700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -39,7 +39,7 @@ $_SESSION['timeout']=time();
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>request-show</title>            
+        <title>customer-follow-show</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,8 +51,11 @@ $_SESSION['timeout']=time();
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
         <!-- EOF CSS INCLUDE -->                                      
     </head>
-    <body>
-       
+    <body>    
+          <!-- START PAGE CONTAINER -->
+        
+        
+      
         
         <!-- aly 3la shmal -->
         <div class="page-container">
@@ -278,7 +281,6 @@ $_SESSION['timeout']=time();
             </div>
             <!-- END PAGE SIDEBAR -->
             
-            
             <!-- PAGE CONTENT -->
             <div class="page-content">
                 
@@ -404,7 +406,7 @@ $_SESSION['timeout']=time();
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                     <h2><span class="fa fa-arrow-circle-o-left"></span> New requist Table</h2>
+                     <h2><span class="fa fa-arrow-circle-o-left"></span>  customer-follow-show</h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 
@@ -419,7 +421,7 @@ $_SESSION['timeout']=time();
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">New clients </h3>
+                                    <h3 class="panel-title"> customer-follow </h3>
                                     <div class="btn-group pull-right">
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">
@@ -451,56 +453,19 @@ $_SESSION['timeout']=time();
                                         
                                        <thead>
                                             <tr>
-                                          
-                                              
-    
-                                                   
-                                                   
-                                                        <th>ID</th>
+                                                      <th>ID</th>
                                                 <th> Phone Number </th>
-                                                <th>Sector</th>
-                                                <th>Req Type </th>
-                                                <th>Area 01 </th>
-                                                <th>Area 02</th>
-                                                 <th>Area 03 </th>
-                                                   <th>View</th>
-                                                  <th>Min Building Year </th>
-                                                   <th>Street Type</th>
-                                                   <th> Low Price EGP </th>
-                                                   <th>Max Price EGP </th>
-                                                   <th> Apartments m2</th>
-                                                     <th>Rooms no </th>
-                                                   
-                                                   <th>Reception no </th>
-                                                   <th>Bathroom no</th>
-
-                                                   <th>Max Floor </th>  
-                                                   <th>Accept Last Floor</th>  
-
-                                                   <th>Finishing Type</th>  
-
-                                                   <th>Paid Type </th> 
-                                                  
-
-                                                     
-                                                      <th>Deposit</th>
-                                                      <th>Instalment Seq</th>
-                                                     <th> Out-POS</th>  
-                                                      
-
-                                                       <th>Available Stock</th>
-
-                                                         <th>Note</th>
-
-                                                           <th>Req_Serial</th>
-                                                             <th>Status</th>
-                                                               <th>Date </th>
-
-                                                                <th> Time </th>
-                                                                 <th> 	Reg_By </th>
-                                                                                                                                   
-
-                                                   
+                                                <th> 	In/Out </th>
+                                                <th>Followed By  </th>
+                                                <th> 	Call Type  </th>
+                                                <th> Call Status</th>
+                                                 <th>Call Rank  </th>
+                                                   <th>Follow Status </th>
+                                                  <th> 	Follow Schedule 	 </th>
+                                                   <th> Note </th>
+                                                   <th>  Date </th>
+                                                   <th>Time  </th>
+                                                   <th>  Reg_By </th>
                                                    
                                                     
                                             </tr>
@@ -527,68 +492,59 @@ mysql_select_db($db) or die("db selction error ");
 	mysql_error();
 }
 
-                                            $sql="SELECT * FROM request1 ORDER BY ID DESC " ;
+
+
+                                            $sql="SELECT * FROM customerfollow ORDER BY ID DESC " ;
 $q=mysql_query($sql) ;
 
 
   while($row=mysql_fetch_array($q)){
    
   
-                                          echo "<tr>";
-                                    echo "<td>". $row['ID']."</td>" ;
+   
+   
+   
+   
+   
+      
+
+
+                                            
+                                         
+                                            echo "<tr>";
+                                            
+                                            
+                                           
+                                            
+                                            
+                                            
+                                            
+                                            
+                                      echo "<td>". $row['ID']."</td>" ;
       
      
                                                    
                                                  echo "<td>". $row['PhoneNumber']."</td>" ; 
-   echo "<td>". $row['Sector']."</td>" ;
-      echo "<td>". $row['ReqType']."</td>" ;
-   echo "<td>". $row['Area01']."</td>" ;
- echo "<td>". $row['Area02']."</td>" ;
-  echo "<td>". $row['Area03']."</td>" ;
+                                      
 
-       echo "<td>". $row['View1']."</td>" ;
-   echo "<td>". $row['MinBuildingYear']."</td>" ;
-   echo "<td>". $row['StreetType']."</td>" ;
-       echo "<td>". $row['LowPriceEGP']."</td>" ;
-      echo "<td>". $row['MaxPriceEGP']."</td>" ;
-      echo "<td>". $row['Apartmentsm2']."</td>" ;
-    echo "<td>". $row['Roomsno']."</td>" ;
-     echo "<td>". $row['Recepionno']."</td>" ;
-     echo "<td>". $row['Bathroomno']."</td>" ; 
-      echo "<td>". $row['MaxFloor']."</td>" ;  
-  echo "<td>". $row['AcceptLastFloor']."</td>" ;
-    echo "<td>". $row['FinishingType']."</td>" ;
-             echo "<td>". $row['PaiedType']."</td>" ; 
-             
+   echo "<td>". $row['Out1']."</td>" ;
+      echo "<td>". $row['FollowedBy']."</td>" ;
+   echo "<td>". $row['CallType']."</td>" ;
+ echo "<td>". $row['CallStatus']."</td>" ;
+  echo "<td>". $row['CallRank']."</td>" ; 
+   echo "<td>". $row['FollowStatus']."</td>" ;
+   echo "<td>". $row['FollowSchedule']."</td>" ; 
+
       
-
-                          echo "<td>". $row['Deposit']."</td>" ; 
-                          
-                 echo "<td>". $row['InstallmentSeq']."</td>" ;  
-                 
-                  echo "<td>". $row['OutPOS']."</td>" ;  
-              
-
-                     echo "<td>". $row['AvailableStock']."</td>" ;
-                         echo "<td>". $row['Note']."</td>" ;
-                             echo "<td>". $row['Req_Serial']."</td>" ;
-                                 echo "<td>". $row['Status1']."</td>" ;
-                                     echo "<td>". $row['Date1']."</td>" ;
-
-                                         echo "<td>". $row['time']."</td>" ;
-                                             echo "<td>". $row['Reg_By']."</td>" ;
-                                                
+   echo "<td>". $row['Note']."</td>" ;
+   echo "<td>". $row['Date']."</td>" ;
+      echo "<td>". $row['Time']."</td>" ;
+         echo "<td>". $row['Reg_By']."</td>" ;
+    
+     
 
 
-
-
-
-
-
-
-
-
-
+             
       
       
                                             echo "</tr>";
