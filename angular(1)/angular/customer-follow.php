@@ -444,7 +444,7 @@ $(function () {
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
+	echo    "<font size='2'>"."welcom ". $seg= $_SESSION['logindata'] . "</font>"       ?></a>
 
 
 
@@ -992,6 +992,7 @@ $data = $query->fetch_assoc();
                 <div class="form-group">
                                         <label class="col-md-3 control-label">Phone Number</label>
                                         <div class="col-md-6">
+                                            <option></option>
                                             <select class="form-control select" data-live-search="true" name="PhoneNumber"   id="n1" onchange="sync()"  required>
                                              <?php while($row = $query->fetch_assoc()) { ?>
   <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>

@@ -19,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 2700;
+$inactive = 7700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -34,11 +34,14 @@ $_SESSION['timeout']=time();
 
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Building-show</title>            
+        <title>customer-follow</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,10 +53,12 @@ $_SESSION['timeout']=time();
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
         <!-- EOF CSS INCLUDE -->                                      
     </head>
-    <body>
-        <!-- START PAGE CONTAINER -->
-          
-       
+    <body>    
+          <!-- START PAGE CONTAINER -->
+        
+        
+        
+     
         
         <!-- aly 3la shmal -->
         <div class="page-container">
@@ -404,7 +409,7 @@ $_SESSION['timeout']=time();
                 
                 <!-- PAGE TITLE -->
                 <div class="page-title">                    
-                     <h2><span class="fa fa-arrow-circle-o-left"></span> New Building Table</h2>
+                     <h2><span class="fa fa-arrow-circle-o-left"></span>  Apartment-show</h2>
                 </div>
                 <!-- END PAGE TITLE -->                
                 
@@ -419,7 +424,7 @@ $_SESSION['timeout']=time();
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Building </h3>
+                                    <h3 class="panel-title">Apartment-show</h3>
                                     <div class="btn-group pull-right">
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">
@@ -451,74 +456,53 @@ $_SESSION['timeout']=time();
                                         
                                        <thead>
                                             <tr>
-                                          
-                                              
-    
+                                                <th>ID</th>
+                                                <th> Phone Number</th>
+                                                <th>Building</th>
+                                                <th>KnownFrom  </th>
+                                                <th>DealType</th>
+                                                <th> AptType </th>
+                                                 <th>SourceBY   </th>
+                                                   <th>AptView </th>
+                                                  <th>Apartmentsm2  </th>
+                                                   <th>Roomsno </th>
+                                                   <th>RoomsViewStreet</th>
+                                                 
+                                                   <th>Receptionno </th>
+                                                   <th>ReceptionViewStreet </th>
+                                                       <th>Bathroomno  </th>
+                                                           <th> 	Floor  </th>
+                                                               <th>FinishingType  </th>    
+                                                                   <th> 	Electricmeter  </th>
+                                                                       <th> Gasmeter  </th>
+                                                                          <th> Watermeter   </th>
+                                                                           <th> 	License   </th>
+                                                                            <th>m2PriceEGP(Cash)  </th>
+                                                                             <th>PaidType   </th> 
+                                                                              <th>PriceEGPCash   </th>
+                                                                               <th>PriceEGPInst   </th>
+                                                                                <th>Deposit1   </th>
+                                                                                 <th> 	InstalmentSeq   </th>
+                                                                                  <th>OutPOS   </th>
+                                                                                   <th> 	DurationofRent   </th>
+                                                                                     <th>PriceEGPCash1   </th>
+                                                                                       <th>PriceEGPInst1   </th>
+                                                                                         <th> 	Deposit   </th>
+                                                                                           <th>Insurance   </th>
+                                                                                             <th>OutPOS1   </th>  
+                                                                                               <th>Contracting   </th>
+                                                                                                 <th>Note   </th>
+                                                                                                  <th> 	PictureType   </th>
+                                                                                                   <th>Picture   </th>
+                                                                                                    <th>ValidationDate   </th>
+                                                                                                     <th> 	Verification   </th>
+                                                                                                      <th> Apt_Code  </th>
+                                                                                                       <th>Status  </th>
+                                                                     
                                                    
-                                                   
-                                                        <th>ID</th>
-                                                <th> Type </th>
-                                                <th>Deal Type
-</th>
-                                                <th>Sector
- </th>
-                                                <th>Area</th>
-                                                <th>Building Year
-</th>
-                                                 <th>Building Side
- </th>
-                                                   <th>Street Type
-</th>
-                                                  <th>Building no.
- </th>
-                                                   <th>Address
-</th>
-                                                   <th> Near to
- </th>
-                                                   <th>City
-</th>
-                                                   <th>Floor  no.
-</th>
-                                                     <th>Units in Floor
-</th>
-                                                   
-                                                   <th>Building Type
-</th>
-                                                   <th>Residential Deposit
-</th>
-
-                                                   <th>License Floor
- </th>  
-                                                   <th>Elevator no.
-</th>  
-
-                                                   <th>Garage
-</th>  
-
-                                                   <th>Note
-</th> 
-                                                    <th>Source BY
-</th>
-
-                                                     <th>Bui._Serial
-</th>
-                                                     <th>Verification 
-</th>  
-                                                    
-
-                                                       <th>Status
-</th>
-
-                                                         <th>Date
-</th>
-
-                                                           <th>Time
-</th>
-                                                             <th>Reg_By
-</th>
-                                                              
-
-                                                   
+                                                   <th>Date</th>
+                                                      <th>Time</th>
+                                                   <th>Reg_By</th>
                                                    
                                                     
                                             </tr>
@@ -545,123 +529,138 @@ mysql_select_db($db) or die("db selction error ");
 	mysql_error();
 }
 
-                                            $sql="SELECT * FROM Building1 ORDER BY ID DESC " ;
+
+
+                                            $sql="SELECT * FROM Apartment ORDER BY ID DESC " ;
 $q=mysql_query($sql) ;
 
 
   while($row=mysql_fetch_array($q)){
    
   
-                                          echo "<tr>";
-                                          
-                                          
-                         
-                         
-     
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                          
-                                    echo "<td>". $row['id']."</td>" ;
-      
-     
-                                                   
-                                                 echo "<td>". $row['Type']."</td>" ; 
-   echo "<td>". $row['DealType']."</td>" ;
-      echo "<td>". $row['Sector']."</td>" ;
-      
-   echo "<td>". $row['Area']."</td>" ;
- echo "<td>". $row['BuildingYear']."</td>" ;
-  echo "<td>". $row['BuildingSide']."</td>" ;
-
-       echo "<td>". $row['StreetType']."</td>" ;
-       
-   echo "<td>". $row['Buildingno']."</td>" ;
    
-   echo "<td>". $row['Address']."</td>" ;
    
-       echo "<td>". $row['Nearto']."</td>" ;
-       
-      echo "<td>". $row['City']."</td>" ;
+   
+   
+   
       
-      echo "<td>". $row['Floorno']."</td>" ;
-      
-    echo "<td>". $row['UnitsinFloor']."</td>" ;
-    
-     echo "<td>". $row['BuildingType']."</td>" ;
-     
-     echo "<td>". $row['ResidentialDeposit']."</td>" ; 
-     
-      echo "<td>". $row['LicenseFloor']."</td>" ;  
-      
-  echo "<td>". $row['Elevatorno']."</td>" ;
-  
-    echo "<td>". $row['Garage']."</td>" ;
-             echo "<td>". $row['Note']."</td>" ; 
-             
-             
-               echo "<td>". $row['SourceBY']."</td>" ;  
 
-                 echo "<td>". $row['Bui_Serial']."</td>" ;  
-                 
-                  echo "<td>". $row['Verification']."</td>" ;  
+
+                                            
+                                         
+                                            echo "<tr>";
+                                            
+                                            
+                                           
+                                            
+                                            
+                                            
+                                            
+                                            
+                                    echo "<td>". $row['ID']."</td>" ;
+      
+
+      
+     echo "<td>". $row['PhoneNumber']."</td>" ;
+  echo "<td>". $row['Building']."</td>" ;
+    echo "<td>". $row['KnownFrom']."</td>" ;
+      echo "<td>". $row['DealType']."</td>" ;
+      echo "<td>". $row['AptType']."</td>" ;
+      
+        echo "<td>". $row['SourceBY']."</td>" ;
+        
+          echo "<td>". $row['AptView']."</td>" ;
+          
+             echo "<td>". $row['Apartmentsm2']."</td>" ;
+          
+          
+            echo "<td>". $row['Roomsno']."</td>" ;
+            
+              echo "<td>". $row['RoomsViewStreet']."</td>" ;
               
-
-                     echo "<td>". $row['Status']."</td>" ;
-                     
-                         echo "<td>". $row['Date']."</td>" ;
-                         
-                             echo "<td>". $row['Time']."</td>" ;
-                             
-                                 echo "<td>". $row['Reg_By']."</td>" ;
+                echo "<td>". $row['Receptionno']."</td>" ;
+                
+                  echo "<td>". $row['ReceptionViewStreet']."</td>" ;
+                  
+                   echo "<td>". $row['Bathroomno']."</td>" ;
+                  
+                    echo "<td>". $row['Floor']."</td>" ;
+                    
+                      echo "<td>". $row['FinishingType']."</td>" ;
+                      
+                        echo "<td>". $row['Electricmeter']."</td>" ;
+                        
+                          echo "<td>". $row['Gasmeter']."</td>" ;
+                                echo "<td>". $row['Watermeter']."</td>" ;
+                                
+                                
+                                
+                                
+                          
+                            echo "<td>". $row['License']."</td>" ;
+                              echo "<td>". $row['m2PriceEGPCash1']."</td>" ;
+                              
+                                echo "<td>". $row['PaidType']."</td>" ;
+                                
+                                  echo "<td>". $row['PriceEGPCash']."</td>" ;
                                   
-                                                
+                                    echo "<td>". $row['PriceEGPInst']."</td>" ;  
+                                
+                                      echo "<td>". $row['Deposit1']."</td>" ;
+                                
+                                        echo "<td>". $row['InstalmentSeq']."</td>" ;
+                                
+                                          echo "<td>". $row['OutPOS']."</td>" ;
+                                
+                                            echo "<td>". $row['DurationofRent']."</td>" ;
+                                
+                                
+                                              echo "<td>". $row['PriceEGPCash1']."</td>" ; 
+                                
+                                                echo "<td>". $row['PriceEGPInst1']."</td>" ;
+                                
+                                                  echo "<td>". $row['Deposit']."</td>" ;
+                                  
+                                                    echo "<td>". $row['Insurance']."</td>" ;
+                                
+                                                        echo "<td>". $row['OutPOS1']."</td>" ;
+                                
+                                                             echo "<td>". $row['Contracting']."</td>" ;
+                                  
+                                                                 echo "<td>". $row['Note']."</td>" ;
+                                
+                                                                    echo "<td>". $row['PictureType']."</td>" ;  
+                                  
+                                                                        /*echo "<td>". $row['Picture']."</td>" ;*/
+                                                                        
+                        $id=$row['ID'];                                                 
 
+    echo "<td>".
+    
+     "<a  href='gallery.php?img=$id' class='fa fa-picture-o'  target='_blank'> </a> "
+    
+    ."</td>" ;
+ 
+   
 
-
-
-
-
-
-
-
-
-
-      
+                                                                        
+                                  
+                                                                            echo "<td>". $row['ValidationDate']."</td>" ;
+                                                                            
+                                                                            echo "<td>". $row['Verification']."</td>" ;
+                                                                             
+                                  
+                                                                                echo "<td>". $row['Apt_Code']."</td>" ;
+                                  
+                                                                                    echo "<td>". $row['Status']."</td>" ;
+                                  
+                                                                                        echo "<td>". $row['Date']."</td>" ;
+                                                                                        
+                                                                                            echo "<td>". $row['Time']."</td>" ;
+                                  
+                                                                                                echo "<td>". $row['Reg_By']."</td>" ;
+                                                                                                
+                                         
       
                                             echo "</tr>";
   }

@@ -220,7 +220,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
+	echo    "<font size='2'>"."welcom ". $seg= $_SESSION['logindata'] . "</font>"       ?></a>
                         
                         	                        
                         

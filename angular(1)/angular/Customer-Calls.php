@@ -19,7 +19,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 2700;
+$inactive = 7700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive; 
 
@@ -69,7 +69,7 @@ $_SESSION['timeout']=time();
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
+		echo    "<font size='2'>"."welcom ". $seg= $_SESSION['logindata'] . "</font>"       ?></a>
                         
                         	                        
                         

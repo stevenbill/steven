@@ -205,7 +205,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
+	echo    "<font size='2'>"."welcom ". $seg= $_SESSION['logindata'] . "</font>"       ?></a>
 
 
 
@@ -563,16 +563,22 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
                                    <div class="panel-body">
 
+  <?php
+                                     include('db_config.php');
+                                     $sql= "SELECT * FROM `Customer`";
+                                     $query = $db->query($sql);
+                                     $data = $query->fetch_assoc();
 
-   <div class="form-group">
-                                        <label class="col-md-3 control-label">Search</label>
-                                        <div class="col-md-9">                                                                                
-                                            <select class="form-control select" data-live-search="true">
-                                                <option>Lorem ipsum dolor</option>
-                                                <option>Sit amet sicors</option>
-                                                <option>Mostoly stofu tiro</option>
-                                                <option>Vico sante fara</option>
-                                                <option>Delomo ponto si</option>
+                                     ?>
+  <div class="form-group">
+                                        <label class="col-md-3 control-label">Phone Number</label>
+                                        <div class="col-md-6">
+                                           
+                                            <select class="form-control select" data-live-search="true" name="PhoneNumber"   id="n1" onchange="sync()"  required>
+                                                 <option value=''></option>
+                                             <?php while($row = $query->fetch_assoc()) { ?>
+  <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
+<?php } ?>
                                             </select>
                                         </div>
                                     </div>

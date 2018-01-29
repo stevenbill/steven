@@ -60,7 +60,7 @@ $_SESSION['timeout']=time();
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
+	echo    "<font size='2'>"."welcom ". $seg= $_SESSION['logindata'] . "</font>"       ?></a>
                         
                         	                        
                         

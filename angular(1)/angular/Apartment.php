@@ -1,5 +1,8 @@
 <?php
 session_start();
+$file3="img.txt";
+@unlink($file3);
+
 date_default_timezone_set("Africa/Cairo");
 /*
 if(!isset($_SERVER['HTTP_REFERER'])){
@@ -19,7 +22,7 @@ exit;
 
 
 // 10 mins in seconds
-$inactive = 2700;
+$inactive = 7700;
 if( !isset($_SESSION['timeout']) )
 $_SESSION['timeout'] = time() + $inactive;
 
@@ -36,49 +39,53 @@ $_SESSION['timeout']=time();
 $seg= $_SESSION['logindata'];
 
 $PhoneNumber =$_POST['PhoneNumber'];
+$Building  =$_POST['Building'];
+$KnownFrom =$_POST['KnownFrom'];
+$DealType =$_POST['DealType'];
+$AptType =$_POST['AptType'];
+$SourceBY =$_POST['SourceBY'];
+$AptView =$_POST['AptView'];
+$Apartmentsm2 =$_POST['Apartmentsm2'];
+$Roomsno  =$_POST['Roomsno'];
+$RoomsViewStreet =$_POST['RoomsViewStreet'];
+$Receptionno =$_POST['Receptionno'];
+$ReceptionViewStreet =$_POST['ReceptionViewStreet'];
+$Bathroomno =$_POST['Bathroomno'];
+$Floor =$_POST['Floor'];
+$FinishingType =$_POST['FinishingType'];
+$Electricmeter  =$_POST['Electricmeter'];
+
+$Gasmeter   =$_POST['Gasmeter'];
+$Watermeter =$_POST['Watermeter'];
+$License =$_POST['License'];
+$PaidType  =$_POST['PaidType'];
+$PriceEGPCash =$_POST['PriceEGPCash'];
 
 
+$PriceEGPInst  =$_POST['PriceEGPInst'];
+$Deposit =$_POST['Deposit'];
+$InstalmentSeq =$_POST['InstalmentSeq'];
+$OutPOS =$_POST['OutPOS'];
+$DurationofRent  =$_POST['DurationofRent'];
+$PriceEGPCash1 =$_POST['PriceEGPCash1'];
+$PriceEGPInst1  =$_POST['PriceEGPInst1'];
+$Deposit1 =$_POST['Deposit1'];
+$Insurance  =$_POST['Insurance'];
+$OutPOS1 =$_POST['OutPOS1'];
+$PictureType =$_POST['PictureType'];
+$Note =$_POST['Note'];
+$ValidationDate =date("d") ;
+$Contracting =$_POST['Contracting'];
 
 $date=date("Y/m/d") ;
 $time=date("h:i:sa") ;
-$Response = $_POST['Response'];
+$x1 =  (int)$PriceEGPCash;
+$x2 =  (int)$Apartmentsm2;
+$calc = $x1 / $x2; 
 
-$Note = $_POST['Note'];
-$Note2 = $_POST['Note2'];
+echo $calc;
 
-$FollowedBy =  $_POST['FollowedBy'];
-
-$Req_Serial= $_POST['Req_Serial'];
-$Apartment= $_POST['Apartment'];
-$Response_Comment = $_POST['Response_Comment'];
-
-$CallType  = $_POST['CallType'];
-
-$CallStatus  = $_POST['CallStatus'];
-$CallRank  = $_POST['CallRank'];
-$FollowStatus  = $_POST['FollowStatus'];
-
-$FollowSchedule  = $_POST['FollowSchedule'];
-
-$Out1  = $_POST['Out1'];
-
-
-$PhoneNumber1 =$_POST['PhoneNumber1'];
-
-
-
-$date=date("Y/m/d") ;
-$time=date("h:i:sa") ;
-$Response = $_POST['Response'];
-
-
-
-
-$Req_Serial= $_POST['Req_Serial'];
-$Apartment= $_POST['Apartment'];
-$Response_Comment = $_POST['Response_Comment'];
-
-
+echo gettype($calc);
 $localhost="localhost";
 $user_db="estasm5_yousry";
 $pass_db="4562008";
@@ -94,13 +101,66 @@ mysql_select_db($db) or die("db selction error ");
 
 if($_POST['send']){
 
-$sql2="INSERT INTO `customerfollow`(PhoneNumber,Reg_By,Time,Date,FollowedBy,CallType,CallStatus,CallRank,FollowStatus,FollowSchedule,Out1,Note) VALUES ('$PhoneNumber','$seg','$time','$date','$FollowedBy','$CallType','$CallStatus','$CallRank','$FollowStatus','$FollowSchedule','$Out1','$Note')";
+   for($i=0; $i<count($_FILES['up']['name']); $i++)
+{
+
+
+$dir=dirname(__FILE__)."/imgesup/";
+$path=$_FILES['up']['tmp_name'][$i];
+$Picture=$_FILES['up']['name'][$i];
+$size=$_FILES['UP']['size'][$i];
+$type=$_FILES['UP']['type'][$i];
+
+$move=move_uploaded_file($path,$dir.$Picture);
+
+
+
+$img=fopen('img.txt', 'a+');
+
+
+    fwrite($img,$Picture);
+       fwrite($img,'&');
+
+    fread($img,10000);
+    fclose($img);
+
+
+
+
+}
+
+
+
+
+$sql2="INSERT INTO `Apartment`(PhoneNumber,Building,KnownFrom,DealType,AptType,SourceBY,AptView,Apartmentsm2,Roomsno,RoomsViewStreet,Receptionno,ReceptionViewStreet,Bathroomno,Floor,FinishingType,Electricmeter,Gasmeter,Watermeter,License,PaidType,PriceEGPCash,PriceEGPInst,Deposit1,InstalmentSeq,OutPOS,DurationofRent,PriceEGPCash1,PriceEGPInst1,Deposit,Insurance,OutPOS1,PictureType,ValidationDate,date,time,Reg_By,Note,Picture,Contracting,calc) VALUES ('$PhoneNumber','$Building','$KnownFrom','$DealType','$AptType','$SourceBY','$AptView','$Apartmentsm2','$Roomsno','$RoomsViewStreet','$Receptionno','$ReceptionViewStreet','$Bathroomno','$Floor','$FinishingType','$Electricmeter','$Gasmeter','$Watermeter','$License','$PaidType','$PriceEGPCash','$PriceEGPInst','$Deposit1','$InstalmentSeq','$OutPOS','$DurationofRent','$PriceEGPCash1','$PriceEGPInst1','$Deposit','$Insurance','$OutPOS1','$PictureType','$ValidationDate','$date','$time','$seg','$Note','$Picture','$Contracting','$calc')";
 
 
 mysql_query($sql2);
 
 
-echo "<script type='text/javascript'>alert('Your data has been sent successfully! ');</script>";
+ $last_insert_id = mysql_insert_id();
+
+
+ $toos=file_get_contents('img.txt');
+
+$too=explode("&",$toos);
+
+foreach ($too as $value) {
+
+   if (!empty($value)){
+
+
+
+
+
+
+    $sql3="INSERT INTO `image`(ID,image) VALUES ('$last_insert_id','$value')";
+
+mysql_query($sql3);
+
+
+}
+
 
 }
 
@@ -108,19 +168,37 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
 
-if($_POST['send1']){
+/*
+$ary[]= $Picture;
 
-$sql3="INSERT INTO `requestfollow`(PhoneNumber,Reg_By,Time,Date,Req_Serial,Apartment,Response,Response_Comment,Note) VALUES ('$PhoneNumber1','$seg','$time','$date','$Req_Serial','$Apartment','$Response','$Response_Comment','$Note2')";
+
+foreach ($ary as $value) {
+
+    echo "$value <br>";
+
+
+ echo "<h1>".$last_insert_id."</h1>";
+    $sql3="INSERT INTO `image`(test_id,image) VALUES ('$last_insert_id','$value')";
+
+
 
 
 mysql_query($sql3);
-$sql2="INSERT INTO `customerfollow`(PhoneNumber,Reg_By,Time,Date,FollowedBy,CallType,CallStatus,CallRank,FollowStatus,FollowSchedule,Out1,Note) VALUES ('$PhoneNumber','$seg','$time','$date','$FollowedBy','$CallType','$CallStatus','$CallRank','$FollowStatus','$FollowSchedule','$Out1','$Note')";
-mysql_query($sql2);
 
+
+}
+*/
 
 echo "<script type='text/javascript'>alert('Your data has been sent successfully! ');</script>";
 
+
+
 }
+
+
+
+
+
 
 
 
@@ -134,7 +212,6 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
 ?>
-
 
 
 
@@ -162,7 +239,250 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
         <!-- CSS INCLUDE -->
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
 
-          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+
+
+
+          </script>
+
+
+
+<script type="text/javascript">
+
+
+ $(function () {
+
+
+
+
+
+
+
+
+            $("#DealType").change(function ()   {
+                if ($("#DealType").val() == "Sell"  ) {
+
+
+              $("#dvPassport2").slideDown(500);
+              /*
+$("#PaidType").attr('disabled', false);
+/*$("#PriceEGPCash").attr('disabled', false);*/
+/*$("#PriceEGPInst").attr('disabled', false);
+$("#Deposit1").attr('disabled', false);
+$("#InstalmentSeq").attr('disabled', false);
+$("#OutPOS").attr('disabled', false);
+$("#PriceEGPCash1").attr('disabled', false); */
+
+
+
+
+
+
+                } else {
+                    $("#dvPassport2").slideUp(1000);
+/*
+              $("#PaidType").attr('disabled', true);
+             /* $("#PriceEGPCash").attr('disabled', true);*/
+              /*
+               $("#PriceEGPInst").attr('disabled', true);
+                $("#Deposit1").attr('disabled', true);
+                $("#InstalmentSeq").attr('disabled', true);
+$("#OutPOS").attr('disabled', true);
+$("#PriceEGPCash1").attr('disabled', true);  */
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+            });
+        });
+
+
+        $(function () {
+
+
+
+
+
+
+
+
+            $("#DealType").change(function ()   {
+                if ($("#DealType").val() == "Rent"  ) {
+
+
+              $("#dvPassport3").slideDown(500);
+              /*
+$("#Deposit1").attr('disabled', false);
+$("#PriceEGPInst").attr('disabled', false);
+/*$("#PriceEGPCash").attr('disabled', false);*/
+
+
+
+
+
+                } else {
+
+                    $("#dvPassport3").slideUp(1000);
+/*
+              $("#Deposit1").attr('disabled', true);
+              $("#PriceEGPInst").attr('disabled', true);
+
+               $("#PriceEGPInst").attr('disabled', true);
+              /*  $("#PriceEGPCash").attr('disabled', true); */
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+            });
+        });
+
+
+        /************************************************************************************/
+
+
+
+ $(function () {
+
+
+
+
+
+
+
+
+            $("#PaidType").change(function ()   {
+                if ($("#PaidType").val() == "Instalment" || $("#PaidType").val() == "Both" ) {
+
+
+
+             $("#dvPassport23").slideDown(500);
+             /*
+$("#PriceEGPInst1").attr('disabled', false);
+$("#DurationofRent").attr('disabled', false);
+$("#Deposit").attr('disabled', false);
+$("#Insurance").attr('disabled', false);
+$("#OutPOS1").attr('disabled', false);*/
+
+
+
+
+                } else {
+
+                    $("#dvPassport23").slideUp(1000);
+/*
+            $("#PriceEGPInst1").attr('disabled', true);
+            $("#DurationofRent").attr('disabled', true);
+            $("#Deposit").attr('disabled', true);
+            $("#Insurance").attr('disabled', true);
+$("#OutPOS1").attr('disabled', true);
+/*
+$("#Deposit").attr('disabled', true);
+$("#Insurance").attr('disabled', true);
+$("#OutPOS1").attr('disabled', true);
+
+$("#DurationofRent").attr('disabled', true);
+$("#OutPOS1").attr('disabled', true); */
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
 
 
 
@@ -526,7 +846,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                     <div class="row">
                         <div class="col-md-12">
 
-                            <form class="form-horizontal" method="post" action='Building.php' >
+                            <form class="form-horizontal" method="post" action='Apartment.php'  enctype="multipart/form-data" >
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Request/</strong> Form</h3>
@@ -539,26 +859,6 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                 </div>
 
                                    <div class="panel-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -577,20 +877,24 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                      ?>
 
 
-                                             <p>   <div class="form-group">
-                                                                           <label class="col-md-3 col-xs-12 control-label">Phone Number</label>
-                                                                           <div class="col-md-6 col-xs-12">
+                                             <p>     <div class="form-group">
+                                        <label class="col-md-3 control-label">Phone Number</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control select" data-live-search="true" name="PhoneNumber"   id="n1" onchange="sync()"  >
+                                                <option></option>
+                                             <?php while($row = $query->fetch_assoc()) { ?>
 
-                                     <select class="form-control " name="PhoneNumber"  id="n1" onclick="sync()"  required>
-                                     <option> </option>
-                                     <?php while($row = $query->fetch_assoc()) { ?>
-                                     <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
-                                     <?php } ?>
-                                     </select>
-                                     </div>
-                                     </div></p>
+  <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
+<?php } ?>
+                                            </select>
+                                        </div>
+                                    </div></p>
 
                                      <br>
+
+
+
+
 
 
 
@@ -602,27 +906,38 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
   <?php
                                      include('db_config.php');
-                                     $sql= "SELECT * FROM `Customer`";
+                                     $sql= "SELECT * FROM `Building1`";
                                      $query = $db->query($sql);
                                      $data = $query->fetch_assoc();
 
                                      ?>
 
 
-                                             <p>   <div class="form-group">
-                                                                           <label class="col-md-3 col-xs-12 control-label">Building</label>
-                                                                           <div class="col-md-6 col-xs-12">
-
-                                     <select class="form-control " name="Building"  id="n1" onclick="sync()"  required>
-                                     <option> </option>
-                                     <?php while($row = $query->fetch_assoc()) { ?>
-                                     <option  value="<?php echo $row['Mobile01']; ?>"><?php echo $row['Mobile01']; ?> </option>
-                                     <?php } ?>
-                                     </select>
-                                     </div>
-                                     </div></p>
+                                             <p>     <div class="form-group">
+                                        <label class="col-md-3 control-label">Building</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control select" data-live-search="true" name="Building"   id="n1" onchange="sync()"  >
+                                                   <option></option>
+                                             <?php while($row = $query->fetch_assoc()) { ?>
+  <option  value="<?php echo $row['Bui_Serial']; ?>"><?php echo $row['Bui_Serial']; ?> </option>
+<?php } ?>
+                                            </select>
+                                        </div>
+                                    </div></p>
 
                                      <br>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -638,9 +953,9 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                               <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Known From</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="KnownFrom" required  >
+                                                                                 <select class="form-control " name="KnownFrom"   >
                                                                                      <option> </option>
-                                                                                   
+
 
    <option value="Ext. Websites">Ext. Websites</option>
    <option value="External Source">External Source</option>
@@ -664,13 +979,13 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                           <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Deal Type</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="DealType" required >
+                                                                                 <select class="form-control " name="DealType" id='DealType' >
                                                                                      <option> </option>
                                                                                      <option value="Sell"> Sell
 </option>
                                                                                          <option value="Rent"> Rent
 </option>
-                                                                                        
+
 
 
                                                                                  </select>
@@ -682,10 +997,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                             <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">AptType</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="AptType" required id='AptType' >
+                                                                                 <select class="form-control " name="AptType"  id='AptType' >
                                                                                      <option> </option>
                                                                                      <option value="شقة"> شقة</option>
-                                                                                        
+
 
 
 
@@ -706,9 +1021,9 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                               <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label"> Source BY</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name=" SourceBY" required id='CallStatus' >
+                                                                                 <select class="form-control " name=" SourceBY"  id='SourceBY' >
                                                                                      <option> </option>
-                                                                                     
+
 <option value="Ahmed Hani"> Ahmed Hani</option>
 <option value="Raghda Ahmed">Raghda Ahmed</option>
 <option value="Social Media">Social Media</option>
@@ -730,13 +1045,13 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                          <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label"> Apt.View</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name=" AptView" required>
+                                                                                 <select class="form-control " name=" AptView" >
                                                                                      <option> </option>
  <option value="قبلي">قبلي</option>
  <option value="بحري">بحري</option>
  <option value="كلاهما">كلاهما</option>
 
-                                                                                       
+
 
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
@@ -747,10 +1062,10 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                          <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Apartments m2</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Apartmentsm2" id='FollowStatus' required >
+                                                                                 <select class="form-control " name="Apartmentsm2" id='FollowStatus'  >
                                                                                      <option> </option>
 
-                                                                                             
+
  <option value="50"> 50</option>
  <option value="60">60</option>
  <option value="70">70</option>
@@ -812,7 +1127,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                          <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Rooms no</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name=" Roomsno" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name=" Roomsno" id='FollowSchedule'  >
                                                                                      <option> </option>
 
                                                                                           <option value="1"> 1</option>
@@ -824,7 +1139,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                 <option value="7"> 7</option>
                                                 <option value="8"> 8</option>
                                                 <option value="9"> 9</option>
-                                              
+
                                                 <option value="10"> 10</option>
                                                 <option value="11"> 11</option>
                                                 <option value="12"> 12</option>
@@ -843,12 +1158,12 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
                                                                          </div>
-                                                                         
-                                                                         
+
+
                                                                           <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Rooms View/Street</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name=" RoomsView/Street" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name=" RoomsViewStreet"   >
                                                                                      <option> </option>
 
                                                                                                                                              <option value="1"> 1</option>
@@ -860,7 +1175,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                 <option value="7"> 7</option>
                                                 <option value="8"> 8</option>
                                                 <option value="9"> 9</option>
-                                              
+
                                                 <option value="10"> 10</option>
                                                 <option value="11"> 11</option>
                                                 <option value="12"> 12</option>
@@ -882,12 +1197,12 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                              </div>
                                                                          </div>
 
-   
-                                                                       
+
+
                                                                           <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Reception no</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Receptionno." id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Receptionno"  >
                                                                                      <option> </option>
                                                   <option value="1"> 1</option>
                                                 <option value="2"> 2</option>
@@ -898,7 +1213,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                 <option value="7"> 7</option>
                                                 <option value="8"> 8</option>
                                                 <option value="9"> 9</option>
-                                              
+
                                                 <option value="10"> 10</option>
                                                 <option value="11"> 11</option>
                                                 <option value="12"> 12</option>
@@ -918,38 +1233,19 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Reception View/Street</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="ReceptionView/Street" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="ReceptionViewStreet" id='FollowSchedule'  >
                                                                                      <option> </option>
 
-                                                                                       <option value="1"> 1</option>
-                                                <option value="2"> 2</option>
-                                                <option value="3"> 3</option>
-                                                <option value="4"> 4</option>
-                                                <option value="5"> 5</option>
-                                                <option value="6"> 6</option>
-                                                <option value="7"> 7</option>
-                                                <option value="8"> 8</option>
-                                                <option value="9"> 9</option>
-                                              
-                                                <option value="10"> 10</option>
-                                                <option value="11"> 11</option>
-                                                <option value="12"> 12</option>
-                                                <option value="13"> 13</option>
-                                                <option value="14"> 14</option>
-                                                <option value="15"> 15</option>
-                                                <option value="16"> 16</option>
-                                                 <option value="17"> 17</option>
-                                                  <option value="18"> 18</option>
-                                                   <option value="19"> 19</option>
-                                                    <option value="20"> 20</option>
-
+                                                                                       <option value="Apt.View"> Apt.View</option>
+                                                                                       <option value="List"> List</option>
+                                             
 
 
 
@@ -958,14 +1254,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Bathroom no</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Bathroomno" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Bathroomno" id='FollowSchedule'  >
                                                                                      <option> </option>
  <option value="1"> 1</option>
                                                 <option value="2"> 2</option>
@@ -976,7 +1272,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                 <option value="7"> 7</option>
                                                 <option value="8"> 8</option>
                                                 <option value="9"> 9</option>
-                                              
+
                                                 <option value="10"> 10</option>
                                                 <option value="11"> 11</option>
                                                 <option value="12"> 12</option>
@@ -996,14 +1292,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Floor</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Floor" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Floor"  >
                                                                                      <option> </option>
  <option value="1"> 1</option>
                                                 <option value="2"> 2</option>
@@ -1014,7 +1310,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                 <option value="7"> 7</option>
                                                 <option value="8"> 8</option>
                                                 <option value="9"> 9</option>
-                                              
+
                                                 <option value="10"> 10</option>
                                                 <option value="11"> 11</option>
                                                 <option value="12"> 12</option>
@@ -1034,57 +1330,20 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                           <div class="form-group">
-                                                                             <label class="col-md-3 col-xs-12 control-label">Rooms View/Street</label>
-                                                                             <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name=" RoomsView/Street" id='FollowSchedule' required >
-                                                                                     <option> </option>
-
-                                                                                   <option value="1"> 1</option>
-                                                <option value="2"> 2</option>
-                                                <option value="3"> 3</option>
-                                                <option value="4"> 4</option>
-                                                <option value="5"> 5</option>
-                                                <option value="6"> 6</option>
-                                                <option value="7"> 7</option>
-                                                <option value="8"> 8</option>
-                                                <option value="9"> 9</option>
-                                              
-                                                <option value="10"> 10</option>
-                                                <option value="11"> 11</option>
-                                                <option value="12"> 12</option>
-                                                <option value="13"> 13</option>
-                                                <option value="14"> 14</option>
-                                                <option value="15"> 15</option>
-                                                <option value="16"> 16</option>
-                                                 <option value="17"> 17</option>
-                                                  <option value="18"> 18</option>
-                                                   <option value="19"> 19</option>
-                                                    <option value="20"> 20</option>
+                                                                         </div>
 
 
 
 
 
 
-                                                                                 </select>
-                                                                                 <span  class ="error">Select box example</span>
-                                                                             </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Finishing Type</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="FinishingType" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="FinishingType" >
                                                                                      <option> </option>
 
-                                                                                              
+
 <option value="تحت الأنشاء<">تحت الأنشاء</option>
 <option value="على الطوب<">على الطوب</option>
 <option value="عادي">عادي</option>
@@ -1099,14 +1358,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Electric meter</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Electricmeter" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Electricmeter" >
                                                                                      <option> </option>
 
                                                                                               <option value="Yes"> Yes</option>
@@ -1119,14 +1378,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Rooms View/Street</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name=" RoomsView/Street" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="RoomsViewStreet"  >
                                                                                      <option> </option>
 
                                                                                                                      <option value="1"> 1</option>
@@ -1138,7 +1397,7 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                 <option value="7"> 7</option>
                                                 <option value="8"> 8</option>
                                                 <option value="9"> 9</option>
-                                              
+
                                                 <option value="10"> 10</option>
                                                 <option value="11"> 11</option>
                                                 <option value="12"> 12</option>
@@ -1159,14 +1418,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Gas meter</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Gasmetr" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Gasmeter"  >
                                                                                      <option> </option>
 
                                                                                               <option value="Yes"> Yes</option>
@@ -1178,14 +1437,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Water meter</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Watermeter" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Watermeter"  >
                                                                                      <option> </option>
 
                                                                                               <option value="yes"> yes</option>
@@ -1199,14 +1458,14 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">License</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="License" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="License">
                                                                                      <option> </option>
 
                                                                                               <option value="Yes"> Yes</option>
@@ -1218,14 +1477,17 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
+                                                                         </div>
+
+
+                                                                      <!-----------------show sell---------------------->
+
+                                                                       <div id="dvPassport2" style="display: none">
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Paid Type</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="PaidType" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="PaidType" id='PaidType' >
                                                                                      <option> </option>
 <option value="Cash">Cash</option>
 <option value="Instalment">Instalment</option>
@@ -1236,14 +1498,317 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                           <div class="form-group">
+                                                                         </div>
+
+
+
+
+
+ <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Price EGP (Cash)</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="PriceEGP(Cash)" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="PriceEGPCash"  id='PriceEGPCash' >
+                                                                                     <option> </option>
+
+<option value='100000'> 100000</option>
+<option value='150,000'>150000</option>
+<option value='200,000'>200,000</option>
+<option value='250,000'>250,000</option>
+<option value='300,000'>300,000</option>
+<option value='350,000'>350,000</option>
+<option value='400,000'>400,000</option>
+<option value='450,000'>450,000</option>
+<option value='500,000'>500,000</option>
+<option value='550,000'>550,000</option>
+<option value='600,000'>600,000</option>
+<option value='6500,000'>650,000</option>
+<option value='700,000'>700,000</option>
+<option value='750,000'>750,000</option>
+<option value='800,000'>800,000</option>
+<option value='850,000'>850,000</option>
+<option value='900,000'>900,000</option>
+<option value='950,000'>950,000</option>
+<option value='1,000,000'>1,000,000</option>
+<option value='1,050,000'>1,050,000</option>
+<option value='1,100,000'>1,100,000</option>
+<option value='1,150,000'>1,150,000</option>
+<option value='1,200,000'>1,200,000</option>
+<option value='1,250,000'>1,250,000</option>
+<option value='1,300,000'>1,300,000</option>
+<option value='1,350,000'>1,350,000</option>
+<option value='1,400,000'>1,400,000</option>
+<option value='1,450,000'>1,450,000</option>
+<option value='1,450,000'>1,500,000</option>
+
+<option value='1,550,000'>1,550,000</option>
+<option value='1,600,000'>1,600,000</option>
+<option value='1,650,000'>1,650,000</option>
+<option value='1,700,000'>1,700,000</option>
+<option value='1,750,000'>1,750,000</option>
+<option value='1,800,000'>1,800,000</option>
+<option value='1,800,000'>1,850,000</option>
+<option value='1,900,000'>1,900,000</option>
+<option value='1,950,000'>1,950,000</option>
+<option value='2,000,000'>2,000,000</option>
+<option value='2,050,000'>2,050,000</option>
+<option value='2,100,000'>2,100,000</option>
+<option value='2,150,000'>2,150,000</option>
+<option value='2,200,000'>2,200,000</option>
+<option value='2,250,000'>2,250,000</option>
+<option value='2,300,000'>2,300,000</option>
+<option value='2,350,000'>2,350,000</option>
+<option value='2,400,000'>2,400,000</option>
+<option value='2,450,000'>2,450,000</option>
+<option value='2,500,000'>2,500,000</option>
+<option value='2,550,000'>2,550,000</option>
+<option value='2,600,000'>2,600,000</option>
+<option value='2,6500,000'>2,650,000</option>
+<option value='2,700,000'>2,700,000</option>
+<option value='2,750,000'>2,750,000</option>
+<option value='2,800,000'>2,800,000</option>
+<option value='2,850,000'>2,850,000</option>
+<option value='2,900,000'>2,900,000</option>
+<option value='2,950,000'>2,950,000</option>
+<option value='3,000,000'>3,000,000</option>
+<option value='3,050,000'>3,050,000</option>
+<option value='3,100,000'>3,100,000</option>
+<option value='3,150,000'>3,150,000</option>
+<option value='3,200,000'>3,200,000</option>
+<option value='3,250,000'>3,250,000</option>
+<option value='3,300,000'>3,300,000</option>
+<option value='3,350,000'>3,350,000</option>
+<option value='3,400,000'>3,400,000</option>
+<option value='3,450,000'>3,450,000</option>
+<option value='3,500,000'>3,500,000</option>
+<option value='3,550,000'>3,550,000</option>
+
+<option value='3,600,000'>3,600,000</option>
+<option value='3,650,000'>3,650,000</option>
+<option value='3,700,000'>3,700,000</option>
+<option value='3,750,000'>3,750,000</option>
+<option value='3,800,000'>3,800,000</option>
+<option value='3,850,000'>3,850,000</option>
+<option value='3,900,000'>3,900,000</option>
+<option value='3,950,000'>3,950,000</option>
+<option value='4,000,000'>4,000,000</option>
+<option value='4,050,000'>4,050,000</option>
+<option value='4,100,000'>4,100,000</option>
+<option value='4,150,000'>4,150,000</option>
+<option value='4,200,000'>4,200,000</option>
+<option value='4,250,000'>4,250,000</option>
+<option value='4,300,000'>4,300,000</option>
+<option value='4,350,000'>4,350,000</option>
+<option value='4,400,000'>4,400,000</option>
+<option value='4,450,000'>4,450,000</option>
+<option value='4,500,000'>4,500,000</option>
+<option value='4,550,000'>4,550,000</option>
+<option value='4,600,000'>4,600,000</option>
+<option value='4,650,000'>4,650,000</option>
+<option value='4,700,000'>4,700,000</option>
+<option value='4,700,000'>4,750,000</option>
+<option value='4,800,000'>4,800,000</option>
+<option value='4,850,000'>4,850,000</option>
+<option value='4,900,000'>4,900,000</option>
+<option value='4,950,000'>4,950,000</option>
+<option value='5,000,000'>5,000,000</option>
+<option value='more 5,000,0000'>more 5,000,0000</option>
+
+
+
+                                                                                 </select>
+                                                                                 <span  class ="error">Select box example</span>
+                                                                             </div>
+                                                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <div id="dvPassport23" style="display: none">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                            <div class="form-group">
+                                                                             <label class="col-md-3 col-xs-12 control-label">Price EGP (Inst.)</label>
+                                                                             <div class="col-md-6 col-xs-12">
+                                                                                 <select class="form-control " name="PriceEGPInst" id='PriceEGPInst' >
+                                                                                     <option> </option>
+
+
+<option value='100,000'> 100,000</option>
+<option value='150,000'>150,000</option>
+<option value='200,000'>200,000</option>
+<option value='250,000'>250,000</option>
+<option value='300,000'>300,000</option>
+<option value='350,000'>350,000</option>
+<option value='400,000'>400,000</option>
+<option value='450,000'>450,000</option>
+<option value='500,000'>500,000</option>
+<option value='550,000'>550,000</option>
+<option value='600,000'>600,000</option>
+<option value='6500,000'>650,000</option>
+<option value='700,000'>700,000</option>
+<option value='750,000'>750,000</option>
+<option value='800,000'>800,000</option>
+<option value='850,000'>850,000</option>
+<option value='900,000'>900,000</option>
+<option value='950,000'>950,000</option>
+<option value='1,000,000'>1,000,000</option>
+<option value='1,050,000'>1,050,000</option>
+<option value='1,100,000'>1,100,000</option>
+<option value='1,150,000'>1,150,000</option>
+<option value='1,200,000'>1,200,000</option>
+<option value='1,250,000'>1,250,000</option>
+<option value='1,300,000'>1,300,000</option>
+<option value='1,350,000'>1,350,000</option>
+<option value='1,400,000'>1,400,000</option>
+<option value='1,450,000'>1,450,000</option>
+<option value='1,450,000'>1,500,000</option>
+
+<option value='1,550,000'>1,550,000</option>
+<option value='1,600,000'>1,600,000</option>
+<option value='1,650,000'>1,650,000</option>
+<option value='1,700,000'>1,700,000</option>
+<option value='1,750,000'>1,750,000</option>
+<option value='1,800,000'>1,800,000</option>
+<option value='1,800,000'>1,850,000</option>
+<option value='1,900,000'>1,900,000</option>
+<option value='1,950,000'>1,950,000</option>
+<option value='2,000,000'>2,000,000</option>
+<option value='2,050,000'>2,050,000</option>
+<option value='2,100,000'>2,100,000</option>
+<option value='2,150,000'>2,150,000</option>
+<option value='2,200,000'>2,200,000</option>
+<option value='2,250,000'>2,250,000</option>
+<option value='2,300,000'>2,300,000</option>
+<option value='2,350,000'>2,350,000</option>
+<option value='2,400,000'>2,400,000</option>
+<option value='2,450,000'>2,450,000</option>
+<option value='2,500,000'>2,500,000</option>
+<option value='2,550,000'>2,550,000</option>
+<option value='2,600,000'>2,600,000</option>
+<option value='2,6500,000'>2,650,000</option>
+<option value='2,700,000'>2,700,000</option>
+<option value='2,750,000'>2,750,000</option>
+<option value='2,800,000'>2,800,000</option>
+<option value='2,850,000'>2,850,000</option>
+<option value='2,900,000'>2,900,000</option>
+<option value='2,950,000'>2,950,000</option>
+<option value='3,000,000'>3,000,000</option>
+<option value='3,050,000'>3,050,000</option>
+<option value='3,100,000'>3,100,000</option>
+<option value='3,150,000'>3,150,000</option>
+<option value='3,200,000'>3,200,000</option>
+<option value='3,250,000'>3,250,000</option>
+<option value='3,300,000'>3,300,000</option>
+<option value='3,350,000'>3,350,000</option>
+<option value='3,400,000'>3,400,000</option>
+<option value='3,450,000'>3,450,000</option>
+<option value='3,500,000'>3,500,000</option>
+<option value='3,550,000'>3,550,000</option>
+
+<option value='3,600,000'>3,600,000</option>
+<option value='3,650,000'>3,650,000</option>
+<option value='3,700,000'>3,700,000</option>
+<option value='3,750,000'>3,750,000</option>
+<option value='3,800,000'>3,800,000</option>
+<option value='3,850,000'>3,850,000</option>
+<option value='3,900,000'>3,900,000</option>
+<option value='3,950,000'>3,950,000</option>
+<option value='4,000,000'>4,000,000</option>
+<option value='4,050,000'>4,050,000</option>
+<option value='4,100,000'>4,100,000</option>
+<option value='4,150,000'>4,150,000</option>
+<option value='4,200,000'>4,200,000</option>
+<option value='4,250,000'>4,250,000</option>
+<option value='4,300,000'>4,300,000</option>
+<option value='4,350,000'>4,350,000</option>
+<option value='4,400,000'>4,400,000</option>
+<option value='4,450,000'>4,450,000</option>
+<option value='4,500,000'>4,500,000</option>
+<option value='4,550,000'>4,550,000</option>
+<option value='4,600,000'>4,600,000</option>
+<option value='4,650,000'>4,650,000</option>
+<option value='4,700,000'>4,700,000</option>
+<option value='4,700,000'>4,750,000</option>
+<option value='4,800,000'>4,800,000</option>
+<option value='4,850,000'>4,850,000</option>
+<option value='4,900,000'>4,900,000</option>
+<option value='4,950,000'>4,950,000</option>
+<option value='5,000,000'>5,000,000</option>
+<option value='more 5,000,0000'>more 5,000,0000</option>
+
+
+
+                                                                                 </select>
+                                                                                 <span  class ="error">Select box example</span>
+                                                                             </div>
+                                                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                           <div class="form-group">
+                                                                             <label class="col-md-3 col-xs-12 control-label">Deposit</label>
+                                                                             <div class="col-md-6 col-xs-12">
+                                                                                 <select class="form-control " name="Deposit1" id='Deposit1'  >
                                                                                      <option> </option>
 
 <option value='100,000'> 100,000</option>
@@ -1256,190 +1821,119 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 <option value='450,000'>450,000</option>
 <option value='500,000'>500,000</option>
 <option value='550,000'>550,000</option>
-<option value='600,000'>600,000</option> 
-<option value='6500,000'>650,000</option> 
-<option value='700,000'>700,000</option> 
-<option value='750,000'>750,000</option> 
-<option value='800,000'>800,000</option> 
-<option value='850,000'>850,000</option> 
-<option value='900,000'>900,000</option> 
-<option value='950,000'>950,000</option> 
-<option value='1,000,000'>1,000,000</option> 
-<option value='1,050,000'>1,050,000</option> 
-<option value='1,100,000'>1,100,000</option> 
-<option value='1,150,000'>1,150,000</option> 
-<option value='1,200,000'>1,200,000</option> 
-<option value='1,250,000'>1,250,000</option> 
-<option value='1,300,000'>1,300,000</option> 
-<option value='1,350,000'>1,350,000</option> 
-<option value='1,400,000'>1,400,000</option> 
-<option value='1,450,000'>1,450,000</option> 
-<option value='1,450,000'>1,500,000</option> 
+<option value='600,000'>600,000</option>
+<option value='6500,000'>650,000</option>
+<option value='700,000'>700,000</option>
+<option value='750,000'>750,000</option>
+<option value='800,000'>800,000</option>
+<option value='850,000'>850,000</option>
+<option value='900,000'>900,000</option>
+<option value='950,000'>950,000</option>
+<option value='1,000,000'>1,000,000</option>
+<option value='1,050,000'>1,050,000</option>
+<option value='1,100,000'>1,100,000</option>
+<option value='1,150,000'>1,150,000</option>
+<option value='1,200,000'>1,200,000</option>
+<option value='1,250,000'>1,250,000</option>
+<option value='1,300,000'>1,300,000</option>
+<option value='1,350,000'>1,350,000</option>
+<option value='1,400,000'>1,400,000</option>
+<option value='1,450,000'>1,450,000</option>
+<option value='1,450,000'>1,500,000</option>
 
-<option value='1,550,000'>1,550,000</option> 
-<option value='1,600,000'>1,600,000</option> 
-<option value='1,650,000'>1,650,000</option> 
-<option value='1,700,000'>1,700,000</option> 
-<option value='1,750,000'>1,750,000</option> 
-<option value='1,800,000'>1,800,000</option> 
-<option value='1,800,000'>1,850,000</option> 
-<option value='1,900,000'>1,900,000</option> 
-<option value='1,950,000'>1,950,000</option> 
-<option value='2,000,000'>2,000,000</option> 
-<option value='2,050,000'>2,050,000</option> 
-<option value='2,100,000'>2,100,000</option> 
-<option value='2,150,000'>2,150,000</option> 
-<option value='2,200,000'>2,200,000</option> 
-<option value='2,250,000'>2,250,000</option> 
-<option value='2,300,000'>2,300,000</option> 
-<option value='2,350,000'>2,350,000</option> 
-<option value='2,400,000'>2,400,000</option> 
-<option value='2,450,000'>2,450,000</option> 
-<option value='2,500,000'>2,500,000</option> 
-<option value='2,550,000'>2,550,000</option> 
-<option value='2,600,000'>2,600,000</option> 
-<option value='2,6500,000'>2,650,000</option> 
-<option value='2,700,000'>2,700,000</option> 
-<option value='2,750,000'>2,750,000</option> 
-<option value='2,800,000'>2,800,000</option> 
-<option value='2,850,000'>2,850,000</option> 
-<option value='2,900,000'>2,900,000</option> 
-<option value='2,950,000'>2,950,000</option> 
-<option value='3,000,000'>3,000,000</option> 
-<option value='3,050,000'>3,050,000</option> 
-<option value='3,100,000'>3,100,000</option> 
-<option value='3,150,000'>3,150,000</option> 
-<option value='3,200,000'>3,200,000</option> 
-<option value='3,250,000'>3,250,000</option> 
-<option value='3,300,000'>3,300,000</option> 
-<option value='3,350,000'>3,350,000</option> 
-<option value='3,400,000'>3,400,000</option> 
-<option value='3,450,000'>3,450,000</option> 
-<option value='3,500,000'>3,500,000</option> 
-<option value='3,550,000'>3,550,000</option> 
+<option value='1,550,000'>1,550,000</option>
+<option value='1,600,000'>1,600,000</option>
+<option value='1,650,000'>1,650,000</option>
+<option value='1,700,000'>1,700,000</option>
+<option value='1,750,000'>1,750,000</option>
+<option value='1,800,000'>1,800,000</option>
+<option value='1,800,000'>1,850,000</option>
+<option value='1,900,000'>1,900,000</option>
+<option value='1,950,000'>1,950,000</option>
+<option value='2,000,000'>2,000,000</option>
+<option value='2,050,000'>2,050,000</option>
+<option value='2,100,000'>2,100,000</option>
+<option value='2,150,000'>2,150,000</option>
+<option value='2,200,000'>2,200,000</option>
+<option value='2,250,000'>2,250,000</option>
+<option value='2,300,000'>2,300,000</option>
+<option value='2,350,000'>2,350,000</option>
+<option value='2,400,000'>2,400,000</option>
+<option value='2,450,000'>2,450,000</option>
+<option value='2,500,000'>2,500,000</option>
+<option value='2,550,000'>2,550,000</option>
+<option value='2,600,000'>2,600,000</option>
+<option value='2,6500,000'>2,650,000</option>
+<option value='2,700,000'>2,700,000</option>
+<option value='2,750,000'>2,750,000</option>
+<option value='2,800,000'>2,800,000</option>
+<option value='2,850,000'>2,850,000</option>
+<option value='2,900,000'>2,900,000</option>
+<option value='2,950,000'>2,950,000</option>
+<option value='3,000,000'>3,000,000</option>
+<option value='3,050,000'>3,050,000</option>
+<option value='3,100,000'>3,100,000</option>
+<option value='3,150,000'>3,150,000</option>
+<option value='3,200,000'>3,200,000</option>
+<option value='3,250,000'>3,250,000</option>
+<option value='3,300,000'>3,300,000</option>
+<option value='3,350,000'>3,350,000</option>
+<option value='3,400,000'>3,400,000</option>
+<option value='3,450,000'>3,450,000</option>
+<option value='3,500,000'>3,500,000</option>
+<option value='3,550,000'>3,550,000</option>
 
-<option value='3,600,000'>3,600,000</option> 
-<option value='3,650,000'>3,650,000</option> 
-<option value='3,700,000'>3,700,000</option> 
+<option value='3,600,000'>3,600,000</option>
+<option value='3,650,000'>3,650,000</option>
+<option value='3,700,000'>3,700,000</option>
 <option value='3,750,000'>3,750,000</option>
-<option value='3,800,000'>3,800,000</option> 
-<option value='3,850,000'>3,850,000</option> 
-<option value='3,900,000'>3,900,000</option> 
-<option value='3,950,000'>3,950,000</option> 
-<option value='4,000,000'>4,000,000</option> 
-<option value='4,050,000'>4,050,000</option> 
-<option value='4,100,000'>4,100,000</option> 
-<option value='4,150,000'>4,150,000</option> 
-<option value='4,200,000'>4,200,000</option> 
-<option value='4,250,000'>4,250,000</option> 
-<option value='4,300,000'>4,300,000</option> 
-<option value='4,350,000'>4,350,000</option> 
-<option value='4,400,000'>4,400,000</option> 
-<option value='4,450,000'>4,450,000</option> 
-<option value='4,500,000'>4,500,000</option> 
-<option value='4,550,000'>4,550,000</option> 
-<option value='4,600,000'>4,600,000</option> 
-<option value='4,650,000'>4,650,000</option> 
-<option value='4,700,000'>4,700,000</option> 
-<option value='4,700,000'>4,750,000</option> 
-<option value='4,800,000'>4,800,000</option> 
-<option value='4,850,000'>4,850,000</option> 
-<option value='4,900,000'>4,900,000</option> 
-<option value='4,950,000'>4,950,000</option> 
-<option value='5,000,000'>5,000,000</option> 
-<option value='more 5,000,0000'>more 5,000,0000</option> 
-                             
-
-
-                                                                                 </select>
-                                                                                 <span  class ="error">Select box example</span>
-                                                                             </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                           <div class="form-group">
-                                                                             <label class="col-md-3 col-xs-12 control-label">Price EGP (Inst.)</label>
-                                                                             <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="PriceEGP(Inst.)" id='FollowSchedule' required >
-                                                                                     <option> </option>
-
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
-
+<option value='3,800,000'>3,800,000</option>
+<option value='3,850,000'>3,850,000</option>
+<option value='3,900,000'>3,900,000</option>
+<option value='3,950,000'>3,950,000</option>
+<option value='4,000,000'>4,000,000</option>
+<option value='4,050,000'>4,050,000</option>
+<option value='4,100,000'>4,100,000</option>
+<option value='4,150,000'>4,150,000</option>
+<option value='4,200,000'>4,200,000</option>
+<option value='4,250,000'>4,250,000</option>
+<option value='4,300,000'>4,300,000</option>
+<option value='4,350,000'>4,350,000</option>
+<option value='4,400,000'>4,400,000</option>
+<option value='4,450,000'>4,450,000</option>
+<option value='4,500,000'>4,500,000</option>
+<option value='4,550,000'>4,550,000</option>
+<option value='4,600,000'>4,600,000</option>
+<option value='4,650,000'>4,650,000</option>
+<option value='4,700,000'>4,700,000</option>
+<option value='4,700,000'>4,750,000</option>
+<option value='4,800,000'>4,800,000</option>
+<option value='4,850,000'>4,850,000</option>
+<option value='4,900,000'>4,900,000</option>
+<option value='4,950,000'>4,950,000</option>
+<option value='5,000,000'>5,000,000</option>
+<option value='more 5,000,0000'>more 5,000,0000</option>
 
 
 
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                           <div class="form-group">
-                                                                             <label class="col-md-3 col-xs-12 control-label">Deposit</label>
-                                                                             <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Deposit" id='FollowSchedule' required >
-                                                                                     <option> </option>
+                                                                         </div>
 
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
-
-
-
-
-                                                                                 </select>
-                                                                                 <span  class ="error">Select box example</span>
-                                                                             </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                           <div class="form-group">
+                                                                                              <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Instalment Seq.</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="InstalmentSeq" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="InstalmentSeq" id='InstalmentSeq' >
                                                                                      <option> </option>
-
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
+<option value="Low 3 Mont"> Low 3 Month</option>
+<option value="3 Month - 6 Month"> 3 Month - 6 Month</option>
+<option value="6 Month - 12 Month"> 6 Month - 12 Month</option>
+<option value="12 Month - 18 Month"> 12 Month - 18 Month</option>
+<option value="18 Month - 24 Month"> 18 Month - 24 Month</option>
+<option value=" 24 Month - 30 Month"> 24 Month - 30 Month</option>
+<option value=" 30 Month - 36 Month"> 30 Month - 36 Month</option>
+<option value=" More 36 Month"> More 36 Month</option>
 
 
 
@@ -1447,30 +1941,31 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                           <div class="form-group">
+                                                                         </div>
+
+
+
+                 <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Out-POS</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Out-POS" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="OutPOS" id='OutPOS'  >
                                                                                      <option> </option>
 
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
 
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
+ <option value="0.50%">0.50%</option>
+<option value="1.00%">1.00% </option>
+<option value="1.50%">1.50%</option>
+<option value=">2.00%">2.00%</option>
+<option value="2.50%">2.50%</option>
+<option value="3.00%">3.00%</option>
+<option value="3.50%">3.50%</option>
+<option value="4.00%">4.00%</option>
+<option value="4.50%">4.50%</option>
+<option value="5.00%">5.00%</option>
+<option value="5.50%">5.50%</option>
+<option value="6.00%">6.00%</option>
+<option value="6.50%">6.50%</option>
+<option value="7.00%">7.00%</option>
 
 
 
@@ -1478,30 +1973,55 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                               
-                                                                           <div class="form-group">
+                                                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+         <div id="dvPassport3" style="display: none">
+
+
+                                      <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Duration of Rent</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="DurationofRent" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="DurationofRent" id='DurationofRent'  >
                                                                                      <option> </option>
 
                                                                                               <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
+   <option value="Month"> Month</option>
+ <option value="Three Month">Three Month</option>
+ <option value="Six Month">Six Month</option>
+ <option value="Year">Year</option>
+ <option value=">Two Years">Two Years</option>
+ <option value="Three Years">Three Years</option>
+ <option value="Four Years">Four Years</option>
+ <option value="Five Years">Five Years</option>
+ <option value="More Than Five Years">More Than Five Years</option>
 
 
 
@@ -1510,28 +2030,63 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                               
-                                                                           <div class="form-group">
+                                                                         </div>
+
+
+
+
+
+
+
+                                    <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Price EGP (Cash)</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="PriceEGP(Cash)" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="PriceEGPCash1" id='PriceEGPCash1'  >
                                                                                      <option> </option>
 
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
 
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
+  <option value="Less Than 500"> Less Than 500</option>
+  <option value="500">500 </option>
+  <option value="1,000 ">1,000 </option>
+  <option value="1,500 ">1,500 </option>
+  <option value="2,000">2,000 </option>
+  <option value="2,500">2,500 </option>
+  <option value="3,000">3,000 </option>
+  <option value="3,500">3,500 </option>
+  <option value="4,000">4,000 </option>
+ <option value="4,500"> 4,500 </option>
+  <option value="Day">5,000 </option>
+  <option value="5,000">5,500 </option>
+  <option value="6,000">6,000 </option>
+  <option value="6,500">6,500 </option>
+  <option value="7,000">7,000 </option>
+  <option value="7,500">7,500 </option>
+  <option value="8,000">8,000 </option>
+  <option value="8,500">8,500 </option>
+  <option value="9,000">9,000 </option>
+  <option value="9,500">9,500 </option>
+  <option value="10,000">10,000 </option>
+  <option value="10,500">10,500 </option>
+  <option value="11,000">11,000 </option>
+  <option value="11,500 ">11,500 </option>
+  <option value="12,000">12,000 </option>
+ <option value="12,500"> 12,500 </option>
+  <option value="13,000 ">13,000 </option>
+  <option value="13,500">13,500 </option>
+ <option value="14,000"> 14,000 </option>
+ <option value="14,500"> 14,500 </option>
+ <option value="15,000"> 15,000 </option>
+ <option value=" 15,500 "> 15,500 </option>
+ <option value="16,000"> 16,000 </option>
+ <option value="16,500"> 16,500 </option>
+ <option value="17,000"> 17,000 </option>
+ <option value="17,500"> 17,500 </option>
+ <option value="18,000"> 18,000 </option>
+ <option value="18,500"> 18,500 </option>
+  <option value="19,000">19,000 </option>
+ <option value="19,500"> 19,500 </option>
+ <option value="20,000"> 20,000 </option>
+ <option value="More Than 20,000">More Than 20,000</option>
 
 
 
@@ -1540,29 +2095,144 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                               
+                                                                         </div>
+
+
+
+       <div class="form-group">
+                                                                             <label class="col-md-3 col-xs-12 control-label">Deposit</label>
+                                                                             <div class="col-md-6 col-xs-12">
+                                                                                 <select class="form-control " name="Deposit" id='Deposit' >
+                                                                                     <option> </option>
+
+
+
+<option value='100,000'> 100,000</option>
+<option value='150,000'>150,000</option>
+<option value='200,000'>200,000</option>
+<option value='250,000'>250,000</option>
+<option value='300,000'>300,000</option>
+<option value='350,000'>350,000</option>
+<option value='400,000'>400,000</option>
+<option value='450,000'>450,000</option>
+<option value='500,000'>500,000</option>
+<option value='550,000'>550,000</option>
+<option value='600,000'>600,000</option>
+<option value='6500,000'>650,000</option>
+<option value='700,000'>700,000</option>
+<option value='750,000'>750,000</option>
+<option value='800,000'>800,000</option>
+<option value='850,000'>850,000</option>
+<option value='900,000'>900,000</option>
+<option value='950,000'>950,000</option>
+<option value='1,000,000'>1,000,000</option>
+<option value='1,050,000'>1,050,000</option>
+<option value='1,100,000'>1,100,000</option>
+<option value='1,150,000'>1,150,000</option>
+<option value='1,200,000'>1,200,000</option>
+<option value='1,250,000'>1,250,000</option>
+<option value='1,300,000'>1,300,000</option>
+<option value='1,350,000'>1,350,000</option>
+<option value='1,400,000'>1,400,000</option>
+<option value='1,450,000'>1,450,000</option>
+<option value='1,450,000'>1,500,000</option>
+
+<option value='1,550,000'>1,550,000</option>
+<option value='1,600,000'>1,600,000</option>
+<option value='1,650,000'>1,650,000</option>
+<option value='1,700,000'>1,700,000</option>
+<option value='1,750,000'>1,750,000</option>
+<option value='1,800,000'>1,800,000</option>
+<option value='1,800,000'>1,850,000</option>
+<option value='1,900,000'>1,900,000</option>
+<option value='1,950,000'>1,950,000</option>
+<option value='2,000,000'>2,000,000</option>
+<option value='2,050,000'>2,050,000</option>
+<option value='2,100,000'>2,100,000</option>
+<option value='2,150,000'>2,150,000</option>
+<option value='2,200,000'>2,200,000</option>
+<option value='2,250,000'>2,250,000</option>
+<option value='2,300,000'>2,300,000</option>
+<option value='2,350,000'>2,350,000</option>
+<option value='2,400,000'>2,400,000</option>
+<option value='2,450,000'>2,450,000</option>
+<option value='2,500,000'>2,500,000</option>
+<option value='2,550,000'>2,550,000</option>
+<option value='2,600,000'>2,600,000</option>
+<option value='2,6500,000'>2,650,000</option>
+<option value='2,700,000'>2,700,000</option>
+<option value='2,750,000'>2,750,000</option>
+<option value='2,800,000'>2,800,000</option>
+<option value='2,850,000'>2,850,000</option>
+<option value='2,900,000'>2,900,000</option>
+<option value='2,950,000'>2,950,000</option>
+<option value='3,000,000'>3,000,000</option>
+<option value='3,050,000'>3,050,000</option>
+<option value='3,100,000'>3,100,000</option>
+<option value='3,150,000'>3,150,000</option>
+<option value='3,200,000'>3,200,000</option>
+<option value='3,250,000'>3,250,000</option>
+<option value='3,300,000'>3,300,000</option>
+<option value='3,350,000'>3,350,000</option>
+<option value='3,400,000'>3,400,000</option>
+<option value='3,450,000'>3,450,000</option>
+<option value='3,500,000'>3,500,000</option>
+<option value='3,550,000'>3,550,000</option>
+
+<option value='3,600,000'>3,600,000</option>
+<option value='3,650,000'>3,650,000</option>
+<option value='3,700,000'>3,700,000</option>
+<option value='3,750,000'>3,750,000</option>
+<option value='3,800,000'>3,800,000</option>
+<option value='3,850,000'>3,850,000</option>
+<option value='3,900,000'>3,900,000</option>
+<option value='3,950,000'>3,950,000</option>
+<option value='4,000,000'>4,000,000</option>
+<option value='4,050,000'>4,050,000</option>
+<option value='4,100,000'>4,100,000</option>
+<option value='4,150,000'>4,150,000</option>
+<option value='4,200,000'>4,200,000</option>
+<option value='4,250,000'>4,250,000</option>
+<option value='4,300,000'>4,300,000</option>
+<option value='4,350,000'>4,350,000</option>
+<option value='4,400,000'>4,400,000</option>
+<option value='4,450,000'>4,450,000</option>
+<option value='4,500,000'>4,500,000</option>
+<option value='4,550,000'>4,550,000</option>
+<option value='4,600,000'>4,600,000</option>
+<option value='4,650,000'>4,650,000</option>
+<option value='4,700,000'>4,700,000</option>
+<option value='4,700,000'>4,750,000</option>
+<option value='4,800,000'>4,800,000</option>
+<option value='4,850,000'>4,850,000</option>
+<option value='4,900,000'>4,900,000</option>
+<option value='4,950,000'>4,950,000</option>
+<option value='5,000,000'>5,000,000</option>
+<option value='more 5,000,0000'>more 5,000,0000</option>
+
+
+
+                                                                                 </select>
+                                                                                 <span  class ="error">Select box example</span>
+                                                                             </div>
+                                                                         </div>
+
+
+
+
+
+
                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Insurance</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Insurance" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Insurance" id='Insurance' >
                                                                                      <option> </option>
 
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
+ <option value="Month"> Month</option>
+ <option value=" Two Month"> Two Month</option>
+ <option value=" Three Month"> Three Month</option>
+ <option value=" Six Month"> Six Month</option>
+ <option value="Year"> Year</option>
 
 
 
@@ -1570,32 +2240,43 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                         
-                                                                         
-                                                                              
-                                                                           <div class="form-group">
+                                                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                            <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Out-POS</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Out-POS1" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="OutPOS1" id='OutPOS1'>
                                                                                      <option> </option>
 
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
 
 
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
+ <option value="0.50%">0.50%</option>
+<option value="1.00%">1.00% </option>
+<option value="1.50%">1.50%</option>
+<option value=">2.00%">2.00%</option>
+<option value="2.50%">2.50%</option>
+<option value="3.00%">3.00%</option>
+<option value="3.50%">3.50%</option>
+<option value="4.00%">4.00%</option>
+<option value="4.50%">4.50%</option>
+<option value="5.00%">5.00%</option>
+<option value="5.50%">5.50%</option>
+<option value="6.00%">6.00%</option>
+<option value="6.50%">6.50%</option>
+<option value="7.00%">7.00%</option>
+
 
 
 
@@ -1604,29 +2285,75 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
+                                                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         <div class="form-group">
+                                                                             <label class="col-md-3 col-xs-12 control-label">Picture Type</label>
+                                                                             <div class="col-md-6 col-xs-12">
+                                                                                 <select class="form-control " name="PictureType"  >
+                                                                                     <option> </option>
+
+                                                                                              <option value="From Owner"> From Owner</option>
+                                                                                     <option value="From Staff"> From Staff</option>
+
+
+
+
+
+                                                                                 </select>
+                                                                                 <span  class ="error">Select box example</span>
+                                                                             </div>
+                                                                         </div>
                                                                          
                                                                          
-                                                                              
-                                                                           <div class="form-group">
+                                                                         
+                                                                         
+
+         <div class="form-group">
                                                                              <label class="col-md-3 col-xs-12 control-label">Contracting</label>
                                                                              <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Contracting" id='FollowSchedule' required >
+                                                                                 <select class="form-control " name="Contracting"  >
                                                                                      <option> </option>
 
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
+                                                                                              <option value="From Owner">yes</option>
+                                                                                     <option value="From Staff"> no</option>
 
 
 
@@ -1635,113 +2362,49 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
                                                                                  </select>
                                                                                  <span  class ="error">Select box example</span>
                                                                              </div>
-                                                                         </div>                
-                                                                         
+                                                                         </div>
+
+
+
+
+
+
+  </div>
+
+
+                                                               
                                                                   
-                                                                             <div class="form-group">
+
+
+
+                                                                
+   <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3><span class="fa fa-mail-forward"></span> File Input</h3>
+                                    <p>Add class <code>file</code> to file input to get Bootstrap FileInput plugin</p>
+               
+                                        <div class="form-group">
+                                            <div class="col-md-z">
+                                                <label>Default</label>
+                                                <input type="file" multiple class="file" data-preview-file-type="any" name="up[]" />
+                                            </div>
+
+                                        </div>
+
+                                 
+                                </div>
+                            </div>
+  
+
+
+
+
+                                                       <div class="form-group">
                                                                                  <label class="col-md-2 control-label">Note</label>
                                                                                  <div class="col-md-10">
                                                                                      <textarea class="form-control" name='Note' rows="5" placeholder="Something about you"></textarea>
                                                                                  </div>
                                                                              </div>
-                                                                             
-                                                                             
-                                                                           <div class="form-group">
-                                                                             <label class="col-md-3 col-xs-12 control-label">Picture Type</label>
-                                                                             <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="PictureType" id='FollowSchedule' required >
-                                                                                     <option> </option>
-
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
-
-
-
-
-                                                                                 </select>
-                                                                                 <span  class ="error">Select box example</span>
-                                                                             </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                              
-                                                                           <div class="form-group">
-                                                                             <label class="col-md-3 col-xs-12 control-label">Picture</label>
-                                                                             <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="Picture" id='FollowSchedule' required >
-                                                                                     <option> </option>
-
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
-
-
-
-
-                                                                                 </select>
-                                                                                 <span  class ="error">Select box example</span>
-                                                                             </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                              
-                                                                           <div class="form-group">
-                                                                             <label class="col-md-3 col-xs-12 control-label">Validation Date</label>
-                                                                             <div class="col-md-6 col-xs-12">
-                                                                                 <select class="form-control " name="ValidationDate" id='FollowSchedule' required >
-                                                                                     <option> </option>
-
-                                                                                              <option value="Day"> Day</option>
-                                                                                     <option value="Two Days"> Two Days</option>
-
-
-                                                                                     <option value="Three Days"> Three Days</option>
-                                                                                      <option value="Week">Week</option>
-                                                                                       <option value="Two Week">Two Week</option>
-                                                                                        <option value="Three Week">Three Week</option>
-                                                                                         <option value="Month">Month</option>
-                                                                                          <option value="Two Month">Two Month</option>
-                                                                                           <option value="Three Month">Three Month</option>
-                                                                                            <option value="Six Month">Six Month</option>
-                                                                                             <option value="Year">Year</option>
-
-
-
-
-
-                                                                                 </select>
-                                                                                 <span  class ="error">Select box example</span>
-                                                                             </div>
-                                                                         </div>                
-                                                                         
-                                                                         
-                                                                         
-                                                                         
-                                                                         
-                                                                         
 
 
 
@@ -1750,11 +2413,16 @@ echo "<script type='text/javascript'>alert('Your data has been sent successfully
 
 
 
-                                                                             <div id='send' >
-                                                                             <center>
-                                     <input type='submit' value='send' name='send' >
-                                     </center>
-                                                                         </div>
+
+                                <div class="panel-footer">
+                                    <button class="btn btn-default">Clear Form</button>
+                                    <input type="submit" name="send" class="btn btn-primary pull-right" value='Submit'>
+                                </div>
+
+
+
+
+
 </div>
 
 

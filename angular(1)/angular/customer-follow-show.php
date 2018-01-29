@@ -39,7 +39,7 @@ $_SESSION['timeout']=time();
 <html lang="en">
     <head>        
         <!-- META SECTION -->
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <title>customer-follow-show</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -66,7 +66,7 @@ $_SESSION['timeout']=time();
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="index.php"><?php   session_start();
-	echo "welcom ". $seg= $_SESSION['logindata']         ?></a>
+	echo    "<font size='2'>"."welcom ". $seg= $_SESSION['logindata'] . "</font>"       ?></a>
                         
                         	                        
                         
@@ -421,7 +421,7 @@ $_SESSION['timeout']=time();
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Customer-Calls </h3>
+                                    <h3 class="panel-title"> customer-follow </h3>
                                     <div class="btn-group pull-right">
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">
@@ -455,7 +455,7 @@ $_SESSION['timeout']=time();
                                             <tr>
                                                       <th>ID</th>
                                                 <th> Phone Number </th>
-                                                <th> 	Out1 </th>
+                                                <th> 	In/Out </th>
                                                 <th>Followed By  </th>
                                                 <th> 	Call Type  </th>
                                                 <th> Call Status</th>
