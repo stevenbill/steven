@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+   
+
+       
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../dist/bootstrap-session-timeout.js"></script>
+
+    <script>
+    $.sessionTimeout({
+        keepAliveUrl: 'keep-alive.html',
+        logoutUrl: 'login.php',
+        redirUrl: '../destroy.php',
+        warnAfter: 9000,
+        redirAfter: 40000,
+        countdownBar: true
+    });
+    </script>
+</body>
+
+</html>

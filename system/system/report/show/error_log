@@ -1,0 +1,303 @@
+[13-May-2017 14:31:03 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:31:03 UTC] PHP Warning:  mysql_connect(): Access denied for user 'root'@'localhost' (using password: YES) in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:31:03 UTC] PHP Deprecated:  mysql_set_charset(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 9
+[13-May-2017 14:31:03 UTC] PHP Warning:  mysql_set_charset(): Access denied for user 'estasmer'@'localhost' (using password: NO) in /home/estasmer/public_html/report/report/show/show.php on line 9
+[13-May-2017 14:31:03 UTC] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/estasmer/public_html/report/report/show/show.php on line 9
+[13-May-2017 14:31:03 UTC] PHP Deprecated:  mysql_query(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 27
+[13-May-2017 14:31:03 UTC] PHP Warning:  mysql_query(): Access denied for user 'estasmer'@'localhost' (using password: NO) in /home/estasmer/public_html/report/report/show/show.php on line 27
+[13-May-2017 14:31:03 UTC] PHP Warning:  mysql_query(): A link to the server could not be established in /home/estasmer/public_html/report/report/show/show.php on line 27
+[13-May-2017 14:31:03 UTC] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/estasmer/public_html/report/report/show/show.php on line 38
+[13-May-2017 14:31:35 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:31:35 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 21
+[13-May-2017 14:31:52 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:31:52 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:33:10 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:33:10 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 21
+[13-May-2017 14:36:17 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 26
+[13-May-2017 14:36:17 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 174
+[13-May-2017 14:36:17 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 319
+[13-May-2017 14:36:17 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 463
+[13-May-2017 14:36:17 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 603
+[13-May-2017 14:36:25 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 26
+[13-May-2017 14:36:25 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 42
+[13-May-2017 14:36:25 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 174
+[13-May-2017 14:36:25 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 176
+[13-May-2017 14:36:25 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 319
+[13-May-2017 14:36:25 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 320
+[13-May-2017 14:36:25 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 463
+[13-May-2017 14:36:25 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 464
+[13-May-2017 14:36:25 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 603
+[13-May-2017 14:36:25 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 604
+[13-May-2017 14:38:06 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 26
+[13-May-2017 14:38:06 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 42
+[13-May-2017 14:38:06 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 174
+[13-May-2017 14:38:06 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 176
+[13-May-2017 14:38:06 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 319
+[13-May-2017 14:38:06 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 320
+[13-May-2017 14:38:06 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 463
+[13-May-2017 14:38:06 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 464
+[13-May-2017 14:38:06 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 603
+[13-May-2017 14:38:06 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 604
+[13-May-2017 14:39:41 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 26
+[13-May-2017 14:39:41 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 174
+[13-May-2017 14:39:41 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 320
+[13-May-2017 14:39:41 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 463
+[13-May-2017 14:39:41 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 464
+[13-May-2017 14:39:41 UTC] PHP Notice:  A session had already been started - ignoring session_start() in /home/estasmer/public_html/report/report/show/show.php on line 603
+[13-May-2017 14:39:41 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 604
+[13-May-2017 14:43:13 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:43:13 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:47:07 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: ID in /home/estasmer/public_html/report/report/show/show.php on line 91
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: address in /home/estasmer/public_html/report/report/show/show.php on line 99
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: address_houes in /home/estasmer/public_html/report/report/show/show.php on line 100
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: kind_houes in /home/estasmer/public_html/report/report/show/show.php on line 101
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: kind_of_pro in /home/estasmer/public_html/report/report/show/show.php on line 102
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: num_land in /home/estasmer/public_html/report/report/show/show.php on line 103
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: wagha in /home/estasmer/public_html/report/report/show/show.php on line 105
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: msaha in /home/estasmer/public_html/report/report/show/show.php on line 108
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: dor in /home/estasmer/public_html/report/report/show/show.php on line 109
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: room in /home/estasmer/public_html/report/report/show/show.php on line 110
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: bath in /home/estasmer/public_html/report/report/show/show.php on line 111
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: resh in /home/estasmer/public_html/report/report/show/show.php on line 113
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: matalat in /home/estasmer/public_html/report/report/show/show.php on line 114
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: onstreet in /home/estasmer/public_html/report/report/show/show.php on line 115
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: num_dor in /home/estasmer/public_html/report/report/show/show.php on line 118
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: garash in /home/estasmer/public_html/report/report/show/show.php on line 119
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: mabany in /home/estasmer/public_html/report/report/show/show.php on line 120
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: tashteb in /home/estasmer/public_html/report/report/show/show.php on line 121
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: asanser in /home/estasmer/public_html/report/report/show/show.php on line 122
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: adad in /home/estasmer/public_html/report/report/show/show.php on line 123
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: water in /home/estasmer/public_html/report/report/show/show.php on line 124
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: gas in /home/estasmer/public_html/report/report/show/show.php on line 125
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: kahrba in /home/estasmer/public_html/report/report/show/show.php on line 126
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: num_of_houes in /home/estasmer/public_html/report/report/show/show.php on line 127
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: price in /home/estasmer/public_html/report/report/show/show.php on line 128
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: aset in /home/estasmer/public_html/report/report/show/show.php on line 129
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: sadad in /home/estasmer/public_html/report/report/show/show.php on line 130
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: cash in /home/estasmer/public_html/report/report/show/show.php on line 131
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: enter in /home/estasmer/public_html/report/report/show/show.php on line 132
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: w_street in /home/estasmer/public_html/report/report/show/show.php on line 133
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: 3mola in /home/estasmer/public_html/report/report/show/show.php on line 134
+[13-May-2017 14:47:07 UTC] PHP Notice:  Undefined index: message in /home/estasmer/public_html/report/report/show/show.php on line 135
+[13-May-2017 14:53:23 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 8
+[13-May-2017 15:20:59 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:21:22 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:21:37 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:22:29 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:23:25 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:23:51 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:24:37 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:31:43 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:32:13 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 11
+[13-May-2017 15:33:49 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 15:33:56 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 15:36:25 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 18:21:51 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 18:22:09 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 18:22:11 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 18:22:13 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 18:23:21 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[13-May-2017 18:23:21 UTC] PHP Notice:  Undefined index: logindata in /home/estasmer/public_html/report/report/show/show.php on line 23
+[14-May-2017 14:27:08 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[15-May-2017 10:37:52 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 07:33:41 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 07:34:08 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 07:41:22 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 08:51:00 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 09:03:30 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 09:06:13 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 09:06:17 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 09:06:47 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 09:07:51 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10
+[16-May-2017 09:08:24 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/estasmer/public_html/report/report/show/show.php on line 10

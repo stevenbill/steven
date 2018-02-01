@@ -1,0 +1,194 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  vertical-align: baseline;
+  color: #333;
+  font-size: 16px;
+  font-family: Calibri, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+[role="button"] {
+  cursor: pointer;
+}
+.qrcode-maker {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+.qrcode-maker .block {
+  margin-bottom: 15px;
+}
+.qrcode-maker .clearfix:before,
+.qrcode-maker .clearfix:after {
+  content: ' ';
+  display: table;
+}
+.qrcode-maker .clearfix:after {
+  clear: both;
+}
+.qrcode-maker .form-control {
+  display: block;
+  width: 100%;
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 14px;
+  resize: none;
+}
+.qrcode-maker .form-control :focus {
+  outline: none;
+}
+.qrcode-maker .btn {
+  margin: 0;
+  padding: 10px;
+  min-height: 48px;
+  border: none;
+  border-radius: 4px;
+  border-bottom: 4px solid #999;
+  width: 100%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #bbb;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.qrcode-maker .btn-success {
+  background-color: #00bf90;
+  border-bottom: 4px solid #008c6a;
+}
+.qrcode-maker .btn-success:hover,
+.qrcode-maker .btn-success:active {
+  background: #00916d;
+}
+.qrcode-maker .btn-error {
+  background-color: #f62459;
+  border-bottom: 4px solid #c50838;
+}
+.qrcode-maker .btn-error:hover,
+.qrcode-maker .btn-error:active {
+  background: #e30940;
+}
+.qrcode-maker .dropbox {
+  position: relative;
+}
+.qrcode-maker .dropbox .qrcode-truth {
+  position: absolute;
+  top: -100000px;
+  left: -100000px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.qrcode-maker .dropbox > .dropbox-filed {
+  display: block;
+  position: relative;
+  border: 3px dashed #c1c1c1;
+  border-radius: 4px;
+  padding: 80px;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: border-color 0.25s;
+  -moz-transition: border-color 0.25s;
+  -o-transition: border-color 0.25s;
+  transition: border-color 0.25s;
+}
+.qrcode-maker .dropbox > .dropbox-filed .dropbox-filed-text {
+  color: #999;
+  font-size: 2.2rem;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  transition: color 0.25s;
+}
+.qrcode-maker .dropbox > .dropbox-filed input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+.qrcode-maker .dropbox > .dropbox-filed.dragging,
+.qrcode-maker .dropbox > .dropbox-filed:hover {
+  border-color: #8e8e8e;
+}
+.qrcode-maker .dropbox > .dropbox-filed.dragging .dropbox-text,
+.qrcode-maker .dropbox > .dropbox-filed:hover .dropbox-text {
+  color: #777;
+}
+.qrcode-maker .dropbox > .dropbox-content {
+  width: 100%;
+  display: none;
+}
+.qrcode-maker .dropbox > .dropbox-content .upload-content-image {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 200px;
+  border: 0;
+  outline: none;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.qrcode-maker .dropbox > .dropbox-content .upload-content-image:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  min-height: 200px;
+  line-height: 200px;
+  text-align: center;
+  vertical-align: middle;
+  color: #aaa;
+  font-size: 1.8rem;
+  font-weight: bolder;
+  box-shadow: 0 0 1px #c1c1c1;
+  content: "Upload Error";
+}
+.qrcode-maker header {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 0;
+}
+.qrcode-maker header h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+.qrcode-maker footer {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  text-align: right;
+}

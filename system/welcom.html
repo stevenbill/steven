@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="manifest"  href="manifest.json">
+	<title></title>
+
+	<script type="text/javascript">
+/*
+self.addEventListener('install', function(event) {
+    console.log(event.request);
+
+});*/
+self.addEventListener('fetch',function(event){
+event.respondWith(
+
+fetch(event.request).then(function(response){
+
+if (response.status==404) {
+	return new Response("whoops ,not found");
+}
+})
+	);
+});
+
+
+
+
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

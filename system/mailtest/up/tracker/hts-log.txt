@@ -1,0 +1,21 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 07 Nov 2017 09:18:39 at http://mehulp.ml/abroad/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qYC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" -Y http://mehulp.ml/abroad/ -O1 "C:\My Web Sites\ahmed" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+09:20:21	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/1.jpg (from mehulp.ml/abroad/)
+09:20:30	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/2.jpg (from mehulp.ml/abroad/)
+09:22:07	Warning: 	Retry after error -4 (Connect Error) at link https://maps.googleapis.com/maps/api/js?key=AIzaSyBC2oOenaQAs2ImrzwUz3xk8RCM_0_KiZA (from mehulp.ml/abroad/)
+09:22:07	Error: 	"Not Found" (404) at link mehulp.ml/vendor/owl-carousel/owl.video.play.png (from mehulp.ml/vendor/owl-carousel/owl.carousel.min.css)
+09:22:07	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/1.jpg (from mehulp.ml/abroad/)
+09:22:08	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/img-post.jpg (from mehulp.ml/abroad/single-post.html)
+09:22:08	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/video-post.jpg (from mehulp.ml/abroad/single-post.html)
+09:22:08	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/gallery-post.jpg (from mehulp.ml/abroad/single-post.html)
+09:22:10	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/img-post2.jpg (from mehulp.ml/abroad/single-post.html)
+09:22:29	Warning: 	Retry after error -4 (Connect Error) at link mehulp.ml/abroad/images/video-post.jpg (from mehulp.ml/abroad/single-post.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 3 minutes 51 seconds : 81 links scanned, 68 files written (2501484 bytes overall), 69 files updated [2023800 bytes received at 8761 bytes/sec], 674720 bytes transferred using HTTP compression in 30 files, ratio 23%, 2.5 requests per connection
+(1 errors, 9 warnings, 0 messages)
